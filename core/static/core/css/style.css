@@ -129,6 +129,29 @@ select:focus-visible,
     cursor: not-allowed;
 }
 
+.navbar-select {
+    background-color: transparent;
+    color: #fff;
+    border: 1.5px solid #fff;
+    border-radius: 6px;
+    padding: 8px 14px;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.navbar-select:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* The closed <select> sits on the dark navbar (white text is correct there),
+   but browsers render the open option list on a plain white/system
+   background regardless of the select's own styling — so options need
+   their own dark-on-light colors or they become invisible. */
+.navbar-select option {
+    color: #222;
+    background-color: #fff;
+}
+
 .btn-loading {
     opacity: 0.7;
     cursor: not-allowed;

@@ -66,6 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
     initAddFieldButtons();
     initCopyButton();
     initTemplateSystem();
+    initPayrollTemplateSystem();
     initClearButton();
     initMobileSidebar();
     initModalBackButtonHandler();
@@ -281,6 +282,113 @@ function addComponentToState(fieldId, name, category, allowSlabs = false) {
         percentage: 0, frequency: 'monthly', taxable: 'yes', configured: false,
         allow_slabs: allowSlabs
     };
+}
+
+// ========== PAYROLL CONTRIBUTION TEMPLATES (Stage 8) ==========
+// Bulk-creates several already-configured deduction/employer_contribution
+// fields from one country pick, the same "load like a template" idea as
+// the tax-regime dropdowns, just triggered by a country instead of a file.
+
+function initPayrollTemplateSystem() {
+    var select = document.getElementById('payrollTemplateCountry');
+    if (!select) return;
+
+    fetch(getPayrollTemplatesBaseUrl() + 'index.json')
+        .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+        .then(function (data) {
+            (data.countries || []).forEach(function (c) {
+                var opt = document.createElement('option');
+                opt.value = c.id;
+                opt.textContent = c.name;
+                select.appendChild(opt);
+            });
+        })
+        .catch(function () {
+            // Payroll templates are an optional convenience; fail silently if
+            // the registry can't be loaded, same spirit as other optional UI.
+        });
+
+    select.addEventListener('change', function () {
+        var countryId = select.value;
+        select.value = ''; // reset to placeholder immediately, this is a one-shot action
+        if (countryId) loadPayrollTemplate(countryId);
+    });
+}
+
+function loadPayrollTemplate(countryId) {
+    var baseUrl = getPayrollTemplatesBaseUrl();
+
+    fetch(baseUrl + 'index.json')
+        .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+        .then(function (indexData) {
+            var entry = (indexData.countries || []).find(function (c) { return c.id === countryId; });
+            if (!entry) throw new Error('Country not found in payroll registry.');
+            return fetch(baseUrl + entry.file);
+        })
+        .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+        .then(function (template) {
+            applyPayrollTemplate(template);
+        })
+        .catch(function () {
+            showNotification('Payroll template could not be loaded for this country.', 'error');
+        });
+}
+
+function applyPayrollTemplate(template) {
+    var components = template.components || [];
+
+    // Only ask for Basic Salary if the template actually needs it, and only
+    // if it's genuinely missing — matches the rest of the app's existing
+    // convention (HRA/Employer PF presets already require this same field).
+    var needsBasic = components.some(function (c) { return c.logic_type === 'percent_basic'; });
+    if (needsBasic && !isFieldOnCanvas('basic_salary')) {
+        showNotification(
+            'Add a "Basic Salary" field to the canvas first, then re-select ' + (template.country_name || 'this country') + ' from the payroll dropdown.',
+            'warning'
+        );
+        return;
+    }
+
+    var added = [];
+    var skipped = [];
+
+    components.forEach(function (comp) {
+        if (isFieldOnCanvas(comp.key)) {
+            skipped.push(comp.name);
+            return;
+        }
+
+        var dropZone = document.querySelector('.drop-zone[data-category="' + comp.category + '"]');
+        if (!dropZone) {
+            skipped.push(comp.name + ' (no matching category on canvas)');
+            return;
+        }
+
+        var canvasField = createCanvasField(comp.key, comp.name, comp.category);
+        removePlaceholder(dropZone);
+        dropZone.appendChild(canvasField);
+
+        addComponentToState(comp.key, comp.name, comp.category);
+        var state = appState.components[comp.key];
+        state.logic_type = comp.logic_type;
+        state.value = comp.value;
+        state.taxable = comp.taxable || 'no';
+        state.configured = true;
+        if (comp.target_field) state.target_field = comp.target_field;
+        if (comp.threshold_annual !== undefined) state.threshold_annual = comp.threshold_annual;
+
+        added.push(comp.name);
+    });
+
+    if (added.length > 0) {
+        invalidateCalculatedPreview();
+        updateConfiguredTotal();
+        var msg = added.join(', ') + ' added.';
+        if (skipped.length > 0) msg += ' Skipped (already on canvas): ' + skipped.join(', ') + '.';
+        showNotification(msg, 'success');
+    } else if (skipped.length > 0) {
+        showNotification('All payroll fields for this country are already on the canvas.', 'warning');
+    }
 }
 
 // ========== CONFIG MODAL ==========
@@ -660,6 +768,12 @@ function populateDependsOnOptions(currentFieldId) {
 
 function getTaxRegimesBaseUrl() {
     var url = document.body.dataset.taxRegimesUrl || 'vendor/tax-regimes/index.json';
+    var idx = url.lastIndexOf('/');
+    return idx >= 0 ? url.substring(0, idx + 1) : '';
+}
+
+function getPayrollTemplatesBaseUrl() {
+    var url = document.body.dataset.payrollTemplatesUrl || 'vendor/payroll/index.json';
     var idx = url.lastIndexOf('/');
     return idx >= 0 ? url.substring(0, idx + 1) : '';
 }
@@ -2666,7 +2780,9 @@ function normalizeLoadedComponent(comp) {
         configured: Boolean(comp.configured),
         allow_slabs: Boolean(comp.allow_slabs),
         slab_config: normalizeSlabConfig(comp.slab_config),
-        percentage: Number(comp.percentage || 0)
+        percentage: Number(comp.percentage || 0),
+        // Stage 8: eligibility-cliff payroll fields (e.g. India's ESI)
+        threshold_annual: comp.threshold_annual !== undefined ? Number(comp.threshold_annual) : undefined
     };
 }
 

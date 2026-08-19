@@ -198,6 +198,25 @@ def calculate_ctc_breakdown(data):
     # Recalculate Gross after % of Gross
     gross_annual = sum(c.get('annual', 0) for c in calculated.values() if c.get('category') == 'earnings')
 
+    # 5b. % of Gross, but ONLY if gross is at/below a threshold (eligibility
+    # cliff, e.g. India's ESI: applies to the full amount below ~Rs 21,000/mo,
+    # not at all above it — unlike a tax rebate this zeroes above, not below).
+    for field_id, comp in components.items():
+        if comp.get('logic_type') == 'percent_gross_if_below':
+            threshold = float(comp.get('threshold_annual', 0))
+            if gross_annual <= threshold:
+                annual = (gross_annual * float(comp.get('value', 0))) / 100
+            else:
+                annual = 0
+            calculated[field_id] = {
+                'id': field_id,
+                'name': comp.get('name'),
+                'category': comp.get('category'),
+                'annual': round(annual, 2),
+                'monthly': round(annual / 12, 2),
+                'taxable': comp.get('taxable', 'yes')
+            }
+
     # 6. Tax Slabs calculation
     for field_id, comp in components.items():
         if comp.get('logic_type') == 'tax_slabs':

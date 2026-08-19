@@ -11,7 +11,8 @@
     data-export-html2canvas="{% static 'core/vendor/html2canvas.min.js' %}"
     data-export-jspdf="{% static 'core/vendor/jspdf.umd.min.js' %}"
     data-export-docx="{% static 'core/vendor/docx.iife.js' %}"
-    data-tax-regimes-url="{% static 'core/vendor/tax-regimes/index.json' %}">
+    data-tax-regimes-url="{% static 'core/vendor/tax-regimes/index.json' %}"
+    data-payroll-templates-url="{% static 'core/vendor/payroll/index.json' %}">
 
     <!-- Top Navigation Bar -->
     <nav class="navbar">
@@ -19,6 +20,9 @@
         <div class="navbar-actions">
             <button class="btn btn-outline" id="btnSaveTemplate">Save Template</button>
             <button class="btn btn-outline" id="btnLoadTemplate">Load Template</button>
+            <select id="payrollTemplateCountry" class="navbar-select">
+                <option value="">+ Payroll Contributions...</option>
+            </select>
             <button class="btn btn-outline" id="btnClear">Clear Canvas</button>
             <button class="btn btn-primary" id="btnPreview">Calculate</button>
         </div>

@@ -1,0 +1,47 @@
+{
+    "country_id": "india",
+    "country_name": "India",
+    "tax_year": "2024-25",
+    "last_updated": "2026-08-19",
+    "source": "https://www.epfindia.gov.in/ , https://www.esic.gov.in/",
+    "disclaimer": "Simplified estimate, not payroll-compliance advice. PF is calculated on the Basic Salary field only (a common simplification; real PF law uses Basic+DA, and the statutory PF wage ceiling of Rs 15,000/month is not enforced here). ESI eligibility is an all-or-nothing cliff at Rs 21,000/month gross (Rs 252,000/year): if gross exceeds this, ESI does not apply at all, matching the real rule. Employer-side PF further splits into EPF/EPS internally under real law, which is not modeled since it does not change the employer's total 12% outlay. Gratuity is a separate statutory benefit and is not included in this template. Verify against current EPFO/ESIC notifications before using for real payroll.",
+
+    "components": [
+        {
+            "key": "pf_employee",
+            "name": "Provident Fund (Employee)",
+            "category": "deductions",
+            "logic_type": "percent_basic",
+            "target_field": "basic_salary",
+            "value": 12,
+            "taxable": "no"
+        },
+        {
+            "key": "pf_employer",
+            "name": "Provident Fund (Employer)",
+            "category": "employer_contributions",
+            "logic_type": "percent_basic",
+            "target_field": "basic_salary",
+            "value": 12,
+            "taxable": "no"
+        },
+        {
+            "key": "esi_employee",
+            "name": "ESI (Employee)",
+            "category": "deductions",
+            "logic_type": "percent_gross_if_below",
+            "value": 0.75,
+            "threshold_annual": 252000,
+            "taxable": "no"
+        },
+        {
+            "key": "esi_employer",
+            "name": "ESI (Employer)",
+            "category": "employer_contributions",
+            "logic_type": "percent_gross_if_below",
+            "value": 3.25,
+            "threshold_annual": 252000,
+            "taxable": "no"
+        }
+    ]
+}
