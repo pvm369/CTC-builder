@@ -1,0 +1,31 @@
+{
+    "country_id": "hungary",
+    "country_name": "Hungary",
+    "currency": "HUF",
+    "currency_symbol": "Ft",
+    "tax_year": "2024",
+    "engine_type": "flat_rate_tax",
+    "last_updated": "2025-01-01",
+    "source": "https://nav.gov.hu/en",
+    "disclaimer": "Simplified estimate: 15% flat personal income tax on gross income. Employee social contribution (18.5%) and under-25 tax exemption (up to a monthly cap) are not included — add contributions manually as deductions for accuracy.",
+
+    "requires_filing_status": false,
+    "requires_state_selection": false,
+    "requires_age_group": false,
+    "requires_dependants": false,
+    "requires_residency_status": false,
+
+    "regimes": [
+        {
+            "id": "hu_flat_15",
+            "label": "Flat Income Tax (15%)",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "notes": "Hungary applies a flat 15% PIT. Under-25 exemption and family tax benefits are not included.",
+            "slabs": [
+                { "from": 0, "to": null, "rate": 15 }
+            ]
+        }
+    ]
+}

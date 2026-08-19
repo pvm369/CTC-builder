@@ -1,0 +1,37 @@
+{
+    "country_id": "vietnam",
+    "country_name": "Vietnam",
+    "currency": "VND",
+    "currency_symbol": "₫",
+    "tax_year": "2024",
+    "engine_type": "progressive_slabs_basic",
+    "last_updated": "2025-01-01",
+    "source": "https://www.gdt.gov.vn/wps/portal/English",
+    "disclaimer": "Simplified estimate for Vietnamese tax-resident individuals using annualized monthly slab thresholds. Personal deduction, dependent deductions, social/health/unemployment insurance contributions, and non-resident flat rate (20%) are not included.",
+
+    "requires_filing_status": false,
+    "requires_state_selection": false,
+    "requires_age_group": false,
+    "requires_dependants": false,
+    "requires_residency_status": false,
+
+    "regimes": [
+        {
+            "id": "vn_resident_2024",
+            "label": "Resident Individual (2024, Annualized)",
+            "standard_deduction": 132000000,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "notes": "Personal deduction of ₫11,000,000/month (₫132,000,000/year) applied as standard deduction. Dependent deduction of ₫4,400,000/month per dependent is not included. Monthly slabs annualized for this calculator.",
+            "slabs": [
+                { "from": 0, "to": 60000000, "rate": 5 },
+                { "from": 60000000, "to": 120000000, "rate": 10 },
+                { "from": 120000000, "to": 216000000, "rate": 15 },
+                { "from": 216000000, "to": 384000000, "rate": 20 },
+                { "from": 384000000, "to": 624000000, "rate": 25 },
+                { "from": 624000000, "to": 960000000, "rate": 30 },
+                { "from": 960000000, "to": null, "rate": 35 }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,90 @@
+{
+    "country_id": "south_africa",
+    "country_name": "South Africa",
+    "currency": "ZAR",
+    "currency_symbol": "R",
+    "tax_year": "2024-25",
+    "engine_type": "progressive_slabs_basic",
+    "last_updated": "2025-01-01",
+    "source": "https://www.sars.gov.za/tax-rates/income-tax/rates-of-tax-for-individuals/",
+    "sub_option_label": "Select Age Group",
+    "disclaimer": "Simplified estimate. The age-appropriate rebate(s) ARE included as tax credits. Medical tax credits, UIF, and retirement fund deductions are not included.",
+
+    "requires_filing_status": false,
+    "requires_state_selection": false,
+    "requires_age_group": true,
+    "requires_dependants": false,
+    "requires_residency_status": false,
+
+    "regimes": [
+        {
+            "id": "za_under_65_2024_25",
+            "label": "Under 65",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "notes": "Primary rebate R17,235 included. Tax threshold R95,750.",
+            "slabs": [
+                { "from": 0, "to": 237100, "rate": 18 },
+                { "from": 237100, "to": 370500, "rate": 26 },
+                { "from": 370500, "to": 512800, "rate": 31 },
+                { "from": 512800, "to": 673000, "rate": 36 },
+                { "from": 673000, "to": 857900, "rate": 39 },
+                { "from": 857900, "to": 1817000, "rate": 41 },
+                { "from": 1817000, "to": null, "rate": 45 }
+            ],
+            "post_rules": {
+                "credits": [
+                    { "label": "Primary Rebate", "amount": 17235 }
+                ]
+            }
+        },
+        {
+            "id": "za_65_74_2024_25",
+            "label": "65 to 74",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "notes": "Primary + Secondary rebates (R17,235 + R9,444 = R26,679) included. Tax threshold R148,217.",
+            "slabs": [
+                { "from": 0, "to": 237100, "rate": 18 },
+                { "from": 237100, "to": 370500, "rate": 26 },
+                { "from": 370500, "to": 512800, "rate": 31 },
+                { "from": 512800, "to": 673000, "rate": 36 },
+                { "from": 673000, "to": 857900, "rate": 39 },
+                { "from": 857900, "to": 1817000, "rate": 41 },
+                { "from": 1817000, "to": null, "rate": 45 }
+            ],
+            "post_rules": {
+                "credits": [
+                    { "label": "Primary Rebate", "amount": 17235 },
+                    { "label": "Secondary Rebate (65+)", "amount": 9444 }
+                ]
+            }
+        },
+        {
+            "id": "za_75_plus_2024_25",
+            "label": "75 and older",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "notes": "Primary + Secondary + Tertiary rebates (R17,235 + R9,444 + R3,145 = R29,824) included. Tax threshold R165,689.",
+            "slabs": [
+                { "from": 0, "to": 237100, "rate": 18 },
+                { "from": 237100, "to": 370500, "rate": 26 },
+                { "from": 370500, "to": 512800, "rate": 31 },
+                { "from": 512800, "to": 673000, "rate": 36 },
+                { "from": 673000, "to": 857900, "rate": 39 },
+                { "from": 857900, "to": 1817000, "rate": 41 },
+                { "from": 1817000, "to": null, "rate": 45 }
+            ],
+            "post_rules": {
+                "credits": [
+                    { "label": "Primary Rebate", "amount": 17235 },
+                    { "label": "Secondary Rebate (65+)", "amount": 9444 },
+                    { "label": "Tertiary Rebate (75+)", "amount": 3145 }
+                ]
+            }
+        }
+    ]
+}

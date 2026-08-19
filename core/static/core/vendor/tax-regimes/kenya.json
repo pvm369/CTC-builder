@@ -1,0 +1,35 @@
+{
+    "country_id": "kenya",
+    "country_name": "Kenya",
+    "currency": "KES",
+    "currency_symbol": "KSh",
+    "tax_year": "2024",
+    "engine_type": "progressive_slabs_basic",
+    "last_updated": "2025-01-01",
+    "source": "https://www.kra.go.ke/individual/individual-pin-registration/learn-about-taxes/paye",
+    "disclaimer": "Simplified estimate for Kenyan PAYE. Personal relief (KSh28,800/year), NSSF, SHIF, and housing levy deductions are not included.",
+
+    "requires_filing_status": false,
+    "requires_state_selection": false,
+    "requires_age_group": false,
+    "requires_dependants": false,
+    "requires_residency_status": false,
+
+    "regimes": [
+        {
+            "id": "ke_paye_2024",
+            "label": "PAYE Individual (2024)",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "notes": "Annualized PAYE bands. Personal relief of KSh28,800 per year is not automatically applied here.",
+            "slabs": [
+                { "from": 0, "to": 288000, "rate": 10 },
+                { "from": 288000, "to": 388000, "rate": 25 },
+                { "from": 388000, "to": 6000000, "rate": 30 },
+                { "from": 6000000, "to": 9600000, "rate": 32.5 },
+                { "from": 9600000, "to": null, "rate": 35 }
+            ]
+        }
+    ]
+}

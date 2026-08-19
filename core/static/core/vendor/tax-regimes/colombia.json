@@ -1,0 +1,37 @@
+{
+    "country_id": "colombia",
+    "country_name": "Colombia",
+    "currency": "COP",
+    "currency_symbol": "$",
+    "tax_year": "2024",
+    "engine_type": "progressive_slabs_basic",
+    "last_updated": "2025-01-01",
+    "source": "https://www.dian.gov.co/",
+    "disclaimer": "Simplified estimate for Colombian individual income tax. Colombia officially uses UVT tax units; this file uses approximate COP-annualized bands. Social security contributions, exempt income (25%), and deductions are not included.",
+
+    "requires_filing_status": false,
+    "requires_state_selection": false,
+    "requires_age_group": false,
+    "requires_dependants": false,
+    "requires_residency_status": false,
+
+    "regimes": [
+        {
+            "id": "co_individual_2024",
+            "label": "Individual Income Tax (2024, Approx.)",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "notes": "Colombia defines brackets in UVT units that change yearly. These COP figures are an approximation and should be verified against the current UVT value.",
+            "slabs": [
+                { "from": 0, "to": 47000000, "rate": 0 },
+                { "from": 47000000, "to": 73000000, "rate": 19 },
+                { "from": 73000000, "to": 176000000, "rate": 28 },
+                { "from": 176000000, "to": 424000000, "rate": 33 },
+                { "from": 424000000, "to": 900000000, "rate": 35 },
+                { "from": 900000000, "to": 1200000000, "rate": 37 },
+                { "from": 1200000000, "to": null, "rate": 39 }
+            ]
+        }
+    ]
+}

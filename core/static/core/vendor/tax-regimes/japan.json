@@ -1,0 +1,83 @@
+{
+    "country_id": "japan",
+    "country_name": "Japan",
+    "currency": "JPY",
+    "currency_symbol": "¥",
+    "tax_year": "2024",
+    "engine_type": "progressive_slabs_basic",
+    "last_updated": "2025-01-01",
+    "source": "https://www.nta.go.jp/english/taxes/individual/incometax.htm",
+    "disclaimer": "Simplified estimate for national income tax only. Employment income deduction, local inhabitant tax (approximately 10%), reconstruction surtax (2.1%), social insurance premiums, and personal exemptions are not included.",
+    "requires_filing_status": false,
+    "requires_state_selection": false,
+    "requires_age_group": false,
+    "requires_dependants": false,
+    "requires_residency_status": true,
+    "regimes": [
+        {
+            "id": "jp_national_2024",
+            "label": "National Income Tax (2024) (Resident)",
+            "standard_deduction": 0,
+            "surcharge_percent": 2.1,
+            "cess_percent": 0,
+            "notes": "National income tax only. The 2.1% reconstruction surtax is applied as surcharge. Local inhabitant tax (approximately 10%) is separate and not included. Employment income deduction varies by income level and is not applied here.",
+            "slabs": [
+                {
+                    "from": 0,
+                    "to": 1950000,
+                    "rate": 5
+                },
+                {
+                    "from": 1950000,
+                    "to": 3300000,
+                    "rate": 10
+                },
+                {
+                    "from": 3300000,
+                    "to": 6950000,
+                    "rate": 20
+                },
+                {
+                    "from": 6950000,
+                    "to": 9000000,
+                    "rate": 23
+                },
+                {
+                    "from": 9000000,
+                    "to": 18000000,
+                    "rate": 33
+                },
+                {
+                    "from": 18000000,
+                    "to": 40000000,
+                    "rate": 40
+                },
+                {
+                    "from": 40000000,
+                    "to": null,
+                    "rate": 45
+                }
+            ],
+            "regime_role": "resident"
+        },
+        {
+            "id": "jp_nonresident_2024",
+            "label": "Non-Resident",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "notes": "Non-residents are taxed via flat withholding at 20.42% (20% national + 2.1% reconstruction surtax) on Japan-source employment income, with no deductions.",
+            "slabs": [
+                {
+                    "from": 0,
+                    "to": null,
+                    "rate": 20.42
+                }
+            ],
+            "regime_role": "nonresident"
+        }
+    ],
+    "sub_option_label": "Select Residency Status",
+    "residency_threshold_days": 183,
+    "residency_threshold_note": "ADVISORY ONLY, not a legal determination: 183+ days physically present in a tax year is commonly used as a resident-status guideline. Actual rules vary by country (tie-breaker tests, visa type, permanent home, center of vital interests, etc.) and this figure does not override your own judgment or professional advice."
+}

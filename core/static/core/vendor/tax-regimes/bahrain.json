@@ -1,0 +1,29 @@
+{
+    "country_id": "bahrain",
+    "country_name": "Bahrain",
+    "currency": "BHD",
+    "currency_symbol": "د.ب",
+    "tax_year": "2024",
+    "engine_type": "zero_income_tax",
+    "last_updated": "2025-01-01",
+    "source": "https://www.nbr.gov.bh",
+    "disclaimer": "Bahrain does not levy personal income tax on employment income. SIO social insurance contributions apply to Bahraini nationals, and other deductions such as insurance or loans may still apply.",
+
+    "requires_filing_status": false,
+    "requires_state_selection": false,
+    "requires_age_group": false,
+    "requires_dependants": false,
+    "requires_residency_status": false,
+
+    "regimes": [
+        {
+            "id": "bh_zero_tax",
+            "label": "Zero Personal Income Tax",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "notes": "No personal income tax on salaries in Bahrain.",
+            "slabs": []
+        }
+    ]
+}

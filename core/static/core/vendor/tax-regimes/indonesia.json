@@ -1,0 +1,73 @@
+{
+    "country_id": "indonesia",
+    "country_name": "Indonesia",
+    "currency": "IDR",
+    "currency_symbol": "Rp",
+    "tax_year": "2024",
+    "engine_type": "progressive_slabs_basic",
+    "last_updated": "2025-01-01",
+    "source": "https://www.pajak.go.id/en",
+    "disclaimer": "Simplified estimate for Indonesian tax-resident individuals. PTKP (non-taxable income) applied as standard deduction for single individual. Married/dependent PTKP adjustments, social security (BPJS), and occupational expense deduction (5% of gross, max Rp6,000,000) are not included.",
+    "requires_filing_status": false,
+    "requires_state_selection": false,
+    "requires_age_group": false,
+    "requires_dependants": false,
+    "requires_residency_status": true,
+    "regimes": [
+        {
+            "id": "id_resident_single_2024",
+            "label": "Resident Individual — Single (2024)",
+            "standard_deduction": 54000000,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "notes": "PTKP for single individual (TK/0) of Rp54,000,000 applied as standard deduction. Married or with dependents gets higher PTKP not reflected here.",
+            "slabs": [
+                {
+                    "from": 0,
+                    "to": 60000000,
+                    "rate": 5
+                },
+                {
+                    "from": 60000000,
+                    "to": 250000000,
+                    "rate": 15
+                },
+                {
+                    "from": 250000000,
+                    "to": 500000000,
+                    "rate": 25
+                },
+                {
+                    "from": 500000000,
+                    "to": 5000000000,
+                    "rate": 30
+                },
+                {
+                    "from": 5000000000,
+                    "to": null,
+                    "rate": 35
+                }
+            ],
+            "regime_role": "resident"
+        },
+        {
+            "id": "id_nonresident_2024",
+            "label": "Non-Resident",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "notes": "Non-resident individuals are taxed at a flat 20% on gross Indonesia-source income, with no standard deduction or progressive slabs.",
+            "slabs": [
+                {
+                    "from": 0,
+                    "to": null,
+                    "rate": 20
+                }
+            ],
+            "regime_role": "nonresident"
+        }
+    ],
+    "sub_option_label": "Select Residency Status",
+    "residency_threshold_days": 183,
+    "residency_threshold_note": "ADVISORY ONLY, not a legal determination: 183+ days physically present in a tax year is commonly used as a resident-status guideline. Actual rules vary by country (tie-breaker tests, visa type, permanent home, center of vital interests, etc.) and this figure does not override your own judgment or professional advice."
+}

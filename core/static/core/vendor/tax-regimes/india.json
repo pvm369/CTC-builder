@@ -1,0 +1,110 @@
+{
+    "country_id": "india",
+    "country_name": "India",
+    "currency": "INR",
+    "currency_symbol": "₹",
+    "tax_year": "FY 2024-25 / FY 2025-26",
+    "engine_type": "progressive_slabs_basic",
+    "last_updated": "2025-01-01",
+    "source": "https://incometaxindia.gov.in",
+    "sub_option_label": "Select Tax Regime / Age Category",
+    "disclaimer": "Simplified estimate. HRA exemptions, Section 80C/80D deductions, surcharge thresholds, and marginal relief are not included. Section 87A rebate IS included for every regime shown.",
+
+    "requires_filing_status": false,
+    "requires_state_selection": false,
+    "requires_age_group": false,
+    "requires_dependants": false,
+    "requires_residency_status": false,
+
+    "regimes": [
+        {
+            "id": "in_new_2025_26",
+            "label": "New Tax Regime (FY 2025-26)",
+            "standard_deduction": 75000,
+            "surcharge_percent": 0,
+            "cess_percent": 4,
+            "notes": "Budget 2025 slabs. Section 87A rebate of ₹60,000 included (income up to ₹12,00,000 after standard deduction pays zero tax). Marginal relief above ₹12L not included.",
+            "slabs": [
+                { "from": 0, "to": 400000, "rate": 0 },
+                { "from": 400000, "to": 800000, "rate": 5 },
+                { "from": 800000, "to": 1200000, "rate": 10 },
+                { "from": 1200000, "to": 1600000, "rate": 15 },
+                { "from": 1600000, "to": 2000000, "rate": 20 },
+                { "from": 2000000, "to": 2400000, "rate": 25 },
+                { "from": 2400000, "to": null, "rate": 30 }
+            ],
+            "post_rules": {
+                "rebate": { "threshold": 1200000, "amount": 60000 }
+            }
+        },
+        {
+            "id": "in_new_2024_25",
+            "label": "New Tax Regime (FY 2024-25)",
+            "standard_deduction": 75000,
+            "surcharge_percent": 0,
+            "cess_percent": 4,
+            "notes": "Section 87A rebate of ₹25,000 included (income up to ₹7,00,000 after standard deduction pays zero tax).",
+            "slabs": [
+                { "from": 0, "to": 300000, "rate": 0 },
+                { "from": 300000, "to": 700000, "rate": 5 },
+                { "from": 700000, "to": 1000000, "rate": 10 },
+                { "from": 1000000, "to": 1200000, "rate": 15 },
+                { "from": 1200000, "to": 1500000, "rate": 20 },
+                { "from": 1500000, "to": null, "rate": 30 }
+            ],
+            "post_rules": {
+                "rebate": { "threshold": 700000, "amount": 25000 }
+            }
+        },
+        {
+            "id": "in_old_below_60_2024_25",
+            "label": "Old Regime — Below 60 (FY 2024-25)",
+            "standard_deduction": 50000,
+            "surcharge_percent": 0,
+            "cess_percent": 4,
+            "notes": "Section 87A rebate of ₹12,500 included (income up to ₹5,00,000 after standard deduction pays zero tax).",
+            "slabs": [
+                { "from": 0, "to": 250000, "rate": 0 },
+                { "from": 250000, "to": 500000, "rate": 5 },
+                { "from": 500000, "to": 1000000, "rate": 20 },
+                { "from": 1000000, "to": null, "rate": 30 }
+            ],
+            "post_rules": {
+                "rebate": { "threshold": 500000, "amount": 12500 }
+            }
+        },
+        {
+            "id": "in_old_60_80_2024_25",
+            "label": "Old Regime — Senior 60 to 80 (FY 2024-25)",
+            "standard_deduction": 50000,
+            "surcharge_percent": 0,
+            "cess_percent": 4,
+            "notes": "Higher tax-free limit of ₹3,00,000 for senior citizens. Section 87A rebate of ₹12,500 included (income up to ₹5,00,000 after standard deduction pays zero tax).",
+            "slabs": [
+                { "from": 0, "to": 300000, "rate": 0 },
+                { "from": 300000, "to": 500000, "rate": 5 },
+                { "from": 500000, "to": 1000000, "rate": 20 },
+                { "from": 1000000, "to": null, "rate": 30 }
+            ],
+            "post_rules": {
+                "rebate": { "threshold": 500000, "amount": 12500 }
+            }
+        },
+        {
+            "id": "in_old_80_plus_2024_25",
+            "label": "Old Regime — Super Senior 80+ (FY 2024-25)",
+            "standard_deduction": 50000,
+            "surcharge_percent": 0,
+            "cess_percent": 4,
+            "notes": "Higher tax-free limit of ₹5,00,000 for super senior citizens. Section 87A rebate included (income up to ₹5,00,000 after standard deduction pays zero tax).",
+            "slabs": [
+                { "from": 0, "to": 500000, "rate": 0 },
+                { "from": 500000, "to": 1000000, "rate": 20 },
+                { "from": 1000000, "to": null, "rate": 30 }
+            ],
+            "post_rules": {
+                "rebate": { "threshold": 500000, "amount": 12500 }
+            }
+        }
+    ]
+}

@@ -1,0 +1,90 @@
+{
+    "country_id": "usa",
+    "country_name": "United States",
+    "currency": "USD",
+    "currency_symbol": "$",
+    "tax_year": "2024",
+    "engine_type": "progressive_slabs_basic",
+    "last_updated": "2025-01-01",
+    "source": "https://www.irs.gov/newsroom/irs-provides-tax-inflation-adjustments-for-tax-year-2024",
+    "sub_option_label": "Select Filing Status",
+    "disclaimer": "Federal income tax only. State income tax, Social Security, Medicare, local taxes, and credits/deductions beyond the standard deduction are not included. Head of Household status requires a qualifying person and paying more than half the cost of keeping up a home — select it only if you meet IRS requirements.",
+
+    "requires_filing_status": true,
+    "requires_state_selection": true,
+    "requires_age_group": false,
+    "requires_dependants": false,
+    "requires_residency_status": false,
+    "states_file": "usa_states.json",
+
+    "regimes": [
+        {
+            "id": "us_single_2024",
+            "label": "Single",
+            "standard_deduction": 14600,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "notes": "Federal brackets for a Single filer, 2024. Standard deduction $14,600.",
+            "slabs": [
+                { "from": 0, "to": 11600, "rate": 10 },
+                { "from": 11600, "to": 47150, "rate": 12 },
+                { "from": 47150, "to": 100525, "rate": 22 },
+                { "from": 100525, "to": 191950, "rate": 24 },
+                { "from": 191950, "to": 243725, "rate": 32 },
+                { "from": 243725, "to": 609350, "rate": 35 },
+                { "from": 609350, "to": null, "rate": 37 }
+            ]
+        },
+        {
+            "id": "us_mfj_2024",
+            "label": "Married Filing Jointly",
+            "standard_deduction": 29200,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "notes": "Federal brackets for Married Filing Jointly, 2024. Standard deduction $29,200.",
+            "slabs": [
+                { "from": 0, "to": 23200, "rate": 10 },
+                { "from": 23200, "to": 94300, "rate": 12 },
+                { "from": 94300, "to": 201050, "rate": 22 },
+                { "from": 201050, "to": 383900, "rate": 24 },
+                { "from": 383900, "to": 487450, "rate": 32 },
+                { "from": 487450, "to": 731200, "rate": 35 },
+                { "from": 731200, "to": null, "rate": 37 }
+            ]
+        },
+        {
+            "id": "us_mfs_2024",
+            "label": "Married Filing Separately",
+            "standard_deduction": 14600,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "notes": "Federal brackets for Married Filing Separately, 2024. Standard deduction $14,600. Some credits/deductions are restricted under this status.",
+            "slabs": [
+                { "from": 0, "to": 11600, "rate": 10 },
+                { "from": 11600, "to": 47150, "rate": 12 },
+                { "from": 47150, "to": 100525, "rate": 22 },
+                { "from": 100525, "to": 191950, "rate": 24 },
+                { "from": 191950, "to": 243725, "rate": 32 },
+                { "from": 243725, "to": 365600, "rate": 35 },
+                { "from": 365600, "to": null, "rate": 37 }
+            ]
+        },
+        {
+            "id": "us_hoh_2024",
+            "label": "Head of Household",
+            "standard_deduction": 21900,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "notes": "Federal brackets for Head of Household, 2024. Standard deduction $21,900. Requires a qualifying person and paying more than half the cost of keeping up a home.",
+            "slabs": [
+                { "from": 0, "to": 16550, "rate": 10 },
+                { "from": 16550, "to": 63100, "rate": 12 },
+                { "from": 63100, "to": 100500, "rate": 22 },
+                { "from": 100500, "to": 191950, "rate": 24 },
+                { "from": 191950, "to": 243700, "rate": 32 },
+                { "from": 243700, "to": 609350, "rate": 35 },
+                { "from": 609350, "to": null, "rate": 37 }
+            ]
+        }
+    ]
+}

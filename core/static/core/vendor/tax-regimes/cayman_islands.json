@@ -1,0 +1,29 @@
+{
+    "country_id": "cayman_islands",
+    "country_name": "Cayman Islands",
+    "currency": "KYD",
+    "currency_symbol": "CI$",
+    "tax_year": "2024",
+    "engine_type": "zero_income_tax",
+    "last_updated": "2025-01-01",
+    "source": "https://www.gov.ky",
+    "disclaimer": "The Cayman Islands does not levy personal income tax. Mandatory pension and health insurance contributions and other deductions such as loans may still apply.",
+
+    "requires_filing_status": false,
+    "requires_state_selection": false,
+    "requires_age_group": false,
+    "requires_dependants": false,
+    "requires_residency_status": false,
+
+    "regimes": [
+        {
+            "id": "ky_zero_tax",
+            "label": "Zero Personal Income Tax",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "notes": "No personal income tax in the Cayman Islands. Mandatory pension and health insurance contributions are separate.",
+            "slabs": []
+        }
+    ]
+}

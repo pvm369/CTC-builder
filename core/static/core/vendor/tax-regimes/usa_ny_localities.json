@@ -1,0 +1,27 @@
+{
+    "country_id": "usa",
+    "state_id": "us_state_ny",
+    "layer": "local",
+    "tax_year": "2024",
+    "last_updated": "2025-01-01",
+    "disclaimer": "City/local income tax only, single filer, simplified. Only New York City is modeled here. Yonkers is NOT included because its resident tax is calculated as a percentage of NY State tax (16.75%) rather than its own income brackets, which this engine does not yet support — that needs the same 'multiplier-on-tax' mechanism Switzerland's cantonal/communal system would require, not the bracket-based engine used everywhere else in this calculator.",
+
+    "cities": [
+        {
+            "id": "us_local_nyc",
+            "name": "New York City",
+            "engine_type": "progressive_slabs_basic",
+            "standard_deduction": 8000,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "source": "https://comptroller.nyc.gov/reports/the-nyc-personal-income-tax-before-and-after-the-pandemic/",
+            "notes": "2024, single filer. NYC resident personal income tax, unchanged since 2017. Applies on top of both Federal and NY State tax.",
+            "slabs": [
+                { "from": 0, "to": 12000, "rate": 3.078 },
+                { "from": 12000, "to": 25000, "rate": 3.762 },
+                { "from": 25000, "to": 50000, "rate": 3.819 },
+                { "from": 50000, "to": null, "rate": 3.876 }
+            ]
+        }
+    ]
+}

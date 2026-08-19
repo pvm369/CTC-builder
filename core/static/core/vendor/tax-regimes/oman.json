@@ -1,0 +1,29 @@
+{
+    "country_id": "oman",
+    "country_name": "Oman",
+    "currency": "OMR",
+    "currency_symbol": "ر.ع.",
+    "tax_year": "2024",
+    "engine_type": "zero_income_tax",
+    "last_updated": "2025-01-01",
+    "source": "https://taxoman.gov.om",
+    "disclaimer": "Oman does not levy personal income tax on employment income. Social insurance contributions apply to Omani nationals, and other deductions such as insurance or loans may still apply.",
+
+    "requires_filing_status": false,
+    "requires_state_selection": false,
+    "requires_age_group": false,
+    "requires_dependants": false,
+    "requires_residency_status": false,
+
+    "regimes": [
+        {
+            "id": "om_zero_tax",
+            "label": "Zero Personal Income Tax",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "notes": "No personal income tax on salaries in Oman.",
+            "slabs": []
+        }
+    ]
+}

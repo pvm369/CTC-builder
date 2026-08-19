@@ -1,0 +1,63 @@
+{
+    "country_id": "panama",
+    "country_name": "Panama",
+    "currency": "PAB",
+    "currency_symbol": "B/.",
+    "tax_year": "2024",
+    "engine_type": "progressive_slabs_basic",
+    "last_updated": "2025-01-01",
+    "source": "https://www.dgi.gob.pa/",
+    "disclaimer": "Simplified estimate. Panama uses a TERRITORIAL tax system: only Panama-sourced income is taxed for residents and non-residents alike; foreign-sourced income is fully exempt for everyone regardless of residency, and this calculator does not model that exemption (it assumes all entered salary is Panama-sourced). Social security (CSS), the 10% married-with-dependents deduction, and other personal deductions are not included.",
+    "requires_filing_status": false,
+    "requires_state_selection": false,
+    "requires_age_group": false,
+    "requires_dependants": false,
+    "requires_residency_status": true,
+    "sub_option_label": "Select Residency Status",
+    "regimes": [
+        {
+            "id": "pa_resident_2024",
+            "label": "Resident (Progressive)",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "notes": "Progressive rates on Panama-sourced taxable income. An alternative minimum tax of 6% of gross taxable income can apply above B/.60,000 if higher than the progressive result — not modeled here.",
+            "slabs": [
+                {
+                    "from": 0,
+                    "to": 11000,
+                    "rate": 0
+                },
+                {
+                    "from": 11000,
+                    "to": 50000,
+                    "rate": 15
+                },
+                {
+                    "from": 50000,
+                    "to": null,
+                    "rate": 25
+                }
+            ],
+            "regime_role": "resident"
+        },
+        {
+            "id": "pa_nonresident_2024",
+            "label": "Non-Resident",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "notes": "Non-residents rendering services in Panama for under 183 days are subject to a flat 15% withholding tax on gross Panama-sourced income (plus a small separate educational insurance tax not modeled here).",
+            "slabs": [
+                {
+                    "from": 0,
+                    "to": null,
+                    "rate": 15
+                }
+            ],
+            "regime_role": "nonresident"
+        }
+    ],
+    "residency_threshold_days": 183,
+    "residency_threshold_note": "ADVISORY ONLY, not a legal determination: 183+ days physically present in a tax year is commonly used as a resident-status guideline. Actual rules vary by country (tie-breaker tests, visa type, permanent home, center of vital interests, etc.) and this figure does not override your own judgment or professional advice."
+}

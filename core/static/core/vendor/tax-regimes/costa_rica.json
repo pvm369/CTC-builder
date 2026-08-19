@@ -1,0 +1,35 @@
+{
+    "country_id": "costa_rica",
+    "country_name": "Costa Rica",
+    "currency": "CRC",
+    "currency_symbol": "₡",
+    "tax_year": "2024",
+    "engine_type": "progressive_slabs_basic",
+    "last_updated": "2025-01-01",
+    "source": "https://www.hacienda.go.cr/",
+    "disclaimer": "Simplified estimate using the 2024 salary tax brackets (Executive Decree No. 44276-H). Costa Rica uses a TERRITORIAL tax system: only Costa Rica-sourced income is taxed, for residents and non-residents alike; foreign-sourced income is fully exempt regardless of residency, which this calculator does not model (it assumes all entered salary is Costa Rica-sourced). Salary paid in cash to non-residents on the local payroll uses these SAME brackets, so no separate non-resident regime is needed here — the residency distinction mainly affects foreign income and benefits paid 'in kind' (which use a flat 15% rate not modeled here). CCSS social security contributions and tax credits for children/spouse are not included.",
+
+    "requires_filing_status": false,
+    "requires_state_selection": false,
+    "requires_age_group": false,
+    "requires_dependants": false,
+    "requires_residency_status": false,
+
+    "regimes": [
+        {
+            "id": "cr_salary_2024",
+            "label": "Salary Tax (2024)",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "notes": "Annualized from the official 2024 monthly salary-tax brackets. Applies to both residents and non-residents earning Costa Rica-sourced salary.",
+            "slabs": [
+                { "from": 0, "to": 11148000, "rate": 0 },
+                { "from": 11148000, "to": 16356000, "rate": 10 },
+                { "from": 16356000, "to": 28476000, "rate": 15 },
+                { "from": 28476000, "to": 56940000, "rate": 20 },
+                { "from": 56940000, "to": null, "rate": 25 }
+            ]
+        }
+    ]
+}

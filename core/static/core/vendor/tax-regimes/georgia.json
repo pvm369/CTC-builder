@@ -1,0 +1,31 @@
+{
+    "country_id": "georgia",
+    "country_name": "Georgia",
+    "currency": "GEL",
+    "currency_symbol": "₾",
+    "tax_year": "2024",
+    "engine_type": "flat_rate_tax",
+    "last_updated": "2025-01-01",
+    "source": "https://rs.ge/en",
+    "disclaimer": "Simplified estimate: 20% flat personal income tax on gross employment income. Pension contributions (2% employee) and other deductions may still apply — add them manually as deductions.",
+
+    "requires_filing_status": false,
+    "requires_state_selection": false,
+    "requires_age_group": false,
+    "requires_dependants": false,
+    "requires_residency_status": false,
+
+    "regimes": [
+        {
+            "id": "ge_flat_20",
+            "label": "Flat Income Tax (20%)",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "notes": "Georgia applies a flat 20% income tax on employment income.",
+            "slabs": [
+                { "from": 0, "to": null, "rate": 20 }
+            ]
+        }
+    ]
+}

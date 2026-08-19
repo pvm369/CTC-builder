@@ -1,0 +1,789 @@
+{
+    "country_id": "switzerland",
+    "layer": "state",
+    "tax_year": "2025-26 (approximate)",
+    "last_updated": "2026-08-11",
+    "disclaimer": "IMPORTANT: These 26 cantonal schedules are APPROXIMATIONS derived from a third-party comparative tax-burden index (AccountEX, https://accountex.ch/en/guide/cantonal-tax-comparison), not each canton's official statutory 'simple tax' brackets. They are calibrated to match known combined effective rates at CHF 100,000 and CHF 200,000 (single filer, cantonal capital) and will be less accurate outside that range. multiplier_percent is fixed at 100% for every canton in this phase, meaning the capital-commune's typical multiplier is currently folded into the bracket rates rather than applied separately. Do not use for actual tax filing or relocation decisions without verifying against the relevant canton's official tax administration (Kantonales Steueramt).",
+    "states": [
+        {
+            "id": "ch_canton_zg",
+            "name": "Zug",
+            "engine_type": "progressive_slabs_basic",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "multiplier_percent": 100,
+            "source": "https://accountex.ch/en/guide/cantonal-tax-comparison",
+            "notes": "APPROXIMATE. This 3-band schedule is reverse-engineered from a third-party comparative index (combined federal+cantonal+capital-commune effective rates at CHF 100k/200k, 2025/26 period), not Zug's official statutory cantonal brackets. Accuracy is best near CHF 100k-200k and weaker far outside that range. Canton multiplier fixed at 100% for now (Phase 4 will add real commune-level multipliers, which currently make up part of this blended rate). Verify against the official cantonal tax administration before relying on this for real decisions.",
+            "slabs": [
+                {
+                    "from": 0,
+                    "to": 20000,
+                    "rate": 0
+                },
+                {
+                    "from": 20000,
+                    "to": 100000,
+                    "rate": 9.75
+                },
+                {
+                    "from": 100000,
+                    "to": null,
+                    "rate": 17.98
+                }
+            ],
+            "cities_file": "switzerland_zg_localities.json",
+            "requires_local_selection": true
+        },
+        {
+            "id": "ch_canton_sz",
+            "name": "Schwyz",
+            "engine_type": "progressive_slabs_basic",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "multiplier_percent": 100,
+            "source": "https://accountex.ch/en/guide/cantonal-tax-comparison",
+            "notes": "APPROXIMATE. This 3-band schedule is reverse-engineered from a third-party comparative index (combined federal+cantonal+capital-commune effective rates at CHF 100k/200k, 2025/26 period), not Schwyz's official statutory cantonal brackets. Accuracy is best near CHF 100k-200k and weaker far outside that range. Canton multiplier fixed at 100% for now (Phase 4 will add real commune-level multipliers, which currently make up part of this blended rate). Verify against the official cantonal tax administration before relying on this for real decisions.",
+            "slabs": [
+                {
+                    "from": 0,
+                    "to": 20000,
+                    "rate": 0
+                },
+                {
+                    "from": 20000,
+                    "to": 100000,
+                    "rate": 11.62
+                },
+                {
+                    "from": 100000,
+                    "to": null,
+                    "rate": 19.48
+                }
+            ],
+            "cities_file": "switzerland_sz_localities.json",
+            "requires_local_selection": true
+        },
+        {
+            "id": "ch_canton_nw",
+            "name": "Nidwalden",
+            "engine_type": "progressive_slabs_basic",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "multiplier_percent": 100,
+            "source": "https://accountex.ch/en/guide/cantonal-tax-comparison",
+            "notes": "APPROXIMATE. This 3-band schedule is reverse-engineered from a third-party comparative index (combined federal+cantonal+capital-commune effective rates at CHF 100k/200k, 2025/26 period), not Nidwalden's official statutory cantonal brackets. Accuracy is best near CHF 100k-200k and weaker far outside that range. Canton multiplier fixed at 100% for now (Phase 4 will add real commune-level multipliers, which currently make up part of this blended rate). Verify against the official cantonal tax administration before relying on this for real decisions.",
+            "slabs": [
+                {
+                    "from": 0,
+                    "to": 20000,
+                    "rate": 0
+                },
+                {
+                    "from": 20000,
+                    "to": 100000,
+                    "rate": 11.37
+                },
+                {
+                    "from": 100000,
+                    "to": null,
+                    "rate": 20.68
+                }
+            ],
+            "cities_file": "switzerland_nw_localities.json",
+            "requires_local_selection": true
+        },
+        {
+            "id": "ch_canton_ow",
+            "name": "Obwalden",
+            "engine_type": "progressive_slabs_basic",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "multiplier_percent": 100,
+            "source": "https://accountex.ch/en/guide/cantonal-tax-comparison",
+            "notes": "APPROXIMATE. This 3-band schedule is reverse-engineered from a third-party comparative index (combined federal+cantonal+capital-commune effective rates at CHF 100k/200k, 2025/26 period), not Obwalden's official statutory cantonal brackets. Accuracy is best near CHF 100k-200k and weaker far outside that range. Canton multiplier fixed at 100% for now (Phase 4 will add real commune-level multipliers, which currently make up part of this blended rate). Verify against the official cantonal tax administration before relying on this for real decisions.",
+            "slabs": [
+                {
+                    "from": 0,
+                    "to": 20000,
+                    "rate": 0
+                },
+                {
+                    "from": 20000,
+                    "to": 100000,
+                    "rate": 12.25
+                },
+                {
+                    "from": 100000,
+                    "to": null,
+                    "rate": 20.98
+                }
+            ],
+            "cities_file": "switzerland_ow_localities.json",
+            "requires_local_selection": true
+        },
+        {
+            "id": "ch_canton_ai",
+            "name": "Appenzell Innerrhoden",
+            "engine_type": "progressive_slabs_basic",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "multiplier_percent": 100,
+            "source": "https://accountex.ch/en/guide/cantonal-tax-comparison",
+            "notes": "APPROXIMATE. This 3-band schedule is reverse-engineered from a third-party comparative index (combined federal+cantonal+capital-commune effective rates at CHF 100k/200k, 2025/26 period), not Appenzell Innerrhoden's official statutory cantonal brackets. Accuracy is best near CHF 100k-200k and weaker far outside that range. Canton multiplier fixed at 100% for now (Phase 4 will add real commune-level multipliers, which currently make up part of this blended rate). Verify against the official cantonal tax administration before relying on this for real decisions.",
+            "slabs": [
+                {
+                    "from": 0,
+                    "to": 20000,
+                    "rate": 0
+                },
+                {
+                    "from": 20000,
+                    "to": 100000,
+                    "rate": 12.87
+                },
+                {
+                    "from": 100000,
+                    "to": null,
+                    "rate": 21.48
+                }
+            ],
+            "cities_file": "switzerland_ai_localities.json",
+            "requires_local_selection": true
+        },
+        {
+            "id": "ch_canton_ur",
+            "name": "Uri",
+            "engine_type": "progressive_slabs_basic",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "multiplier_percent": 100,
+            "source": "https://accountex.ch/en/guide/cantonal-tax-comparison",
+            "notes": "APPROXIMATE. This 3-band schedule is reverse-engineered from a third-party comparative index (combined federal+cantonal+capital-commune effective rates at CHF 100k/200k, 2025/26 period), not Uri's official statutory cantonal brackets. Accuracy is best near CHF 100k-200k and weaker far outside that range. Canton multiplier fixed at 100% for now (Phase 4 will add real commune-level multipliers, which currently make up part of this blended rate). Verify against the official cantonal tax administration before relying on this for real decisions.",
+            "slabs": [
+                {
+                    "from": 0,
+                    "to": 20000,
+                    "rate": 0
+                },
+                {
+                    "from": 20000,
+                    "to": 100000,
+                    "rate": 13.5
+                },
+                {
+                    "from": 100000,
+                    "to": null,
+                    "rate": 21.98
+                }
+            ],
+            "cities_file": "switzerland_ur_localities.json",
+            "requires_local_selection": true
+        },
+        {
+            "id": "ch_canton_lu",
+            "name": "Lucerne",
+            "engine_type": "progressive_slabs_basic",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "multiplier_percent": 100,
+            "source": "https://accountex.ch/en/guide/cantonal-tax-comparison",
+            "notes": "APPROXIMATE. This 3-band schedule is reverse-engineered from a third-party comparative index (combined federal+cantonal+capital-commune effective rates at CHF 100k/200k, 2025/26 period), not Lucerne's official statutory cantonal brackets. Accuracy is best near CHF 100k-200k and weaker far outside that range. Canton multiplier fixed at 100% for now (Phase 4 will add real commune-level multipliers, which currently make up part of this blended rate). Verify against the official cantonal tax administration before relying on this for real decisions.",
+            "slabs": [
+                {
+                    "from": 0,
+                    "to": 20000,
+                    "rate": 0
+                },
+                {
+                    "from": 20000,
+                    "to": 100000,
+                    "rate": 14.12
+                },
+                {
+                    "from": 100000,
+                    "to": null,
+                    "rate": 23.48
+                }
+            ],
+            "cities_file": "switzerland_lu_localities.json",
+            "requires_local_selection": true
+        },
+        {
+            "id": "ch_canton_tg",
+            "name": "Thurgau",
+            "engine_type": "progressive_slabs_basic",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "multiplier_percent": 100,
+            "source": "https://accountex.ch/en/guide/cantonal-tax-comparison",
+            "notes": "APPROXIMATE. This 3-band schedule is reverse-engineered from a third-party comparative index (combined federal+cantonal+capital-commune effective rates at CHF 100k/200k, 2025/26 period), not Thurgau's official statutory cantonal brackets. Accuracy is best near CHF 100k-200k and weaker far outside that range. Canton multiplier fixed at 100% for now (Phase 4 will add real commune-level multipliers, which currently make up part of this blended rate). Verify against the official cantonal tax administration before relying on this for real decisions.",
+            "slabs": [
+                {
+                    "from": 0,
+                    "to": 20000,
+                    "rate": 0
+                },
+                {
+                    "from": 20000,
+                    "to": 100000,
+                    "rate": 14.75
+                },
+                {
+                    "from": 100000,
+                    "to": null,
+                    "rate": 23.98
+                }
+            ],
+            "cities_file": "switzerland_tg_localities.json",
+            "requires_local_selection": true
+        },
+        {
+            "id": "ch_canton_gr",
+            "name": "Graubünden",
+            "engine_type": "progressive_slabs_basic",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "multiplier_percent": 100,
+            "source": "https://accountex.ch/en/guide/cantonal-tax-comparison",
+            "notes": "APPROXIMATE. This 3-band schedule is reverse-engineered from a third-party comparative index (combined federal+cantonal+capital-commune effective rates at CHF 100k/200k, 2025/26 period), not Graubünden's official statutory cantonal brackets. Accuracy is best near CHF 100k-200k and weaker far outside that range. Canton multiplier fixed at 100% for now (Phase 4 will add real commune-level multipliers, which currently make up part of this blended rate). Verify against the official cantonal tax administration before relying on this for real decisions.",
+            "slabs": [
+                {
+                    "from": 0,
+                    "to": 20000,
+                    "rate": 0
+                },
+                {
+                    "from": 20000,
+                    "to": 100000,
+                    "rate": 15.37
+                },
+                {
+                    "from": 100000,
+                    "to": null,
+                    "rate": 24.48
+                }
+            ],
+            "cities_file": "switzerland_gr_localities.json",
+            "requires_local_selection": true
+        },
+        {
+            "id": "ch_canton_sh",
+            "name": "Schaffhausen",
+            "engine_type": "progressive_slabs_basic",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "multiplier_percent": 100,
+            "source": "https://accountex.ch/en/guide/cantonal-tax-comparison",
+            "notes": "APPROXIMATE. This 3-band schedule is reverse-engineered from a third-party comparative index (combined federal+cantonal+capital-commune effective rates at CHF 100k/200k, 2025/26 period), not Schaffhausen's official statutory cantonal brackets. Accuracy is best near CHF 100k-200k and weaker far outside that range. Canton multiplier fixed at 100% for now (Phase 4 will add real commune-level multipliers, which currently make up part of this blended rate). Verify against the official cantonal tax administration before relying on this for real decisions.",
+            "slabs": [
+                {
+                    "from": 0,
+                    "to": 20000,
+                    "rate": 0
+                },
+                {
+                    "from": 20000,
+                    "to": 100000,
+                    "rate": 16.0
+                },
+                {
+                    "from": 100000,
+                    "to": null,
+                    "rate": 24.98
+                }
+            ],
+            "cities_file": "switzerland_sh_localities.json",
+            "requires_local_selection": true
+        },
+        {
+            "id": "ch_canton_sg",
+            "name": "St. Gallen",
+            "engine_type": "progressive_slabs_basic",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "multiplier_percent": 100,
+            "source": "https://accountex.ch/en/guide/cantonal-tax-comparison",
+            "notes": "APPROXIMATE. This 3-band schedule is reverse-engineered from a third-party comparative index (combined federal+cantonal+capital-commune effective rates at CHF 100k/200k, 2025/26 period), not St. Gallen's official statutory cantonal brackets. Accuracy is best near CHF 100k-200k and weaker far outside that range. Canton multiplier fixed at 100% for now (Phase 4 will add real commune-level multipliers, which currently make up part of this blended rate). Verify against the official cantonal tax administration before relying on this for real decisions.",
+            "slabs": [
+                {
+                    "from": 0,
+                    "to": 20000,
+                    "rate": 0
+                },
+                {
+                    "from": 20000,
+                    "to": 100000,
+                    "rate": 16.62
+                },
+                {
+                    "from": 100000,
+                    "to": null,
+                    "rate": 25.48
+                }
+            ],
+            "cities_file": "switzerland_sg_localities.json",
+            "requires_local_selection": true
+        },
+        {
+            "id": "ch_canton_ag",
+            "name": "Aargau",
+            "engine_type": "progressive_slabs_basic",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "multiplier_percent": 100,
+            "source": "https://accountex.ch/en/guide/cantonal-tax-comparison",
+            "notes": "APPROXIMATE. This 3-band schedule is reverse-engineered from a third-party comparative index (combined federal+cantonal+capital-commune effective rates at CHF 100k/200k, 2025/26 period), not Aargau's official statutory cantonal brackets. Accuracy is best near CHF 100k-200k and weaker far outside that range. Canton multiplier fixed at 100% for now (Phase 4 will add real commune-level multipliers, which currently make up part of this blended rate). Verify against the official cantonal tax administration before relying on this for real decisions.",
+            "slabs": [
+                {
+                    "from": 0,
+                    "to": 20000,
+                    "rate": 0
+                },
+                {
+                    "from": 20000,
+                    "to": 100000,
+                    "rate": 16.62
+                },
+                {
+                    "from": 100000,
+                    "to": null,
+                    "rate": 27.48
+                }
+            ],
+            "cities_file": "switzerland_ag_localities.json",
+            "requires_local_selection": true
+        },
+        {
+            "id": "ch_canton_zh",
+            "name": "Zurich",
+            "engine_type": "progressive_slabs_basic",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "multiplier_percent": 100,
+            "source": "https://accountex.ch/en/guide/cantonal-tax-comparison",
+            "notes": "APPROXIMATE. This 3-band schedule is reverse-engineered from a third-party comparative index (combined federal+cantonal+capital-commune effective rates at CHF 100k/200k, 2025/26 period), not Zurich's official statutory cantonal brackets. Accuracy is best near CHF 100k-200k and weaker far outside that range. Canton multiplier fixed at 100% for now (Phase 4 will add real commune-level multipliers, which currently make up part of this blended rate). Verify against the official cantonal tax administration before relying on this for real decisions.",
+            "slabs": [
+                {
+                    "from": 0,
+                    "to": 20000,
+                    "rate": 0
+                },
+                {
+                    "from": 20000,
+                    "to": 100000,
+                    "rate": 17.25
+                },
+                {
+                    "from": 100000,
+                    "to": null,
+                    "rate": 28.98
+                }
+            ],
+            "cities_file": "switzerland_zh_localities.json",
+            "requires_local_selection": true
+        },
+        {
+            "id": "ch_canton_fr",
+            "name": "Fribourg",
+            "engine_type": "progressive_slabs_basic",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "multiplier_percent": 100,
+            "source": "https://accountex.ch/en/guide/cantonal-tax-comparison",
+            "notes": "APPROXIMATE. This 3-band schedule is reverse-engineered from a third-party comparative index (combined federal+cantonal+capital-commune effective rates at CHF 100k/200k, 2025/26 period), not Fribourg's official statutory cantonal brackets. Accuracy is best near CHF 100k-200k and weaker far outside that range. Canton multiplier fixed at 100% for now (Phase 4 will add real commune-level multipliers, which currently make up part of this blended rate). Verify against the official cantonal tax administration before relying on this for real decisions.",
+            "slabs": [
+                {
+                    "from": 0,
+                    "to": 20000,
+                    "rate": 0
+                },
+                {
+                    "from": 20000,
+                    "to": 100000,
+                    "rate": 17.87
+                },
+                {
+                    "from": 100000,
+                    "to": null,
+                    "rate": 29.48
+                }
+            ],
+            "cities_file": "switzerland_fr_localities.json",
+            "requires_local_selection": true
+        },
+        {
+            "id": "ch_canton_gl",
+            "name": "Glarus",
+            "engine_type": "progressive_slabs_basic",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "multiplier_percent": 100,
+            "source": "https://accountex.ch/en/guide/cantonal-tax-comparison",
+            "notes": "APPROXIMATE. This 3-band schedule is reverse-engineered from a third-party comparative index (combined federal+cantonal+capital-commune effective rates at CHF 100k/200k, 2025/26 period), not Glarus's official statutory cantonal brackets. Accuracy is best near CHF 100k-200k and weaker far outside that range. Canton multiplier fixed at 100% for now (Phase 4 will add real commune-level multipliers, which currently make up part of this blended rate). Verify against the official cantonal tax administration before relying on this for real decisions.",
+            "slabs": [
+                {
+                    "from": 0,
+                    "to": 20000,
+                    "rate": 0
+                },
+                {
+                    "from": 20000,
+                    "to": 100000,
+                    "rate": 17.87
+                },
+                {
+                    "from": 100000,
+                    "to": null,
+                    "rate": 28.48
+                }
+            ],
+            "cities_file": "switzerland_gl_localities.json",
+            "requires_local_selection": true
+        },
+        {
+            "id": "ch_canton_ar",
+            "name": "Appenzell Ausserrhoden",
+            "engine_type": "progressive_slabs_basic",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "multiplier_percent": 100,
+            "source": "https://accountex.ch/en/guide/cantonal-tax-comparison",
+            "notes": "APPROXIMATE. This 3-band schedule is reverse-engineered from a third-party comparative index (combined federal+cantonal+capital-commune effective rates at CHF 100k/200k, 2025/26 period), not Appenzell Ausserrhoden's official statutory cantonal brackets. Accuracy is best near CHF 100k-200k and weaker far outside that range. Canton multiplier fixed at 100% for now (Phase 4 will add real commune-level multipliers, which currently make up part of this blended rate). Verify against the official cantonal tax administration before relying on this for real decisions.",
+            "slabs": [
+                {
+                    "from": 0,
+                    "to": 20000,
+                    "rate": 0
+                },
+                {
+                    "from": 20000,
+                    "to": 100000,
+                    "rate": 18.5
+                },
+                {
+                    "from": 100000,
+                    "to": null,
+                    "rate": 29.98
+                }
+            ],
+            "cities_file": "switzerland_ar_localities.json",
+            "requires_local_selection": true
+        },
+        {
+            "id": "ch_canton_so",
+            "name": "Solothurn",
+            "engine_type": "progressive_slabs_basic",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "multiplier_percent": 100,
+            "source": "https://accountex.ch/en/guide/cantonal-tax-comparison",
+            "notes": "APPROXIMATE. This 3-band schedule is reverse-engineered from a third-party comparative index (combined federal+cantonal+capital-commune effective rates at CHF 100k/200k, 2025/26 period), not Solothurn's official statutory cantonal brackets. Accuracy is best near CHF 100k-200k and weaker far outside that range. Canton multiplier fixed at 100% for now (Phase 4 will add real commune-level multipliers, which currently make up part of this blended rate). Verify against the official cantonal tax administration before relying on this for real decisions.",
+            "slabs": [
+                {
+                    "from": 0,
+                    "to": 20000,
+                    "rate": 0
+                },
+                {
+                    "from": 20000,
+                    "to": 100000,
+                    "rate": 19.12
+                },
+                {
+                    "from": 100000,
+                    "to": null,
+                    "rate": 31.48
+                }
+            ],
+            "cities_file": "switzerland_so_localities.json",
+            "requires_local_selection": true
+        },
+        {
+            "id": "ch_canton_ti",
+            "name": "Ticino",
+            "engine_type": "progressive_slabs_basic",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "multiplier_percent": 100,
+            "source": "https://accountex.ch/en/guide/cantonal-tax-comparison",
+            "notes": "APPROXIMATE. This 3-band schedule is reverse-engineered from a third-party comparative index (combined federal+cantonal+capital-commune effective rates at CHF 100k/200k, 2025/26 period), not Ticino's official statutory cantonal brackets. Accuracy is best near CHF 100k-200k and weaker far outside that range. Canton multiplier fixed at 100% for now (Phase 4 will add real commune-level multipliers, which currently make up part of this blended rate). Verify against the official cantonal tax administration before relying on this for real decisions.",
+            "slabs": [
+                {
+                    "from": 0,
+                    "to": 20000,
+                    "rate": 0
+                },
+                {
+                    "from": 20000,
+                    "to": 100000,
+                    "rate": 19.75
+                },
+                {
+                    "from": 100000,
+                    "to": null,
+                    "rate": 32.98
+                }
+            ],
+            "cities_file": "switzerland_ti_localities.json",
+            "requires_local_selection": true
+        },
+        {
+            "id": "ch_canton_vs",
+            "name": "Valais",
+            "engine_type": "progressive_slabs_basic",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "multiplier_percent": 100,
+            "source": "https://accountex.ch/en/guide/cantonal-tax-comparison",
+            "notes": "APPROXIMATE. This 3-band schedule is reverse-engineered from a third-party comparative index (combined federal+cantonal+capital-commune effective rates at CHF 100k/200k, 2025/26 period), not Valais's official statutory cantonal brackets. Accuracy is best near CHF 100k-200k and weaker far outside that range. Canton multiplier fixed at 100% for now (Phase 4 will add real commune-level multipliers, which currently make up part of this blended rate). Verify against the official cantonal tax administration before relying on this for real decisions.",
+            "slabs": [
+                {
+                    "from": 0,
+                    "to": 20000,
+                    "rate": 0
+                },
+                {
+                    "from": 20000,
+                    "to": 100000,
+                    "rate": 19.12
+                },
+                {
+                    "from": 100000,
+                    "to": null,
+                    "rate": 32.48
+                }
+            ],
+            "cities_file": "switzerland_vs_localities.json",
+            "requires_local_selection": true
+        },
+        {
+            "id": "ch_canton_be",
+            "name": "Bern",
+            "engine_type": "progressive_slabs_basic",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "multiplier_percent": 100,
+            "source": "https://accountex.ch/en/guide/cantonal-tax-comparison",
+            "notes": "APPROXIMATE. This 3-band schedule is reverse-engineered from a third-party comparative index (combined federal+cantonal+capital-commune effective rates at CHF 100k/200k, 2025/26 period), not Bern's official statutory cantonal brackets. Accuracy is best near CHF 100k-200k and weaker far outside that range. Canton multiplier fixed at 100% for now (Phase 4 will add real commune-level multipliers, which currently make up part of this blended rate). Verify against the official cantonal tax administration before relying on this for real decisions.",
+            "slabs": [
+                {
+                    "from": 0,
+                    "to": 20000,
+                    "rate": 0
+                },
+                {
+                    "from": 20000,
+                    "to": 100000,
+                    "rate": 20.37
+                },
+                {
+                    "from": 100000,
+                    "to": null,
+                    "rate": 34.48
+                }
+            ],
+            "cities_file": "switzerland_be_localities.json",
+            "requires_local_selection": true
+        },
+        {
+            "id": "ch_canton_ne",
+            "name": "Neuchâtel",
+            "engine_type": "progressive_slabs_basic",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "multiplier_percent": 100,
+            "source": "https://accountex.ch/en/guide/cantonal-tax-comparison",
+            "notes": "APPROXIMATE. This 3-band schedule is reverse-engineered from a third-party comparative index (combined federal+cantonal+capital-commune effective rates at CHF 100k/200k, 2025/26 period), not Neuchâtel's official statutory cantonal brackets. Accuracy is best near CHF 100k-200k and weaker far outside that range. Canton multiplier fixed at 100% for now (Phase 4 will add real commune-level multipliers, which currently make up part of this blended rate). Verify against the official cantonal tax administration before relying on this for real decisions.",
+            "slabs": [
+                {
+                    "from": 0,
+                    "to": 20000,
+                    "rate": 0
+                },
+                {
+                    "from": 20000,
+                    "to": 100000,
+                    "rate": 21.0
+                },
+                {
+                    "from": 100000,
+                    "to": null,
+                    "rate": 35.98
+                }
+            ],
+            "cities_file": "switzerland_ne_localities.json",
+            "requires_local_selection": true
+        },
+        {
+            "id": "ch_canton_bl",
+            "name": "Basel-Landschaft",
+            "engine_type": "progressive_slabs_basic",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "multiplier_percent": 100,
+            "source": "https://accountex.ch/en/guide/cantonal-tax-comparison",
+            "notes": "APPROXIMATE. This 3-band schedule is reverse-engineered from a third-party comparative index (combined federal+cantonal+capital-commune effective rates at CHF 100k/200k, 2025/26 period), not Basel-Landschaft's official statutory cantonal brackets. Accuracy is best near CHF 100k-200k and weaker far outside that range. Canton multiplier fixed at 100% for now (Phase 4 will add real commune-level multipliers, which currently make up part of this blended rate). Verify against the official cantonal tax administration before relying on this for real decisions.",
+            "slabs": [
+                {
+                    "from": 0,
+                    "to": 20000,
+                    "rate": 0
+                },
+                {
+                    "from": 20000,
+                    "to": 100000,
+                    "rate": 21.62
+                },
+                {
+                    "from": 100000,
+                    "to": null,
+                    "rate": 36.48
+                }
+            ],
+            "cities_file": "switzerland_bl_localities.json",
+            "requires_local_selection": true
+        },
+        {
+            "id": "ch_canton_vd",
+            "name": "Vaud",
+            "engine_type": "progressive_slabs_basic",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "multiplier_percent": 100,
+            "source": "https://accountex.ch/en/guide/cantonal-tax-comparison",
+            "notes": "APPROXIMATE. This 3-band schedule is reverse-engineered from a third-party comparative index (combined federal+cantonal+capital-commune effective rates at CHF 100k/200k, 2025/26 period), not Vaud's official statutory cantonal brackets. Accuracy is best near CHF 100k-200k and weaker far outside that range. Canton multiplier fixed at 100% for now (Phase 4 will add real commune-level multipliers, which currently make up part of this blended rate). Verify against the official cantonal tax administration before relying on this for real decisions.",
+            "slabs": [
+                {
+                    "from": 0,
+                    "to": 20000,
+                    "rate": 0
+                },
+                {
+                    "from": 20000,
+                    "to": 100000,
+                    "rate": 22.87
+                },
+                {
+                    "from": 100000,
+                    "to": null,
+                    "rate": 38.48
+                }
+            ],
+            "cities_file": "switzerland_vd_localities.json",
+            "requires_local_selection": true
+        },
+        {
+            "id": "ch_canton_bs",
+            "name": "Basel-Stadt",
+            "engine_type": "progressive_slabs_basic",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "multiplier_percent": 100,
+            "source": "https://accountex.ch/en/guide/cantonal-tax-comparison",
+            "notes": "APPROXIMATE. This 3-band schedule is reverse-engineered from a third-party comparative index (combined federal+cantonal+capital-commune effective rates at CHF 100k/200k, 2025/26 period), not Basel-Stadt's official statutory cantonal brackets. Accuracy is best near CHF 100k-200k and weaker far outside that range. Canton multiplier fixed at 100% for now (Phase 4 will add real commune-level multipliers, which currently make up part of this blended rate). Verify against the official cantonal tax administration before relying on this for real decisions.",
+            "slabs": [
+                {
+                    "from": 0,
+                    "to": 20000,
+                    "rate": 0
+                },
+                {
+                    "from": 20000,
+                    "to": 100000,
+                    "rate": 23.5
+                },
+                {
+                    "from": 100000,
+                    "to": null,
+                    "rate": 39.98
+                }
+            ],
+            "cities_file": "switzerland_bs_localities.json",
+            "requires_local_selection": true
+        },
+        {
+            "id": "ch_canton_ju",
+            "name": "Jura",
+            "engine_type": "progressive_slabs_basic",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "multiplier_percent": 100,
+            "source": "https://accountex.ch/en/guide/cantonal-tax-comparison",
+            "notes": "APPROXIMATE. This 3-band schedule is reverse-engineered from a third-party comparative index (combined federal+cantonal+capital-commune effective rates at CHF 100k/200k, 2025/26 period), not Jura's official statutory cantonal brackets. Accuracy is best near CHF 100k-200k and weaker far outside that range. Canton multiplier fixed at 100% for now (Phase 4 will add real commune-level multipliers, which currently make up part of this blended rate). Verify against the official cantonal tax administration before relying on this for real decisions.",
+            "slabs": [
+                {
+                    "from": 0,
+                    "to": 20000,
+                    "rate": 0
+                },
+                {
+                    "from": 20000,
+                    "to": 100000,
+                    "rate": 24.12
+                },
+                {
+                    "from": 100000,
+                    "to": null,
+                    "rate": 41.48
+                }
+            ],
+            "cities_file": "switzerland_ju_localities.json",
+            "requires_local_selection": true
+        },
+        {
+            "id": "ch_canton_ge",
+            "name": "Geneva",
+            "engine_type": "progressive_slabs_basic",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "multiplier_percent": 100,
+            "source": "https://accountex.ch/en/guide/cantonal-tax-comparison",
+            "notes": "APPROXIMATE. This 3-band schedule is reverse-engineered from a third-party comparative index (combined federal+cantonal+capital-commune effective rates at CHF 100k/200k, 2025/26 period), not Geneva's official statutory cantonal brackets. Accuracy is best near CHF 100k-200k and weaker far outside that range. Canton multiplier fixed at 100% for now (Phase 4 will add real commune-level multipliers, which currently make up part of this blended rate). Verify against the official cantonal tax administration before relying on this for real decisions.",
+            "slabs": [
+                {
+                    "from": 0,
+                    "to": 20000,
+                    "rate": 0
+                },
+                {
+                    "from": 20000,
+                    "to": 100000,
+                    "rate": 24.75
+                },
+                {
+                    "from": 100000,
+                    "to": null,
+                    "rate": 42.98
+                }
+            ],
+            "cities_file": "switzerland_ge_localities.json",
+            "requires_local_selection": true
+        }
+    ]
+}

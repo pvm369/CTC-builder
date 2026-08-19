@@ -1,0 +1,113 @@
+{
+    "country_id": "singapore",
+    "country_name": "Singapore",
+    "currency": "SGD",
+    "currency_symbol": "S$",
+    "tax_year": "YA 2025",
+    "engine_type": "progressive_slabs_basic",
+    "last_updated": "2025-01-01",
+    "source": "https://www.iras.gov.sg/taxes/individual-income-tax/basics-of-individual-income-tax/tax-residency-and-tax-rates/individual-income-tax-rates",
+    "disclaimer": "Simplified estimate for Singapore tax-resident individuals. Personal reliefs, earned income relief, CPF contributions, and non-resident flat rates are not included.",
+    "requires_filing_status": false,
+    "requires_state_selection": false,
+    "requires_age_group": false,
+    "requires_dependants": false,
+    "requires_residency_status": true,
+    "regimes": [
+        {
+            "id": "sg_resident_ya2025",
+            "label": "Resident Individual (YA 2025)",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "notes": "Progressive rates for tax-resident individuals. CPF contributions and personal reliefs are excluded.",
+            "slabs": [
+                {
+                    "from": 0,
+                    "to": 20000,
+                    "rate": 0
+                },
+                {
+                    "from": 20000,
+                    "to": 30000,
+                    "rate": 2
+                },
+                {
+                    "from": 30000,
+                    "to": 40000,
+                    "rate": 3.5
+                },
+                {
+                    "from": 40000,
+                    "to": 80000,
+                    "rate": 7
+                },
+                {
+                    "from": 80000,
+                    "to": 120000,
+                    "rate": 11.5
+                },
+                {
+                    "from": 120000,
+                    "to": 160000,
+                    "rate": 15
+                },
+                {
+                    "from": 160000,
+                    "to": 200000,
+                    "rate": 18
+                },
+                {
+                    "from": 200000,
+                    "to": 240000,
+                    "rate": 19
+                },
+                {
+                    "from": 240000,
+                    "to": 280000,
+                    "rate": 19.5
+                },
+                {
+                    "from": 280000,
+                    "to": 320000,
+                    "rate": 20
+                },
+                {
+                    "from": 320000,
+                    "to": 500000,
+                    "rate": 22
+                },
+                {
+                    "from": 500000,
+                    "to": 1000000,
+                    "rate": 23
+                },
+                {
+                    "from": 1000000,
+                    "to": null,
+                    "rate": 24
+                }
+            ],
+            "regime_role": "resident"
+        },
+        {
+            "id": "sg_nonresident_ya2025",
+            "label": "Non-Resident",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "notes": "SIMPLIFIED: IRAS actually taxes non-resident employment income at the HIGHER of a flat 15% (of gross) or resident progressive rates. This calculator only models the flat 15% component, so tax may be understated for non-residents at higher income levels where the progressive amount would exceed 15%.",
+            "slabs": [
+                {
+                    "from": 0,
+                    "to": null,
+                    "rate": 15
+                }
+            ],
+            "regime_role": "nonresident"
+        }
+    ],
+    "sub_option_label": "Select Residency Status",
+    "residency_threshold_days": 183,
+    "residency_threshold_note": "ADVISORY ONLY, not a legal determination: 183+ days physically present in a tax year is commonly used as a resident-status guideline. Actual rules vary by country (tie-breaker tests, visa type, permanent home, center of vital interests, etc.) and this figure does not override your own judgment or professional advice."
+}

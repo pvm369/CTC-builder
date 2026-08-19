@@ -1,0 +1,31 @@
+{
+    "country_id": "estonia",
+    "country_name": "Estonia",
+    "currency": "EUR",
+    "currency_symbol": "€",
+    "tax_year": "2025",
+    "engine_type": "flat_rate_tax",
+    "last_updated": "2025-01-01",
+    "source": "https://www.emta.ee/en",
+    "disclaimer": "Simplified estimate: 22% flat income tax on gross income. Estonia's basic exemption (up to €700/month, tapering to zero at higher incomes) is NOT included — the result may overstate tax for lower incomes. Employee unemployment insurance (1.6%) and pension (2%) are excluded.",
+
+    "requires_filing_status": false,
+    "requires_state_selection": false,
+    "requires_age_group": false,
+    "requires_dependants": false,
+    "requires_residency_status": false,
+
+    "regimes": [
+        {
+            "id": "ee_flat_22",
+            "label": "Flat Income Tax (22%)",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "notes": "Estonia's 22% rate applies after a tapering basic exemption. This simplified preset taxes gross income, so low-income results are conservative (slightly high).",
+            "slabs": [
+                { "from": 0, "to": null, "rate": 22 }
+            ]
+        }
+    ]
+}

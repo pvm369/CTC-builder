@@ -1,0 +1,31 @@
+{
+    "country_id": "kazakhstan",
+    "country_name": "Kazakhstan",
+    "currency": "KZT",
+    "currency_symbol": "₸",
+    "tax_year": "2024",
+    "engine_type": "flat_rate_tax",
+    "last_updated": "2025-01-01",
+    "source": "https://kgd.gov.kz/en",
+    "disclaimer": "Simplified estimate: 10% flat individual income tax after the standard deduction (14 MRP/month, annualized using MRP 2024 = 3,692 KZT). Mandatory pension (10%) and social/medical contributions are not included — add them manually as deductions.",
+
+    "requires_filing_status": false,
+    "requires_state_selection": false,
+    "requires_age_group": false,
+    "requires_dependants": false,
+    "requires_residency_status": false,
+
+    "regimes": [
+        {
+            "id": "kz_flat_10",
+            "label": "Flat Income Tax (10%)",
+            "standard_deduction": 620256,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "notes": "Standard deduction of 14 MRP per month (annualized: 14 × 3,692 × 12 ≈ 620,256 KZT for 2024). Mandatory pension (10% of gross) applies separately and is excluded here.",
+            "slabs": [
+                { "from": 0, "to": null, "rate": 10 }
+            ]
+        }
+    ]
+}

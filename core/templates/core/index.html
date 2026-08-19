@@ -1,0 +1,628 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CTC Builder</title>
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+</head>
+<body
+    data-export-html2canvas="{% static 'core/vendor/html2canvas.min.js' %}"
+    data-export-jspdf="{% static 'core/vendor/jspdf.umd.min.js' %}"
+    data-export-docx="{% static 'core/vendor/docx.iife.js' %}"
+    data-tax-regimes-url="{% static 'core/vendor/tax-regimes/index.json' %}">
+
+    <!-- Top Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-brand">Custom CTC Builder</div>
+        <div class="navbar-actions">
+            <button class="btn btn-outline" id="btnSaveTemplate">Save Template</button>
+            <button class="btn btn-outline" id="btnLoadTemplate">Load Template</button>
+            <button class="btn btn-outline" id="btnClear">Clear Canvas</button>
+            <button class="btn btn-primary" id="btnPreview">Calculate</button>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- FIX 1: Changed class from hamburger-btn to sidebar-tab -->
+        <button class="sidebar-tab" id="hamburgerBtn" aria-label="Toggle sidebar">☰</button>
+        <!-- Mobile sidebar overlay -->
+        <div class="sidebar-overlay hidden" id="sidebarOverlay"></div>
+
+        <!-- LEFT: Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <h2 class="sidebar-title">Components</h2>
+
+            <div class="sidebar-category">
+                <h3 class="category-header" data-category="earnings">
+                    <span class="arrow">&#9654;</span> Earnings
+                </h3>
+                <div class="category-fields" id="earnings-fields">
+                    <!-- FIX 4: Removed draggable="true" from all field cards -->
+                    <div class="field-card" data-field-id="basic_salary" data-category="earnings">Basic Salary</div>
+                    <div class="field-card" data-field-id="hra" data-category="earnings">HRA</div>
+                    <div class="field-card" data-field-id="dearness_allowance" data-category="earnings">Dearness Allowance</div>
+                    <div class="field-card" data-field-id="conveyance_allowance" data-category="earnings">Conveyance Allowance</div>
+                    <div class="field-card" data-field-id="medical_allowance" data-category="earnings">Medical Allowance</div>
+                    <div class="field-card" data-field-id="lta" data-category="earnings">Leave Travel Allowance</div>
+                    <div class="field-card" data-field-id="special_allowance" data-category="earnings">Special Allowance</div>
+                    <div class="field-card" data-field-id="overtime_allowance" data-category="earnings">Overtime Allowance</div>
+                </div>
+            </div>
+
+            <div class="sidebar-category">
+                <h3 class="category-header" data-category="employer_contributions">
+                    <span class="arrow">&#9654;</span> Employer Contributions
+                </h3>
+                <div class="category-fields" id="employer-contributions-fields">
+                    <div class="field-card" data-field-id="employer_pf" data-category="employer_contributions">Employer PF</div>
+                    <div class="field-card" data-field-id="employer_esi" data-category="employer_contributions">Employer ESI</div>
+                    <div class="field-card" data-field-id="gratuity" data-category="employer_contributions">Gratuity</div>
+                    <div class="field-card" data-field-id="employer_health_insurance" data-category="employer_contributions">Health Insurance</div>
+                    <div class="field-card" data-field-id="employer_life_insurance" data-category="employer_contributions">Life Insurance</div>
+                    <div class="field-card" data-field-id="employer_nps" data-category="employer_contributions">NPS (Employer)</div>
+                </div>
+            </div>
+
+            <div class="sidebar-category">
+                <h3 class="category-header" data-category="deductions">
+                    <span class="arrow">&#9654;</span> Deductions
+                </h3>
+                <div class="category-fields" id="deductions-fields">
+                    <div class="field-card" data-field-id="employee_pf" data-category="deductions">Employee PF</div>
+                    <div class="field-card" data-field-id="employee_esi" data-category="deductions">Employee ESI</div>
+                    <div class="field-card" data-field-id="professional_tax" data-category="deductions">Professional Tax</div>
+                    <div class="field-card" data-field-id="tds" data-category="deductions">TDS / Income Tax</div>
+                    <div class="field-card" data-field-id="employee_health_insurance" data-category="deductions">Health Insurance</div>
+                    <div class="field-card" data-field-id="loan_recovery" data-category="deductions">Loan Recovery</div>
+                </div>
+            </div>
+
+            <div class="sidebar-category">
+                <h3 class="category-header" data-category="variable_pay">
+                    <span class="arrow">&#9654;</span> Variable Pay / Bonuses
+                </h3>
+                <div class="category-fields" id="variable-pay-fields">
+                    <div class="field-card" data-field-id="performance_bonus" data-category="variable_pay">Performance Bonus</div>
+                    <div class="field-card" data-field-id="annual_bonus" data-category="variable_pay">Annual Bonus</div>
+                    <div class="field-card" data-field-id="joining_bonus" data-category="variable_pay">Joining Bonus</div>
+                    <div class="field-card" data-field-id="retention_bonus" data-category="variable_pay">Retention Bonus</div>
+                    <div class="field-card" data-field-id="festival_bonus" data-category="variable_pay">Festival Bonus</div>
+                    <div class="field-card" data-field-id="commission" data-category="variable_pay">Commission / Incentive</div>
+                </div>
+            </div>
+
+            <div class="sidebar-category">
+                <h3 class="category-header" data-category="perks_benefits">
+                    <span class="arrow">&#9654;</span> Perks & Benefits
+                </h3>
+                <div class="category-fields" id="perks-benefits-fields">
+                    <div class="field-card" data-field-id="food_coupons" data-category="perks_benefits">Food Coupons</div>
+                    <div class="field-card" data-field-id="internet_reimbursement" data-category="perks_benefits">Internet / Phone</div>
+                    <div class="field-card" data-field-id="fuel_allowance" data-category="perks_benefits">Fuel Allowance</div>
+                    <div class="field-card" data-field-id="company_car" data-category="perks_benefits">Company Car</div>
+                    <div class="field-card" data-field-id="gym_wellness" data-category="perks_benefits">Gym / Wellness</div>
+                    <div class="field-card" data-field-id="education_allowance" data-category="perks_benefits">Education / Training</div>
+                    <div class="field-card" data-field-id="relocation_allowance" data-category="perks_benefits">Relocation Allowance</div>
+                    <div class="field-card" data-field-id="esops" data-category="perks_benefits">ESOPs</div>
+                </div>
+            </div>
+
+            <button class="btn btn-add-category" id="btnAddCategory">+ Add Custom Category</button>
+        </aside>
+
+        <!-- CENTER: Canvas -->
+        <main class="canvas" id="canvas">
+            <div class="canvas-topbar">
+                <h2 class="canvas-title">CTC Structure</h2>
+            </div>
+
+            <div class="canvas-category" data-category="earnings">
+                <div class="canvas-category-header">
+                    <h3>Earnings</h3>
+                    <button class="btn-add-field" data-category="earnings">+ Add Field</button>
+                </div>
+                <!-- FIX 5: Changed placeholder text -->
+                <div class="drop-zone" id="drop-earnings" data-category="earnings">
+                    <p class="drop-placeholder">Click components from sidebar to add here</p>
+                </div>
+            </div>
+
+            <div class="canvas-category" data-category="employer_contributions">
+                <div class="canvas-category-header">
+                    <h3>Employer Contributions</h3>
+                    <button class="btn-add-field" data-category="employer_contributions">+ Add Field</button>
+                </div>
+                <div class="drop-zone" id="drop-employer-contributions" data-category="employer_contributions">
+                    <p class="drop-placeholder">Click components from sidebar to add here</p>
+                </div>
+            </div>
+
+            <div class="canvas-category" data-category="deductions">
+                <div class="canvas-category-header">
+                    <h3>Deductions</h3>
+                    <button class="btn-add-field" data-category="deductions">+ Add Field</button>
+                </div>
+                <div class="drop-zone" id="drop-deductions" data-category="deductions">
+                    <p class="drop-placeholder">Click components from sidebar to add here</p>
+                </div>
+            </div>
+
+            <div class="canvas-category" data-category="variable_pay">
+                <div class="canvas-category-header">
+                    <h3>Variable Pay / Bonuses</h3>
+                    <button class="btn-add-field" data-category="variable_pay">+ Add Field</button>
+                </div>
+                <div class="drop-zone" id="drop-variable-pay" data-category="variable_pay">
+                    <p class="drop-placeholder">Click components from sidebar to add here</p>
+                </div>
+            </div>
+
+            <div class="canvas-category" data-category="perks_benefits">
+                <div class="canvas-category-header">
+                    <h3>Perks & Benefits</h3>
+                    <button class="btn-add-field" data-category="perks_benefits">+ Add Field</button>
+                </div>
+                <div class="drop-zone" id="drop-perks-benefits" data-category="perks_benefits">
+                    <p class="drop-placeholder">Click components from sidebar to add here</p>
+                </div>
+            </div>
+
+                        <!-- CTC Knowledge Base -->
+            <div class="cta-knowledge-base">
+                <h3 class="kb-title">📖 CTC Knowledge Base</h3>
+
+                <details class="kb-item">
+                    <summary>What is the difference between CTC and Gross Salary?</summary>
+                    <p>CTC (Cost to Company) is the total amount the company spends on an employee, including Gross Salary, employer contributions (like PF and Gratuity), and perks. Gross Salary is the total earnings before any deductions are made.</p>
+                </details>
+
+                <details class="kb-item">
+                    <summary>What is Basic Salary and why is it important?</summary>
+                    <p>Basic Salary is the core component of the salary, typically 40% to 50% of the CTC. It is important because many other components, like HRA and Provident Fund (PF), are calculated as a percentage of the Basic Salary.</p>
+                </details>
+
+                <details class="kb-item">
+                    <summary>What is HRA (House Rent Allowance)?</summary>
+                    <p>HRA is an allowance given by the employer to cover the employee's rental expenses. It is usually 40% of Basic Salary for non-metro cities and 50% for metro cities. It also offers significant tax exemptions.</p>
+                </details>
+
+                <details class="kb-item">
+                    <summary>What are Employer Contributions?</summary>
+                    <p>These are amounts the company pays on behalf of the employee, such as Employer PF, Gratuity, and insurance premiums. They are included in the CTC but are not paid directly to the employee's bank account.</p>
+                </details>
+
+                <details class="kb-item">
+                    <summary>What are Deductions?</summary>
+                    <p>Deductions are amounts subtracted from the Gross Salary to arrive at the Net Take-Home Salary. Common deductions include Employee PF, Professional Tax, and Income Tax (TDS).</p>
+                </details>
+
+                <details class="kb-item">
+                    <summary>What is the difference between Fixed Pay and Variable Pay?</summary>
+                    <p>Fixed Pay (like Basic Salary and HRA) is guaranteed and paid every month. Variable Pay (like Performance Bonuses or Incentives) is not guaranteed and depends on individual or company performance, usually paid annually or quarterly.</p>
+                </details>
+
+                <details class="kb-item">
+                    <summary>What is Gratuity?</summary>
+                    <p>Gratuity is a lump sum amount paid by the employer to an employee as a reward for long-term service. It is typically calculated as 4.81% of the Basic Salary and is payable only after the employee completes 5 years of continuous service.</p>
+                </details>
+
+                <details class="kb-item">
+                    <summary>How is Net Take-Home Salary calculated?</summary>
+                    <p>Net Take-Home Salary is calculated by taking the Gross Salary and subtracting all applicable Deductions (like PF, Tax, and Professional Tax).</p>
+                </details>
+
+                <details class="kb-item">
+                    <summary>What are Perks and Benefits?</summary>
+                    <p>These are non-cash or reimbursement-based benefits provided to employees, such as food coupons, internet reimbursements, or gym memberships. They add to the CTC but may have specific tax rules.</p>
+                </details>
+
+                <details class="kb-item">
+                    <summary>What is Professional Tax?</summary>
+                    <p>Professional Tax is a state-level tax levied on employment. The amount varies by state and is usually a small fixed amount deducted monthly from the employee's salary.</p>
+                </details>
+            </div>
+            
+        </main>
+
+        <!-- RIGHT: Preview Panel -->
+    <aside class="preview-panel hidden" id="previewPanel">
+        <div class="preview-header">
+            <h2 class="preview-title">Preview</h2>
+
+            <div class="period-toggle" role="group" aria-label="Salary period">
+                <button type="button" class="period-btn active" id="btnMonthlyView" aria-pressed="true">
+                    Monthly
+                </button>
+                <button type="button" class="period-btn" id="btnAnnualView" aria-pressed="false">
+                    Annual
+                </button>
+            </div>
+        </div>
+
+        <div class="preview-input-group">
+            <label for="ctcInput">Enter Annual CTC</label>
+            <input type="number" id="ctcInput" placeholder="e.g. 1000000" min="0">
+            <button class="btn btn-primary" id="btnCalculate">Calculate</button>
+        </div>
+
+        <div class="preview-results" id="previewResults">
+            <p class="preview-placeholder">Enter CTC and click Calculate to see breakdown</p>
+        </div>
+
+        <div class="preview-summary hidden" id="previewSummary">
+            <div class="summary-row">
+                <span>Annual CTC</span>
+                <span id="summaryCtc">--</span>
+            </div>
+
+            <div class="summary-row">
+                <span id="summaryGrossLabel">Gross Salary (Monthly)</span>
+                <span id="summaryGross">--</span>
+            </div>
+
+            <div class="summary-row">
+                <span id="summaryDeductionsLabel">Total Deductions (Monthly)</span>
+                <span id="summaryDeductions">--</span>
+            </div>
+
+            <div class="summary-row highlight">
+                <span id="summaryNetLabel">Net Take-Home (Monthly)</span>
+                <span id="summaryNet">--</span>
+            </div>
+        </div>
+
+        <button
+            type="button"
+            class="btn btn-export"
+            id="btnCopy">
+            Copy Breakdown
+        </button>
+
+        <button
+            type="button"
+            class="btn btn-primary btn-export"
+            id="btnExport"
+            disabled>
+            Export
+        </button>
+    </aside>
+        <!-- FIX 2: Removed duplicate </aside> that was here -->
+    </div>
+
+    <!-- Config Modal -->
+    <div class="modal-overlay hidden" id="configModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 id="modalTitle">Configure Component</h3>
+                <button class="modal-close" id="modalClose">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="fieldName">Field Name</label>
+                    <input type="text" id="fieldName" placeholder="e.g. Basic Salary">
+                </div>
+                <div class="form-group">
+                    <label for="formulaType">Calculation Type</label>
+                    <select id="formulaType">
+                        <option value="fixed">Fixed Amount</option>
+                        <option value="percent_basic">% of Basic Salary</option>
+                        <option value="percent_gross">% of Gross Salary</option>
+                        <option value="percent_ctc">% of CTC</option>
+                        <option value="tax_slabs">Tax Slabs</option>
+                    </select>
+                </div>
+                <div class="form-group hidden" id="dependsOnGroup">
+                    <label for="dependsOnField">Depends On</label>
+                    <select id="dependsOnField"></select>
+                </div>
+                <!-- Tax Slab Editor (visible only for deductions) -->
+                <div class="form-group hidden" id="slabEditorGroup">
+                    <label>Tax Slab Configuration</label>
+
+                    <!-- Country / Tax System (registry from index.json) -->
+                    <div class="form-group" style="margin-bottom: 10px;">
+                        <label for="taxCountry" style="font-size: 0.72rem; font-weight: 600; color: #555; margin-bottom: 4px; display: block;">Country / Tax System</label>
+                        <select id="taxCountry" style="width: 100%; padding: 8px 12px; border: 1.5px solid #ddd; border-radius: 6px; font-size: 0.85rem; outline: none;">
+                            <option value="custom">Custom (Define your own)</option>
+                        </select>
+                    </div>
+
+                    <!-- Regime or Filing Status/Age Group (shown only when needed) -->
+                    <div class="form-group hidden" id="taxSubOptionGroup" style="margin-bottom: 10px;">
+                        <label for="taxSubOption" id="taxSubOptionLabel" style="font-size: 0.72rem; font-weight: 600; color: #555; margin-bottom: 4px; display: block;">Select Regime</label>
+                        <select id="taxSubOption" style="width: 100%; padding: 8px 12px; border: 1.5px solid #ddd; border-radius: 6px; font-size: 0.85rem; outline: none;"></select>
+                    </div>
+
+                    <!-- Days-present advisory (Stage 7 Phase 5): suggests Resident/Non-Resident, never forces it -->
+                    <div class="form-group hidden" id="taxResidencyDaysGroup" style="margin-bottom: 10px;">
+                        <label for="taxResidencyDaysInput" style="font-size: 0.72rem; font-weight: 600; color: #555; margin-bottom: 4px; display: block;">Days present in country this tax year (optional)</label>
+                        <input type="number" id="taxResidencyDaysInput" min="0" max="366" placeholder="e.g. 200" style="width: 100%; padding: 8px 12px; border: 1.5px solid #ddd; border-radius: 6px; font-size: 0.85rem; outline: none;">
+                        <p id="taxResidencyDaysNote" class="tax-notes hidden" style="margin-top: 6px;"></p>
+                    </div>
+
+                    <!-- State / Province (multi-layer tax: federal + state, e.g. USA) -->
+                    <div class="form-group hidden" id="taxStateGroup" style="margin-bottom: 10px;">
+                        <label for="taxStateOption" id="taxStateOptionLabel" style="font-size: 0.72rem; font-weight: 600; color: #555; margin-bottom: 4px; display: block;">Select State / Province</label>
+                        <select id="taxStateOption" style="width: 100%; padding: 8px 12px; border: 1.5px solid #ddd; border-radius: 6px; font-size: 0.85rem; outline: none;"></select>
+                        <p id="taxStateNotes" class="tax-notes hidden" style="margin-top: 6px;"></p>
+                    </div>
+
+                    <!-- City / Locality (three-layer tax: federal + state + local, e.g. NYC) -->
+                    <div class="form-group hidden" id="taxLocalGroup" style="margin-bottom: 10px;">
+                        <label for="taxLocalOption" id="taxLocalOptionLabel" style="font-size: 0.72rem; font-weight: 600; color: #555; margin-bottom: 4px; display: block;">Select City / Locality</label>
+                        <select id="taxLocalOption" style="width: 100%; padding: 8px 12px; border: 1.5px solid #ddd; border-radius: 6px; font-size: 0.85rem; outline: none;"></select>
+                        <p id="taxLocalNotes" class="tax-notes hidden" style="margin-top: 6px;"></p>
+                    </div>
+
+                    <!-- Manual multiplier override (Phase 5): for a multiplier-based local layer
+                         (e.g. a Swiss commune not in the curated list) not covered by a preset -->
+                    <div class="form-group hidden" id="taxLocalMultiplierGroup" style="margin-bottom: 10px;">
+                        <label for="taxLocalMultiplierInput" style="font-size: 0.72rem; font-weight: 600; color: #555; margin-bottom: 4px; display: block;">Commune Tax Multiplier (%)</label>
+                        <input type="number" id="taxLocalMultiplierInput" step="0.1" min="0" placeholder="e.g. 119 for 119%" style="width: 100%; padding: 8px 12px; border: 1.5px solid #ddd; border-radius: 6px; font-size: 0.85rem; outline: none;">
+                        <p class="tax-notes" style="margin-top: 6px;">Enter your commune's official multiplier (Steuerfuss) if it isn't in the list above. Applied to the canton's simple tax, same as the presets.</p>
+                    </div>
+
+                    <!-- Tax Regime Metadata (Tax year, Disclaimer, Source) -->
+                    <div id="taxRegimeMetadata" class="tax-metadata hidden">
+                        <div class="tax-metadata-header">
+                            <span id="taxMetadataYear" class="tax-badge"></span>
+                            <a id="taxMetadataSource" href="#" target="_blank" class="tax-source-link">Official Source ↗</a>
+                        </div>
+                        <p id="taxMetadataDisclaimer" class="tax-disclaimer"></p>
+                        <p id="taxMetadataNotes" class="tax-notes"></p>
+                    </div>
+
+                    <!-- Zero Income Tax Indicator -->
+                    <div class="zero-tax-indicator hidden" id="zeroTaxIndicator">
+                        <span class="zero-tax-icon">✓</span>
+                        <div>
+                            <strong>Income Tax: 0</strong>
+                            <p>No personal income tax applies in this country.</p>
+                        </div>
+                    </div>
+                    <!-- Flat Rate Indicator -->
+                    <div class="flat-rate-indicator hidden" id="flatRateIndicator">
+                        <div class="flat-rate-label">
+                            <span class="flat-rate-icon">%</span>
+                            <div>
+                                <strong>Flat Income Tax</strong>
+                                <p>A single rate is applied to taxable income.</p>
+                            </div>
+                        </div>
+                        <div class="flat-rate-input-row">
+                            <label for="flatRateValue">Rate (%)</label>
+                            <input type="number" id="flatRateValue" min="0" max="100" step="0.01" value="0">
+                        </div>
+                    </div>
+
+                    <div class="slab-optional-fields">
+                        <div class="slab-optional-row">
+                            <label for="standardDeduction">Standard Deduction (₹)</label>
+                            <input type="number" id="standardDeduction" value="0" min="0">
+                        </div>
+                        <div class="slab-optional-row">
+                            <label for="surchargePercent">Surcharge (%)</label>
+                            <input type="number" id="surchargePercent" value="0" min="0" max="100" step="0.01">
+                        </div>
+                        <div class="slab-optional-row">
+                            <label for="cessPercent">Cess (%)</label>
+                            <input type="number" id="cessPercent" value="0" min="0" max="100" step="0.01">
+                        </div>
+                    </div>
+                    <div class="slab-table-container">
+                        <table class="slab-table">
+                            <thead>
+                                <tr>
+                                    <th>From (₹)</th>
+                                    <th>To (₹)</th>
+                                    <th>Rate (%)</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="slabTableBody"></tbody>
+                        </table>
+                    </div>
+                    <button type="button" class="btn btn-add-slab" id="btnAddSlab" style="margin-top:6px;">+ Add Slab</button>
+                </div>
+                <div class="form-group">
+                    <label for="fieldValue">Value</label>
+                    <input type="number" id="fieldValue" placeholder="Enter amount or percentage" min="0">
+                </div>
+                <div class="form-group">
+                    <label for="fieldFrequency">Frequency</label>
+                    <select id="fieldFrequency">
+                        <option value="monthly">Monthly</option>
+                        <option value="annual">Annual</option>
+                        <option value="quarterly">Quarterly</option>
+                        <option value="one_time">One-Time</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="fieldTaxable">Taxable</label>
+                    <select id="fieldTaxable">
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="modalCancel">Cancel</button>
+                <button class="btn btn-primary" id="modalSave">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Category Modal -->
+    <div class="modal-overlay hidden" id="categoryModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Create Custom Category</h3>
+                <button class="modal-close" id="categoryModalClose">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="categoryName">Category Name</label>
+                    <input type="text" id="categoryName" placeholder="e.g. Shift Allowances">
+                </div>
+                <div class="form-group">
+                    <label for="categoryDescription">Description (Optional)</label>
+                    <input type="text" id="categoryDescription" placeholder="Short description">
+                </div>
+                <div class="form-group">
+                    <label>Does this add to CTC?</label>
+                    <select id="categoryAddCtc">
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Does this add to Gross Salary?</label>
+                    <select id="categoryAddGross">
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Does this reduce Net Salary?</label>
+                    <select id="categoryReduceNet">
+                        <option value="no">No</option>
+                        <option value="yes">Yes</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Payment Frequency</label>
+                    <select id="categoryFrequency">
+                        <option value="monthly">Monthly</option>
+                        <option value="annual">Annual</option>
+                        <option value="quarterly">Quarterly</option>
+                        <option value="one_time">One-Time</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="categoryModalCancel">Cancel</button>
+                <button class="btn btn-primary" id="categoryModalSave">Create</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Load Template Modal -->
+    <div class="modal-overlay hidden" id="loadTemplateModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Load Template</h3>
+                <button class="modal-close" id="loadTemplateModalClose">&times;</button>
+            </div>
+            <div class="modal-body">
+                <button class="btn btn-primary" id="btnUploadTemplate" style="width:100%; padding:12px; margin-bottom:16px;">
+                    📁 Upload Template File (.json)
+                </button>
+                <hr style="border:0; border-top:1px solid #ddd; margin:16px 0;">
+                <p style="text-align:center; color:#888; font-size:0.82rem; margin-bottom:12px;">Or load a predefined structure:</p>
+                <button class="btn" id="btnLoadPredefined" style="width:100%; padding:12px; border:1.5px solid #4361ee; color:#4361ee; background:transparent; font-weight:600; border-radius:6px;">
+                    🇮🇳 Standard Indian CTC
+                </button>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="loadTemplateModalCancel" style="color:#333; border-color:#ccc;">Cancel</button>
+            </div>
+        </div>
+    </div>
+        <!-- Add Custom Field Modal -->
+    <div class="modal-overlay hidden" id="customFieldModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Add Custom Field</h3>
+                <button class="modal-close" id="customFieldModalClose">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="customFieldName">Field Name</label>
+                    <input type="text" id="customFieldName" placeholder="e.g. Voluntary PF Contribution">
+                </div>
+                <!-- Checkbox shown only for deduction categories -->
+                <div class="form-group hidden" id="customFieldSlabGroup" style="margin-top: 16px;">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="customFieldAllowSlabs">
+                        Include tax slab structure capability
+                    </label>
+                    <p class="export-help-text" style="margin-left: 24px;">
+                        Enables progressive slab-based calculations for this custom deduction.
+                    </p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline" id="customFieldModalCancel">Cancel</button>
+                <button type="button" class="btn btn-primary" id="customFieldModalSave">Add Field</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Export Modal -->
+    <div class="modal-overlay hidden" id="exportModal">
+        <div class="modal export-modal">
+            <div class="modal-header">
+                <h3>Export Breakdown</h3>
+                <button class="modal-close" id="exportModalClose">&times;</button>
+            </div>
+
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="exportFormat">Export Format</label>
+                    <select id="exportFormat">
+                        <option value="pdf">PDF</option>
+                        <option value="docx">Word Document (DOCX)</option>
+                        <option value="png">PNG Image</option>
+                        <option value="jpg">JPG Image</option>
+                    </select>
+                </div>
+
+                <div class="export-empty-option hidden" id="exportEmptyOption">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="includeEmptyValues">
+                        Include configured components with ₹0 value
+                    </label>
+                    <p class="export-help-text">
+                        By default, zero-value components are excluded.
+                    </p>
+                </div>
+
+                <div class="export-status hidden" id="exportLibraryStatus"></div>
+
+                <div class="export-image-warning hidden" id="exportImageWarning">
+                    <strong>Image may be too long for a single file.</strong>
+                    <p>
+                        PDF is recommended for this breakdown. You can also download it as multiple image files.
+                    </p>
+
+                    <div class="export-warning-actions">
+                        <button type="button" class="btn btn-primary" id="btnExportPdfFallback">
+                            Export as PDF
+                        </button>
+
+                        <button type="button" class="btn btn-secondary" id="btnExportSplitImages">
+                            Export as Split Images
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline" id="exportModalCancel">
+                    Cancel
+                </button>
+                <button type="button" class="btn btn-primary" id="btnStartExport">
+                    Download
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- Hidden file input for template upload -->
+    <input type="file" id="templateFileInput" accept=".json" style="display: none;">
+
+    <script src="{% static 'core/js/app.js' %}"></script>
+</body>
+</html>

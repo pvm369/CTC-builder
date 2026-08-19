@@ -1,0 +1,98 @@
+{
+    "country_id": "malaysia",
+    "country_name": "Malaysia",
+    "currency": "MYR",
+    "currency_symbol": "RM",
+    "tax_year": "2024",
+    "engine_type": "progressive_slabs_basic",
+    "last_updated": "2025-01-01",
+    "source": "https://www.hasil.gov.my/en/individual/individual-life-cycle/how-to-declare-income/tax-rate/",
+    "disclaimer": "Simplified estimate for Malaysian tax-resident individuals. Personal reliefs, EPF/SOCSO contributions, medical deductions, tax rebates, and non-resident flat rates are not included.",
+    "requires_filing_status": false,
+    "requires_state_selection": false,
+    "requires_age_group": false,
+    "requires_dependants": false,
+    "requires_residency_status": true,
+    "regimes": [
+        {
+            "id": "my_resident_2024",
+            "label": "Resident Individual (2024)",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "notes": "Progressive rates for tax-resident individuals. EPF contributions and personal reliefs are excluded.",
+            "slabs": [
+                {
+                    "from": 0,
+                    "to": 5000,
+                    "rate": 0
+                },
+                {
+                    "from": 5000,
+                    "to": 20000,
+                    "rate": 1
+                },
+                {
+                    "from": 20000,
+                    "to": 35000,
+                    "rate": 3
+                },
+                {
+                    "from": 35000,
+                    "to": 50000,
+                    "rate": 6
+                },
+                {
+                    "from": 50000,
+                    "to": 70000,
+                    "rate": 11
+                },
+                {
+                    "from": 70000,
+                    "to": 100000,
+                    "rate": 19
+                },
+                {
+                    "from": 100000,
+                    "to": 400000,
+                    "rate": 25
+                },
+                {
+                    "from": 400000,
+                    "to": 600000,
+                    "rate": 26
+                },
+                {
+                    "from": 600000,
+                    "to": 2000000,
+                    "rate": 28
+                },
+                {
+                    "from": 2000000,
+                    "to": null,
+                    "rate": 30
+                }
+            ],
+            "regime_role": "resident"
+        },
+        {
+            "id": "my_nonresident_2024",
+            "label": "Non-Resident",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "notes": "Non-resident individuals are taxed at a flat 30% (2024) on employment income, with no personal reliefs, standard deduction, or access to progressive slabs.",
+            "slabs": [
+                {
+                    "from": 0,
+                    "to": null,
+                    "rate": 30
+                }
+            ],
+            "regime_role": "nonresident"
+        }
+    ],
+    "sub_option_label": "Select Residency Status",
+    "residency_threshold_days": 182,
+    "residency_threshold_note": "ADVISORY ONLY, not a legal determination: 182+ days physically present in a tax year is commonly used as a resident-status guideline. Actual rules vary by country (tie-breaker tests, visa type, permanent home, center of vital interests, etc.) and this figure does not override your own judgment or professional advice."
+}

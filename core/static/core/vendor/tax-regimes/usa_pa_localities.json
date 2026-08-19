@@ -1,0 +1,24 @@
+{
+    "country_id": "usa",
+    "state_id": "us_state_pa",
+    "layer": "local",
+    "tax_year": "2024",
+    "last_updated": "2025-01-01",
+    "disclaimer": "City/local income tax only, single filer, simplified. Only Philadelphia is modeled here. Pennsylvania also has thousands of other municipalities with their own local Earned Income Tax (EIT), typically around 1%, which are not included.",
+
+    "cities": [
+        {
+            "id": "us_local_philadelphia",
+            "name": "Philadelphia",
+            "engine_type": "flat_rate_tax",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "source": "https://www.phila.gov/services/payments-assistance-taxes/taxes/income-taxes/earnings-tax-employees/",
+            "notes": "2024 resident Wage Tax rate, flat 3.75%. This is a tax on wages, applied independently of the PA state flat tax.",
+            "slabs": [
+                { "from": 0, "to": null, "rate": 3.75 }
+            ]
+        }
+    ]
+}

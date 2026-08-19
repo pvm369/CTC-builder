@@ -1,0 +1,22 @@
+{
+    "country_id": "switzerland",
+    "state_id": "ch_canton_so",
+    "layer": "local",
+    "tax_year": "2025-26 (approximate)",
+    "last_updated": "2026-08-11",
+    "local_label": "Select Commune",
+    "disclaimer": "Solothurn (the cantonal capital) is listed for reference only. This canton's bracket table already represents the blended canton+capital-commune effective rate (see switzerland_cantons.json), so selecting Solothurn adds $0 further tax by design — it is not a real per-commune calculation. Use 'Other / Custom' to enter a different commune's actual multiplier if you have it, but note this will combine real data with this canton's approximated figure.",
+    "cities": [
+        {
+            "id": "ch_commune_so_capital",
+            "name": "Solothurn",
+            "multiplier_percent": 0,
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "slabs": [],
+            "source": "https://accountex.ch/en/guide/cantonal-tax-comparison",
+            "notes": "Already included in Solothurn's canton-level figure above. Selecting this adds no additional tax."
+        }
+    ]
+}

@@ -1,0 +1,36 @@
+{
+    "country_id": "uk",
+    "country_name": "United Kingdom",
+    "currency": "GBP",
+    "currency_symbol": "£",
+    "tax_year": "2024-25",
+    "engine_type": "progressive_slabs_basic",
+    "last_updated": "2025-01-01",
+    "source": "https://www.gov.uk/income-tax-rates",
+    "disclaimer": "England, Wales and Northern Ireland. Personal Allowance (£12,570) IS included with taper above £100,000. National Insurance, Scottish rates, and tax credits are not included.",
+
+    "requires_filing_status": false,
+    "requires_state_selection": false,
+    "requires_age_group": false,
+    "requires_dependants": false,
+    "requires_residency_status": false,
+
+    "regimes": [
+        {
+            "id": "uk_england_wales_ni_2024_25",
+            "label": "England, Wales and NI (2024-25)",
+            "standard_deduction": 12570,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "notes": "Personal Allowance of £12,570 applied as standard deduction, with automatic taper (£1 lost per £2 earned above £100,000). Allowance becomes £0 at £125,140.",
+            "slabs": [
+                { "from": 0, "to": 37700, "rate": 20 },
+                { "from": 37700, "to": 112570, "rate": 40 },
+                { "from": 112570, "to": null, "rate": 45 }
+            ],
+            "post_rules": {
+                "tapering_deduction": { "taper_start": 100000, "taper_rate": 0.5 }
+            }
+        }
+    ]
+}

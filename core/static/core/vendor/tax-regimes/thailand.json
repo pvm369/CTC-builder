@@ -1,0 +1,38 @@
+{
+    "country_id": "thailand",
+    "country_name": "Thailand",
+    "currency": "THB",
+    "currency_symbol": "฿",
+    "tax_year": "2024",
+    "engine_type": "progressive_slabs_basic",
+    "last_updated": "2025-01-01",
+    "source": "https://www.rd.go.th/english/6045.html",
+    "disclaimer": "Simplified estimate for Thai tax-resident individuals. Personal allowances, social security contributions, provident fund deductions, and withholding tax rules are not included.",
+
+    "requires_filing_status": false,
+    "requires_state_selection": false,
+    "requires_age_group": false,
+    "requires_dependants": false,
+    "requires_residency_status": false,
+
+    "regimes": [
+        {
+            "id": "th_resident_2024",
+            "label": "Resident Individual (2024)",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "notes": "Progressive rates on net assessable income. Personal allowance of ฿60,000 and expense deduction of 50% (max ฿100,000) from employment income are not automatically applied.",
+            "slabs": [
+                { "from": 0, "to": 150000, "rate": 0 },
+                { "from": 150000, "to": 300000, "rate": 5 },
+                { "from": 300000, "to": 500000, "rate": 10 },
+                { "from": 500000, "to": 750000, "rate": 15 },
+                { "from": 750000, "to": 1000000, "rate": 20 },
+                { "from": 1000000, "to": 2000000, "rate": 25 },
+                { "from": 2000000, "to": 5000000, "rate": 30 },
+                { "from": 5000000, "to": null, "rate": 35 }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,36 @@
+{
+    "country_id": "morocco",
+    "country_name": "Morocco",
+    "currency": "MAD",
+    "currency_symbol": "DH",
+    "tax_year": "2024",
+    "engine_type": "progressive_slabs_basic",
+    "last_updated": "2025-01-01",
+    "source": "https://www.tax.gov.ma/",
+    "disclaimer": "Simplified estimate for Moroccan resident individuals (IR - Impôt sur le Revenu). Professional expense deductions, social security (CNSS) contributions, and family deductions are not included.",
+
+    "requires_filing_status": false,
+    "requires_state_selection": false,
+    "requires_age_group": false,
+    "requires_dependants": false,
+    "requires_residency_status": false,
+
+    "regimes": [
+        {
+            "id": "ma_ir_2024",
+            "label": "Income Tax IR (2024)",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "notes": "Progressive income tax rates. Professional deductions and CNSS contributions are not automatically applied here.",
+            "slabs": [
+                { "from": 0, "to": 30000, "rate": 0 },
+                { "from": 30000, "to": 50000, "rate": 10 },
+                { "from": 50000, "to": 60000, "rate": 20 },
+                { "from": 60000, "to": 80000, "rate": 30 },
+                { "from": 80000, "to": 180000, "rate": 34 },
+                { "from": 180000, "to": null, "rate": 38 }
+            ]
+        }
+    ]
+}

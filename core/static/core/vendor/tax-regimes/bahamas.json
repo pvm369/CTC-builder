@@ -1,0 +1,29 @@
+{
+    "country_id": "bahamas",
+    "country_name": "Bahamas",
+    "currency": "BSD",
+    "currency_symbol": "B$",
+    "tax_year": "2024",
+    "engine_type": "zero_income_tax",
+    "last_updated": "2025-01-01",
+    "source": "https://inlandrevenue.finance.gov.bs",
+    "disclaimer": "The Bahamas does not levy personal income tax. NIB (National Insurance Board) contributions and other deductions such as insurance or loans may still apply.",
+
+    "requires_filing_status": false,
+    "requires_state_selection": false,
+    "requires_age_group": false,
+    "requires_dependants": false,
+    "requires_residency_status": false,
+
+    "regimes": [
+        {
+            "id": "bs_zero_tax",
+            "label": "Zero Personal Income Tax",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "notes": "No personal income tax in the Bahamas. NIB contributions are separate and can be added manually as deductions.",
+            "slabs": []
+        }
+    ]
+}

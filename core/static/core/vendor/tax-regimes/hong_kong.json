@@ -1,0 +1,35 @@
+{
+    "country_id": "hong_kong",
+    "country_name": "Hong Kong",
+    "currency": "HKD",
+    "currency_symbol": "HK$",
+    "tax_year": "2024-25",
+    "engine_type": "progressive_slabs_basic",
+    "last_updated": "2025-01-01",
+    "source": "https://www.ird.gov.hk/eng/faq/sal.htm",
+    "disclaimer": "Simplified estimate using progressive salaries tax rates. Hong Kong taxes the lower of progressive rates or the standard rate (15%). Basic allowance of HK$132,000 is applied as standard deduction. MPF contributions, other allowances, and the standard-rate comparison are not included.",
+
+    "requires_filing_status": false,
+    "requires_state_selection": false,
+    "requires_age_group": false,
+    "requires_dependants": false,
+    "requires_residency_status": false,
+
+    "regimes": [
+        {
+            "id": "hk_progressive_2024_25",
+            "label": "Progressive Salaries Tax (2024-25)",
+            "standard_deduction": 132000,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "notes": "Basic allowance of HK$132,000 applied as standard deduction. In practice, taxpayers pay the lower of progressive rates or the 15% standard rate on net income.",
+            "slabs": [
+                { "from": 0, "to": 50000, "rate": 2 },
+                { "from": 50000, "to": 100000, "rate": 6 },
+                { "from": 100000, "to": 150000, "rate": 10 },
+                { "from": 150000, "to": 200000, "rate": 14 },
+                { "from": 200000, "to": null, "rate": 17 }
+            ]
+        }
+    ]
+}

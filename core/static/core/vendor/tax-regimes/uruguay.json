@@ -1,0 +1,88 @@
+{
+    "country_id": "uruguay",
+    "country_name": "Uruguay",
+    "currency": "UYU",
+    "currency_symbol": "$U",
+    "tax_year": "2024",
+    "engine_type": "progressive_slabs_basic",
+    "last_updated": "2025-01-01",
+    "source": "https://www.dgi.gub.uy/",
+    "disclaimer": "APPROXIMATE. Uruguay's IRPF brackets are officially set in BPC (Base de Prestaciones y Contribuciones) units, which are indexed and change periodically — the UYU thresholds below are estimated from a 2024 BPC value and should be verified against DGI's current published brackets before relying on this. Uruguay is largely territorial for foreign-source income under its tax-holiday regime for new residents, which this calculator does not model. Social security (BPS) contributions and family-unit joint filing are not included.",
+    "requires_filing_status": false,
+    "requires_state_selection": false,
+    "requires_age_group": false,
+    "requires_dependants": false,
+    "requires_residency_status": true,
+    "sub_option_label": "Select Residency Status",
+    "regimes": [
+        {
+            "id": "uy_resident_irpf_2024",
+            "label": "Resident (IRPF)",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "notes": "APPROXIMATE thresholds converted from BPC-indexed brackets. Employment/personal-services income only; capital income is taxed separately at a flat 12% under IRPF, not modeled here.",
+            "slabs": [
+                {
+                    "from": 0,
+                    "to": 496000,
+                    "rate": 0
+                },
+                {
+                    "from": 496000,
+                    "to": 709000,
+                    "rate": 10
+                },
+                {
+                    "from": 709000,
+                    "to": 1064000,
+                    "rate": 15
+                },
+                {
+                    "from": 1064000,
+                    "to": 2127000,
+                    "rate": 24
+                },
+                {
+                    "from": 2127000,
+                    "to": 3545000,
+                    "rate": 25
+                },
+                {
+                    "from": 3545000,
+                    "to": 5318000,
+                    "rate": 27
+                },
+                {
+                    "from": 5318000,
+                    "to": 8154000,
+                    "rate": 31
+                },
+                {
+                    "from": 8154000,
+                    "to": null,
+                    "rate": 36
+                }
+            ],
+            "regime_role": "resident"
+        },
+        {
+            "id": "uy_nonresident_irnr_2024",
+            "label": "Non-Resident (IRNR)",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "notes": "Non-Resident Income Tax (IRNR) on Uruguayan-sourced employment/personal-services income, taken as a flat 12%. IRNR rates for other income types range 3%-25% and are not modeled here.",
+            "slabs": [
+                {
+                    "from": 0,
+                    "to": null,
+                    "rate": 12
+                }
+            ],
+            "regime_role": "nonresident"
+        }
+    ],
+    "residency_threshold_days": 183,
+    "residency_threshold_note": "ADVISORY ONLY, not a legal determination: 183+ days physically present in a tax year is commonly used as a resident-status guideline. Actual rules vary by country (tie-breaker tests, visa type, permanent home, center of vital interests, etc.) and this figure does not override your own judgment or professional advice."
+}

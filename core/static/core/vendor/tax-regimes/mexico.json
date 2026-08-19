@@ -1,0 +1,41 @@
+{
+    "country_id": "mexico",
+    "country_name": "Mexico",
+    "currency": "MXN",
+    "currency_symbol": "$",
+    "tax_year": "2024",
+    "engine_type": "progressive_slabs_basic",
+    "last_updated": "2025-01-01",
+    "source": "https://www.sat.gob.mx/",
+    "disclaimer": "Simplified estimate for Mexican resident individuals (ISR), annualized. Employment subsidy, IMSS social security contributions, and the fixed-quota-plus-marginal-rate structure are simplified here into marginal rates only.",
+
+    "requires_filing_status": false,
+    "requires_state_selection": false,
+    "requires_age_group": false,
+    "requires_dependants": false,
+    "requires_residency_status": false,
+
+    "regimes": [
+        {
+            "id": "mx_isr_2024",
+            "label": "ISR Individual (2024, Annualized)",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "notes": "Mexico's official ISR uses a fixed quota plus a marginal rate on the excess per bracket. This file uses marginal rates only, which gives an approximation, not an exact figure.",
+            "slabs": [
+                { "from": 0, "to": 8952.49, "rate": 1.92 },
+                { "from": 8952.49, "to": 75984.55, "rate": 6.4 },
+                { "from": 75984.55, "to": 133536.07, "rate": 10.88 },
+                { "from": 133536.07, "to": 155229.80, "rate": 16 },
+                { "from": 155229.80, "to": 185852.57, "rate": 17.92 },
+                { "from": 185852.57, "to": 374837.88, "rate": 21.36 },
+                { "from": 374837.88, "to": 590795.99, "rate": 23.52 },
+                { "from": 590795.99, "to": 1127926.84, "rate": 30 },
+                { "from": 1127926.84, "to": 1503902.46, "rate": 32 },
+                { "from": 1503902.46, "to": 4511707.37, "rate": 34 },
+                { "from": 4511707.37, "to": null, "rate": 35 }
+            ]
+        }
+    ]
+}

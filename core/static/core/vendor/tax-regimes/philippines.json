@@ -1,0 +1,78 @@
+{
+    "country_id": "philippines",
+    "country_name": "Philippines",
+    "currency": "PHP",
+    "currency_symbol": "₱",
+    "tax_year": "2024",
+    "engine_type": "progressive_slabs_basic",
+    "last_updated": "2025-01-01",
+    "source": "https://www.bir.gov.ph/index.php/tax-information/income-tax.html",
+    "disclaimer": "Simplified estimate for Philippine resident individuals under TRAIN law. SSS, PhilHealth, Pag-IBIG contributions, 13th month pay exemption, and non-resident rates are not included.",
+    "requires_filing_status": false,
+    "requires_state_selection": false,
+    "requires_age_group": false,
+    "requires_dependants": false,
+    "requires_residency_status": true,
+    "regimes": [
+        {
+            "id": "ph_train_2024",
+            "label": "TRAIN Law Individual (2024) (Resident / Citizen)",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "notes": "Under TRAIN law, income up to ₱250,000 is tax-exempt. Simplified progressive rates applied. Mandatory contributions (SSS, PhilHealth, Pag-IBIG) are not deducted here.",
+            "slabs": [
+                {
+                    "from": 0,
+                    "to": 250000,
+                    "rate": 0
+                },
+                {
+                    "from": 250000,
+                    "to": 400000,
+                    "rate": 15
+                },
+                {
+                    "from": 400000,
+                    "to": 800000,
+                    "rate": 20
+                },
+                {
+                    "from": 800000,
+                    "to": 2000000,
+                    "rate": 25
+                },
+                {
+                    "from": 2000000,
+                    "to": 8000000,
+                    "rate": 30
+                },
+                {
+                    "from": 8000000,
+                    "to": null,
+                    "rate": 35
+                }
+            ],
+            "regime_role": "resident"
+        },
+        {
+            "id": "ph_nonresident_alien_2024",
+            "label": "Non-Resident Alien (Not Engaged in Trade/Business)",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "notes": "A non-resident alien not engaged in trade or business in the Philippines is taxed at a flat 25% on gross Philippine-source income, with no deductions.",
+            "slabs": [
+                {
+                    "from": 0,
+                    "to": null,
+                    "rate": 25
+                }
+            ],
+            "regime_role": "nonresident"
+        }
+    ],
+    "sub_option_label": "Select Residency Status",
+    "residency_threshold_days": 180,
+    "residency_threshold_note": "ADVISORY ONLY, not a legal determination: 180+ days physically present in a tax year is commonly used as a resident-status guideline. Actual rules vary by country (tie-breaker tests, visa type, permanent home, center of vital interests, etc.) and this figure does not override your own judgment or professional advice."
+}

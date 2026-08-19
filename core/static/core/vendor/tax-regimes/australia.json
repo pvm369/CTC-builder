@@ -1,0 +1,35 @@
+{
+    "country_id": "australia",
+    "country_name": "Australia",
+    "currency": "AUD",
+    "currency_symbol": "A$",
+    "tax_year": "2024-25",
+    "engine_type": "progressive_slabs_basic",
+    "last_updated": "2025-01-01",
+    "source": "https://www.ato.gov.au/tax-rates-and-codes/tax-rates-australian-residents",
+    "disclaimer": "Simplified estimate for Australian resident individuals. Medicare levy (2%), Medicare levy surcharge, HELP/HECS repayments, offsets (LITO, LMITO), and non-resident rates are not included.",
+
+    "requires_filing_status": false,
+    "requires_state_selection": false,
+    "requires_age_group": false,
+    "requires_dependants": false,
+    "requires_residency_status": false,
+
+    "regimes": [
+        {
+            "id": "au_resident_2024_25",
+            "label": "Resident Individual (2024-25)",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "notes": "Tax-free threshold of A$18,200 is built into the zero-rate band. Medicare levy of 2% is not included.",
+            "slabs": [
+                { "from": 0, "to": 18200, "rate": 0 },
+                { "from": 18200, "to": 45000, "rate": 16 },
+                { "from": 45000, "to": 135000, "rate": 30 },
+                { "from": 135000, "to": 190000, "rate": 37 },
+                { "from": 190000, "to": null, "rate": 45 }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,41 @@
+{
+    "country_id": "canada",
+    "country_name": "Canada",
+    "currency": "CAD",
+    "currency_symbol": "$",
+    "tax_year": "2024",
+    "engine_type": "progressive_slabs_basic",
+    "last_updated": "2025-01-01",
+    "source": "https://www.canada.ca/en/revenue-agency/services/tax/individuals/frequently-asked-questions-individuals/canadian-income-tax-rates-individuals-current-previous-years.html",
+    "disclaimer": "Simplified FEDERAL tax only unless a province is selected. Basic Personal Amount credit (15% of $15,705) IS included. CPP, EI, and provincial surtaxes/health premiums are not included.",
+
+    "requires_filing_status": false,
+    "requires_state_selection": true,
+    "requires_age_group": false,
+    "requires_dependants": false,
+    "requires_residency_status": false,
+    "states_file": "canada_provinces.json",
+
+    "regimes": [
+        {
+            "id": "ca_federal_2024",
+            "label": "Federal Income Tax (2024)",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "notes": "Basic Personal Amount of $15,705 applied automatically as a 15% non-refundable credit ($2,355.75). Federal tax only. The BPA phase-down for incomes above $173,205 is not included; results may understate tax by up to ~$232/year for very high incomes.",
+            "slabs": [
+                { "from": 0, "to": 55867, "rate": 15 },
+                { "from": 55867, "to": 111733, "rate": 20.5 },
+                { "from": 111733, "to": 173205, "rate": 26 },
+                { "from": 173205, "to": 246752, "rate": 29 },
+                { "from": 246752, "to": null, "rate": 33 }
+            ],
+            "post_rules": {
+                "credits": [
+                    { "label": "Basic Personal Amount", "amount": 15705, "rate": 15 }
+                ]
+            }
+        }
+    ]
+}

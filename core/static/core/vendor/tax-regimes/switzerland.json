@@ -1,0 +1,42 @@
+{
+    "country_id": "switzerland",
+    "country_name": "Switzerland",
+    "currency": "CHF",
+    "currency_symbol": "CHF",
+    "tax_year": "2024",
+    "engine_type": "progressive_slabs_basic",
+    "last_updated": "2025-01-01",
+    "source": "https://www.estv.admin.ch/",
+    "disclaimer": "Simplified FEDERAL direct tax only (Direkte Bundessteuer), single filer. A flat CHF 2,600 approximation of the federal insurance-premium deduction is applied; the percentage-based professional-expense deduction is not separately modeled. Above CHF 176,000 the true federal formula caps the average rate in a way this bracket engine approximates as a flat continuation of the top marginal rate, which slightly overstates tax at very high incomes. Select a Canton below to add cantonal + (currently blended) communal tax on top.",
+
+    "requires_filing_status": false,
+    "requires_state_selection": true,
+    "requires_age_group": false,
+    "requires_dependants": false,
+    "requires_residency_status": false,
+    "state_label": "Select Canton",
+    "states_file": "switzerland_cantons.json",
+
+    "regimes": [
+        {
+            "id": "ch_federal_2024",
+            "label": "Federal (Single)",
+            "standard_deduction": 2600,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "notes": "2024 federal direct tax brackets for a single filer.",
+            "slabs": [
+                { "from": 0, "to": 14500, "rate": 0 },
+                { "from": 14500, "to": 31600, "rate": 0.77 },
+                { "from": 31600, "to": 41400, "rate": 0.88 },
+                { "from": 41400, "to": 55200, "rate": 2.64 },
+                { "from": 55200, "to": 72500, "rate": 2.97 },
+                { "from": 72500, "to": 78100, "rate": 5.94 },
+                { "from": 78100, "to": 103600, "rate": 6.60 },
+                { "from": 103600, "to": 134600, "rate": 8.80 },
+                { "from": 134600, "to": 176000, "rate": 11.00 },
+                { "from": 176000, "to": null, "rate": 13.20 }
+            ]
+        }
+    ]
+}

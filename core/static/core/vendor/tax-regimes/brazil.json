@@ -1,0 +1,35 @@
+{
+    "country_id": "brazil",
+    "country_name": "Brazil",
+    "currency": "BRL",
+    "currency_symbol": "R$",
+    "tax_year": "2024",
+    "engine_type": "progressive_slabs_basic",
+    "last_updated": "2025-01-01",
+    "source": "https://www.gov.br/receitafederal/pt-br",
+    "disclaimer": "Simplified estimate for Brazilian resident individuals (IRPF), annualized from monthly tables. INSS social security contributions, dependent deductions, and the simplified/standard deduction options are not included.",
+
+    "requires_filing_status": false,
+    "requires_state_selection": false,
+    "requires_age_group": false,
+    "requires_dependants": false,
+    "requires_residency_status": false,
+
+    "regimes": [
+        {
+            "id": "br_irpf_2024",
+            "label": "IRPF Individual (2024, Annualized)",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "notes": "Monthly IRPF bands annualized for this calculator. INSS contributions and dependent deductions are not included.",
+            "slabs": [
+                { "from": 0, "to": 27110, "rate": 0 },
+                { "from": 27110, "to": 33920, "rate": 7.5 },
+                { "from": 33920, "to": 45012, "rate": 15 },
+                { "from": 45012, "to": 55976, "rate": 22.5 },
+                { "from": 55976, "to": null, "rate": 27.5 }
+            ]
+        }
+    ]
+}

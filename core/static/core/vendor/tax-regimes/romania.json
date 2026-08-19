@@ -1,0 +1,31 @@
+{
+    "country_id": "romania",
+    "country_name": "Romania",
+    "currency": "RON",
+    "currency_symbol": "lei",
+    "tax_year": "2024",
+    "engine_type": "flat_rate_tax",
+    "last_updated": "2025-01-01",
+    "source": "https://www.anaf.ro",
+    "disclaimer": "Simplified estimate: 10% flat income tax on gross employment income. In reality, income tax applies after deducting CAS (25%) and CASS (10%) employee social contributions — add them manually as deductions for accuracy.",
+
+    "requires_filing_status": false,
+    "requires_state_selection": false,
+    "requires_age_group": false,
+    "requires_dependants": false,
+    "requires_residency_status": false,
+
+    "regimes": [
+        {
+            "id": "ro_flat_10",
+            "label": "Flat Income Tax (10%)",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "notes": "Romania applies a flat 10% income tax after social contributions (CAS 25% + CASS 10%). This simplified preset taxes gross income.",
+            "slabs": [
+                { "from": 0, "to": null, "rate": 10 }
+            ]
+        }
+    ]
+}

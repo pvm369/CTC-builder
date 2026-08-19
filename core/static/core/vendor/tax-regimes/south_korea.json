@@ -1,0 +1,88 @@
+{
+    "country_id": "south_korea",
+    "country_name": "South Korea",
+    "currency": "KRW",
+    "currency_symbol": "₩",
+    "tax_year": "2024",
+    "engine_type": "progressive_slabs_basic",
+    "last_updated": "2025-01-01",
+    "source": "https://www.nts.go.kr/english/main.do",
+    "disclaimer": "Simplified estimate for national income tax only. Local income tax (10% of national tax), employment income deduction, personal deductions, tax credits, and social insurance contributions are not included.",
+    "requires_filing_status": false,
+    "requires_state_selection": false,
+    "requires_age_group": false,
+    "requires_dependants": false,
+    "requires_residency_status": true,
+    "regimes": [
+        {
+            "id": "kr_national_2024",
+            "label": "National Income Tax (2024) (Resident)",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "notes": "National income tax only. Local income tax (10% of computed national tax) is separate and not included.",
+            "slabs": [
+                {
+                    "from": 0,
+                    "to": 14000000,
+                    "rate": 6
+                },
+                {
+                    "from": 14000000,
+                    "to": 50000000,
+                    "rate": 15
+                },
+                {
+                    "from": 50000000,
+                    "to": 88000000,
+                    "rate": 24
+                },
+                {
+                    "from": 88000000,
+                    "to": 150000000,
+                    "rate": 35
+                },
+                {
+                    "from": 150000000,
+                    "to": 300000000,
+                    "rate": 38
+                },
+                {
+                    "from": 300000000,
+                    "to": 500000000,
+                    "rate": 40
+                },
+                {
+                    "from": 500000000,
+                    "to": 1000000000,
+                    "rate": 42
+                },
+                {
+                    "from": 1000000000,
+                    "to": null,
+                    "rate": 45
+                }
+            ],
+            "regime_role": "resident"
+        },
+        {
+            "id": "kr_nonresident_flat_2024",
+            "label": "Non-Resident / Expatriate Flat Tax",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "notes": "Foreign employees may elect a flat 19% tax on gross employment income as an alternative to progressive rates, in lieu of standard deductions and credits — a well-known expatriate election, not a mandatory non-resident rate.",
+            "slabs": [
+                {
+                    "from": 0,
+                    "to": null,
+                    "rate": 19
+                }
+            ],
+            "regime_role": "nonresident"
+        }
+    ],
+    "sub_option_label": "Select Residency Status",
+    "residency_threshold_days": 183,
+    "residency_threshold_note": "ADVISORY ONLY, not a legal determination: 183+ days physically present in a tax year is commonly used as a resident-status guideline. Actual rules vary by country (tie-breaker tests, visa type, permanent home, center of vital interests, etc.) and this figure does not override your own judgment or professional advice."
+}

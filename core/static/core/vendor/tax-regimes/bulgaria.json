@@ -1,0 +1,31 @@
+{
+    "country_id": "bulgaria",
+    "country_name": "Bulgaria",
+    "currency": "BGN",
+    "currency_symbol": "лв",
+    "tax_year": "2024",
+    "engine_type": "flat_rate_tax",
+    "last_updated": "2025-01-01",
+    "source": "https://nap.bg/en",
+    "disclaimer": "Simplified estimate: 10% flat personal income tax on gross employment income. Employee social security contributions (approx. 13.78%) are deducted before tax in reality — add them manually as deductions for a more accurate net salary.",
+
+    "requires_filing_status": false,
+    "requires_state_selection": false,
+    "requires_age_group": false,
+    "requires_dependants": false,
+    "requires_residency_status": false,
+
+    "regimes": [
+        {
+            "id": "bg_flat_10",
+            "label": "Flat Income Tax (10%)",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "notes": "Bulgaria applies a flat 10% tax on taxable income after social security contributions. This simplified preset taxes gross income; add employee SSC manually as deductions for accuracy.",
+            "slabs": [
+                { "from": 0, "to": null, "rate": 10 }
+            ]
+        }
+    ]
+}

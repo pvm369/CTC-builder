@@ -1,0 +1,162 @@
+{
+    "country_id": "canada",
+    "layer": "state",
+    "tax_year": "2024",
+    "last_updated": "2025-01-01",
+    "disclaimer": "Provincial/territorial income tax only, single filer, simplified. Provincial surtaxes, health premiums, low-income tax reductions (e.g. NL, NS, BC), and the Quebec federal abatement are not included unless noted per province. All 10 provinces and 3 territories are covered.",
+
+    "states": [
+        {
+            "id": "ca_prov_on", "name": "Ontario", "engine_type": "progressive_slabs_basic",
+            "standard_deduction": 0, "surcharge_percent": 0, "cess_percent": 0,
+            "source": "https://www.canada.ca/en/revenue-agency/services/tax/individuals/tax-rates-brackets/all-years.html",
+            "notes": "2024. Basic Personal Amount ($12,399) applied as a 5.05% credit. Ontario's additional surtax (20%/36% on Ontario tax above set thresholds) and Health Premium are not included.",
+            "slabs": [
+                { "from": 0, "to": 51446, "rate": 5.05 }, { "from": 51446, "to": 102894, "rate": 9.15 },
+                { "from": 102894, "to": 150000, "rate": 11.16 }, { "from": 150000, "to": 220000, "rate": 12.16 },
+                { "from": 220000, "to": null, "rate": 13.16 }
+            ],
+            "post_rules": { "credits": [ { "label": "Ontario Basic Personal Amount", "amount": 12399, "rate": 5.05 } ] }
+        },
+        {
+            "id": "ca_prov_qc", "name": "Quebec", "engine_type": "progressive_slabs_basic",
+            "standard_deduction": 0, "surcharge_percent": 0, "cess_percent": 0,
+            "source": "https://www.revenuquebec.ca/en/citizens/income-tax-return/",
+            "notes": "2024. Basic Personal Amount ($18,056) applied as a 14% credit. IMPORTANT: Quebec residents also receive a federal abatement (16.5% reduction of basic federal tax) that this calculator does NOT model, so combined federal+Quebec tax will be overstated versus reality.",
+            "slabs": [
+                { "from": 0, "to": 51780, "rate": 14 }, { "from": 51780, "to": 103545, "rate": 19 },
+                { "from": 103545, "to": 126000, "rate": 24 }, { "from": 126000, "to": null, "rate": 25.75 }
+            ],
+            "post_rules": { "credits": [ { "label": "Quebec Basic Personal Amount", "amount": 18056, "rate": 14 } ] }
+        },
+        {
+            "id": "ca_prov_ab", "name": "Alberta", "engine_type": "progressive_slabs_basic",
+            "standard_deduction": 0, "surcharge_percent": 0, "cess_percent": 0,
+            "source": "https://www.canada.ca/en/revenue-agency/services/tax/individuals/tax-rates-brackets/all-years.html",
+            "notes": "2024. Basic Personal Amount ($21,885) applied as a 10% credit.",
+            "slabs": [
+                { "from": 0, "to": 148269, "rate": 10 }, { "from": 148269, "to": 177922, "rate": 12 },
+                { "from": 177922, "to": 237230, "rate": 13 }, { "from": 237230, "to": 355845, "rate": 14 },
+                { "from": 355845, "to": null, "rate": 15 }
+            ],
+            "post_rules": { "credits": [ { "label": "Alberta Basic Personal Amount", "amount": 21885, "rate": 10 } ] }
+        },
+        {
+            "id": "ca_prov_bc", "name": "British Columbia", "engine_type": "progressive_slabs_basic",
+            "standard_deduction": 0, "surcharge_percent": 0, "cess_percent": 0,
+            "source": "https://www.canada.ca/en/revenue-agency/services/tax/individuals/tax-rates-brackets/all-years.html",
+            "notes": "2024. Basic Personal Amount ($12,580) applied as a 5.06% credit. BC's low-income tax reduction is not included.",
+            "slabs": [
+                { "from": 0, "to": 47937, "rate": 5.06 }, { "from": 47937, "to": 95875, "rate": 7.7 },
+                { "from": 95875, "to": 110076, "rate": 10.5 }, { "from": 110076, "to": 133664, "rate": 12.29 },
+                { "from": 133664, "to": 181232, "rate": 14.7 }, { "from": 181232, "to": 252752, "rate": 16.8 },
+                { "from": 252752, "to": null, "rate": 20.5 }
+            ],
+            "post_rules": { "credits": [ { "label": "BC Basic Personal Amount", "amount": 12580, "rate": 5.06 } ] }
+        },
+        {
+            "id": "ca_prov_mb", "name": "Manitoba", "engine_type": "progressive_slabs_basic",
+            "standard_deduction": 0, "surcharge_percent": 0, "cess_percent": 0,
+            "source": "https://www.canada.ca/en/revenue-agency/services/tax/individuals/tax-rates-brackets/all-years.html",
+            "notes": "2024. Basic Personal Amount ($15,780) applied as a 10.8% credit.",
+            "slabs": [
+                { "from": 0, "to": 47000, "rate": 10.8 }, { "from": 47000, "to": 100000, "rate": 12.75 },
+                { "from": 100000, "to": null, "rate": 17.4 }
+            ],
+            "post_rules": { "credits": [ { "label": "Manitoba Basic Personal Amount", "amount": 15780, "rate": 10.8 } ] }
+        },
+        {
+            "id": "ca_prov_sk", "name": "Saskatchewan", "engine_type": "progressive_slabs_basic",
+            "standard_deduction": 0, "surcharge_percent": 0, "cess_percent": 0,
+            "source": "https://www.canada.ca/en/revenue-agency/services/tax/individuals/tax-rates-brackets/all-years.html",
+            "notes": "2024. Basic Personal Amount ($18,491) applied as a 10.5% credit.",
+            "slabs": [
+                { "from": 0, "to": 52057, "rate": 10.5 }, { "from": 52057, "to": 148734, "rate": 12.5 },
+                { "from": 148734, "to": null, "rate": 14.5 }
+            ],
+            "post_rules": { "credits": [ { "label": "Saskatchewan Basic Personal Amount", "amount": 18491, "rate": 10.5 } ] }
+        },
+        {
+            "id": "ca_prov_ns", "name": "Nova Scotia", "engine_type": "progressive_slabs_basic",
+            "standard_deduction": 0, "surcharge_percent": 0, "cess_percent": 0,
+            "source": "https://www.canada.ca/en/revenue-agency/services/tax/individuals/tax-rates-brackets/all-years.html",
+            "notes": "2024. Basic Personal Amount ($8,481, the lowest in Canada) applied as an 8.79% credit. An additional low-income tax reduction is not included.",
+            "slabs": [
+                { "from": 0, "to": 29590, "rate": 8.79 }, { "from": 29590, "to": 59180, "rate": 14.95 },
+                { "from": 59180, "to": 93000, "rate": 16.67 }, { "from": 93000, "to": 150000, "rate": 17.5 },
+                { "from": 150000, "to": null, "rate": 21 }
+            ],
+            "post_rules": { "credits": [ { "label": "Nova Scotia Basic Personal Amount", "amount": 8481, "rate": 8.79 } ] }
+        },
+        {
+            "id": "ca_prov_nb", "name": "New Brunswick", "engine_type": "progressive_slabs_basic",
+            "standard_deduction": 0, "surcharge_percent": 0, "cess_percent": 0,
+            "source": "https://www.canada.ca/en/revenue-agency/services/tax/individuals/tax-rates-brackets/all-years.html",
+            "notes": "2024. Basic Personal Amount ($13,044) applied as a 9.4% credit.",
+            "slabs": [
+                { "from": 0, "to": 49958, "rate": 9.4 }, { "from": 49958, "to": 99916, "rate": 14 },
+                { "from": 99916, "to": 185064, "rate": 16 }, { "from": 185064, "to": null, "rate": 19.5 }
+            ],
+            "post_rules": { "credits": [ { "label": "New Brunswick Basic Personal Amount", "amount": 13044, "rate": 9.4 } ] }
+        },
+        {
+            "id": "ca_prov_pe", "name": "Prince Edward Island", "engine_type": "progressive_slabs_basic",
+            "standard_deduction": 0, "surcharge_percent": 0, "cess_percent": 0,
+            "source": "https://www.canada.ca/en/revenue-agency/services/tax/individuals/tax-rates-brackets/all-years.html",
+            "notes": "2024. Basic Personal Amount ($13,500) applied as a 9.65% credit.",
+            "slabs": [
+                { "from": 0, "to": 32656, "rate": 9.65 }, { "from": 32656, "to": 64313, "rate": 13.63 },
+                { "from": 64313, "to": 105000, "rate": 16.65 }, { "from": 105000, "to": 140000, "rate": 18 },
+                { "from": 140000, "to": null, "rate": 18.75 }
+            ],
+            "post_rules": { "credits": [ { "label": "PEI Basic Personal Amount", "amount": 13500, "rate": 9.65 } ] }
+        },
+        {
+            "id": "ca_prov_nl", "name": "Newfoundland and Labrador", "engine_type": "progressive_slabs_basic",
+            "standard_deduction": 0, "surcharge_percent": 0, "cess_percent": 0,
+            "source": "https://www.canada.ca/en/revenue-agency/services/tax/individuals/tax-rates-brackets/all-years.html",
+            "notes": "2024. Basic Personal Amount ($10,818) applied as an 8.7% credit. A separate low-income tax reduction is not included.",
+            "slabs": [
+                { "from": 0, "to": 43198, "rate": 8.7 }, { "from": 43198, "to": 86395, "rate": 14.5 },
+                { "from": 86395, "to": 154244, "rate": 15.8 }, { "from": 154244, "to": 215943, "rate": 17.8 },
+                { "from": 215943, "to": 275870, "rate": 19.8 }, { "from": 275870, "to": 551739, "rate": 20.8 },
+                { "from": 551739, "to": 1103478, "rate": 21.3 }, { "from": 1103478, "to": null, "rate": 21.8 }
+            ],
+            "post_rules": { "credits": [ { "label": "Newfoundland & Labrador Basic Personal Amount", "amount": 10818, "rate": 8.7 } ] }
+        },
+        {
+            "id": "ca_prov_nt", "name": "Northwest Territories", "engine_type": "progressive_slabs_basic",
+            "standard_deduction": 0, "surcharge_percent": 0, "cess_percent": 0,
+            "source": "https://www.canada.ca/en/revenue-agency/services/tax/individuals/tax-rates-brackets/all-years.html",
+            "notes": "2024. Basic Personal Amount ($17,373) applied as a 5.9% credit. Northern Residents Deduction is not included.",
+            "slabs": [
+                { "from": 0, "to": 50597, "rate": 5.9 }, { "from": 50597, "to": 101198, "rate": 8.6 },
+                { "from": 101198, "to": 164525, "rate": 12.2 }, { "from": 164525, "to": null, "rate": 14.05 }
+            ],
+            "post_rules": { "credits": [ { "label": "NWT Basic Personal Amount", "amount": 17373, "rate": 5.9 } ] }
+        },
+        {
+            "id": "ca_prov_nu", "name": "Nunavut", "engine_type": "progressive_slabs_basic",
+            "standard_deduction": 0, "surcharge_percent": 0, "cess_percent": 0,
+            "source": "https://www.canada.ca/en/revenue-agency/services/tax/individuals/tax-rates-brackets/all-years.html",
+            "notes": "2024. Basic Personal Amount ($18,767) applied as a 4% credit. Northern Residents Deduction is not included.",
+            "slabs": [
+                { "from": 0, "to": 53268, "rate": 4 }, { "from": 53268, "to": 106537, "rate": 7 },
+                { "from": 106537, "to": 173205, "rate": 9 }, { "from": 173205, "to": null, "rate": 11.5 }
+            ],
+            "post_rules": { "credits": [ { "label": "Nunavut Basic Personal Amount", "amount": 18767, "rate": 4 } ] }
+        },
+        {
+            "id": "ca_prov_yt", "name": "Yukon", "engine_type": "progressive_slabs_basic",
+            "standard_deduction": 0, "surcharge_percent": 0, "cess_percent": 0,
+            "source": "https://www.canada.ca/en/revenue-agency/services/tax/individuals/tax-rates-brackets/all-years.html",
+            "notes": "2024. Basic Personal Amount ($15,705, harmonized with federal) applied as a 6.4% credit. Northern Residents Deduction is not included.",
+            "slabs": [
+                { "from": 0, "to": 55867, "rate": 6.4 }, { "from": 55867, "to": 111733, "rate": 9 },
+                { "from": 111733, "to": 173205, "rate": 10.9 }, { "from": 173205, "to": 500000, "rate": 12.8 },
+                { "from": 500000, "to": null, "rate": 15 }
+            ],
+            "post_rules": { "credits": [ { "label": "Yukon Basic Personal Amount", "amount": 15705, "rate": 6.4 } ] }
+        }
+    ]
+}

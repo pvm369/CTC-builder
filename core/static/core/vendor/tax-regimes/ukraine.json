@@ -1,0 +1,31 @@
+{
+    "country_id": "ukraine",
+    "country_name": "Ukraine",
+    "currency": "UAH",
+    "currency_symbol": "₴",
+    "tax_year": "2024",
+    "engine_type": "flat_rate_tax",
+    "last_updated": "2025-01-01",
+    "source": "https://tax.gov.ua/en",
+    "disclaimer": "Simplified estimate combining 18% personal income tax + 5% military levy into a single 23% effective rate on gross income. USC (unified social contribution) is employer-paid in most cases and excluded.",
+
+    "requires_filing_status": false,
+    "requires_state_selection": false,
+    "requires_age_group": false,
+    "requires_dependants": false,
+    "requires_residency_status": false,
+
+    "regimes": [
+        {
+            "id": "ua_flat_23",
+            "label": "Income Tax + Military Levy (23% combined)",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "notes": "Ukraine applies 18% PIT plus 5% military levy, both on gross income, equivalent to a combined 23% flat rate.",
+            "slabs": [
+                { "from": 0, "to": null, "rate": 23 }
+            ]
+        }
+    ]
+}

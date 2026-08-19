@@ -1,0 +1,68 @@
+{
+    "country_id": "paraguay",
+    "country_name": "Paraguay",
+    "currency": "PYG",
+    "currency_symbol": "₲",
+    "tax_year": "2024",
+    "engine_type": "progressive_slabs_basic",
+    "last_updated": "2025-01-01",
+    "source": "https://www.set.gov.py/",
+    "disclaimer": "Simplified estimate under IRP (Impuesto a la Renta Personal), Law No. 6380/2019. Paraguay uses a TERRITORIAL tax system: only Paraguay-sourced income is taxed, for residents and non-residents alike; foreign-sourced income is fully exempt regardless of residency, which this calculator does not model. The personal allowance (approx. 50 minimum wages/year) and social security (IPS) contributions are not included as a separate deduction beyond the exemption threshold already built into the slabs below.",
+    "requires_filing_status": false,
+    "requires_state_selection": false,
+    "requires_age_group": false,
+    "requires_dependants": false,
+    "requires_residency_status": true,
+    "sub_option_label": "Select Residency Status",
+    "regimes": [
+        {
+            "id": "py_resident_irp_2024",
+            "label": "Resident (IRP)",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "notes": "SIMPLIFIED: IRP does not apply at all below roughly PYG 80,000,000/year gross (modeled here as a combined 0% band approximating both the gross-income liability threshold and the separate ~PYG 65M personal allowance netted against income). Above that, the real law applies progressive rates of 8%/9%/10% to net taxable income in PYG 50M-wide bands (Article 69, Law 6380/2019) — approximated below as bands starting from the PYG 80M exemption point rather than from PYG 0, since this engine cannot separate a liability threshold from a personal allowance.",
+            "slabs": [
+                {
+                    "from": 0,
+                    "to": 80000000,
+                    "rate": 0
+                },
+                {
+                    "from": 80000000,
+                    "to": 130000000,
+                    "rate": 8
+                },
+                {
+                    "from": 130000000,
+                    "to": 230000000,
+                    "rate": 9
+                },
+                {
+                    "from": 230000000,
+                    "to": null,
+                    "rate": 10
+                }
+            ],
+            "regime_role": "resident"
+        },
+        {
+            "id": "py_nonresident_2024",
+            "label": "Non-Resident",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "notes": "Non-residents (INR) are taxed at a flat 15%, though some service categories use a deemed tax base of around 30% of gross income (effectively 4.5% of gross) depending on the type of service — this calculator applies the simpler flat 15% on gross.",
+            "slabs": [
+                {
+                    "from": 0,
+                    "to": null,
+                    "rate": 15
+                }
+            ],
+            "regime_role": "nonresident"
+        }
+    ],
+    "residency_threshold_days": 183,
+    "residency_threshold_note": "ADVISORY ONLY, not a legal determination: 183+ days physically present in a tax year is commonly used as a resident-status guideline. Actual rules vary by country (tie-breaker tests, visa type, permanent home, center of vital interests, etc.) and this figure does not override your own judgment or professional advice."
+}

@@ -1,0 +1,29 @@
+{
+    "country_id": "uae",
+    "country_name": "United Arab Emirates",
+    "currency": "AED",
+    "currency_symbol": "د.إ",
+    "tax_year": "2024",
+    "engine_type": "zero_income_tax",
+    "last_updated": "2025-01-01",
+    "source": "https://u.ae/en/information-and-services/finance-and-investment/taxation",
+    "disclaimer": "The UAE does not levy personal income tax on employment income. Other deductions such as pension contributions (for UAE/GCC nationals), health insurance, loans, or company recoveries may still apply.",
+
+    "requires_filing_status": false,
+    "requires_state_selection": false,
+    "requires_age_group": false,
+    "requires_dependants": false,
+    "requires_residency_status": false,
+
+    "regimes": [
+        {
+            "id": "uae_zero_tax",
+            "label": "Zero Personal Income Tax",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "notes": "No personal income tax on salaries and wages in the UAE. GPSSA pension contributions apply to UAE/GCC nationals only.",
+            "slabs": []
+        }
+    ]
+}

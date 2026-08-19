@@ -1,0 +1,31 @@
+{
+    "country_id": "serbia",
+    "country_name": "Serbia",
+    "currency": "RSD",
+    "currency_symbol": "дин",
+    "tax_year": "2024",
+    "engine_type": "flat_rate_tax",
+    "last_updated": "2025-01-01",
+    "source": "https://www.purs.gov.rs/en",
+    "disclaimer": "Simplified estimate: 10% salary tax after the annualized non-taxable amount (RSD 300,000 for 2024). An additional 10% applies on income above roughly 3x the average annual salary — not included here.",
+
+    "requires_filing_status": false,
+    "requires_state_selection": false,
+    "requires_age_group": false,
+    "requires_dependants": false,
+    "requires_residency_status": false,
+
+    "regimes": [
+        {
+            "id": "rs_flat_10",
+            "label": "Salary Tax (10%)",
+            "standard_deduction": 300000,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "notes": "Serbia applies 10% on salary above the non-taxable amount (RSD 25,000/month in 2024, annualized to 300,000). High-income additional rate (10% above threshold) is excluded.",
+            "slabs": [
+                { "from": 0, "to": null, "rate": 10 }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,37 @@
+{
+    "country_id": "egypt",
+    "country_name": "Egypt",
+    "currency": "EGP",
+    "currency_symbol": "E£",
+    "tax_year": "2024",
+    "engine_type": "progressive_slabs_basic",
+    "last_updated": "2025-01-01",
+    "source": "https://www.eta.gov.eg/en",
+    "disclaimer": "Simplified estimate for Egyptian resident individuals. Personal exemption, social insurance contributions, and bracket-based rate variations for different income levels are not included.",
+
+    "requires_filing_status": false,
+    "requires_state_selection": false,
+    "requires_age_group": false,
+    "requires_dependants": false,
+    "requires_residency_status": false,
+
+    "regimes": [
+        {
+            "id": "eg_resident_2024",
+            "label": "Resident Individual (2024)",
+            "standard_deduction": 20000,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "notes": "Annual personal exemption of E£20,000 applied as standard deduction. Egypt's actual system varies bracket rates depending on total income tier, which is simplified here.",
+            "slabs": [
+                { "from": 0, "to": 40000, "rate": 0 },
+                { "from": 40000, "to": 55000, "rate": 10 },
+                { "from": 55000, "to": 70000, "rate": 15 },
+                { "from": 70000, "to": 200000, "rate": 20 },
+                { "from": 200000, "to": 400000, "rate": 22.5 },
+                { "from": 400000, "to": 1200000, "rate": 25 },
+                { "from": 1200000, "to": null, "rate": 27.5 }
+            ]
+        }
+    ]
+}

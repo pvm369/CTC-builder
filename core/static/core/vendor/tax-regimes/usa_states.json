@@ -1,0 +1,113 @@
+{
+    "country_id": "usa",
+    "layer": "state",
+    "tax_year": "2024",
+    "last_updated": "2025-01-01",
+    "disclaimer": "State income tax only, single filer, simplified. Local/city taxes (e.g. NYC), state-specific credits, and surtaxes above certain thresholds are not included unless noted per state.",
+
+    "states": [
+        {
+            "id": "us_state_ca",
+            "name": "California",
+            "engine_type": "progressive_slabs_basic",
+            "standard_deduction": 5363,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "source": "https://www.ftb.ca.gov/file/personal/tax-brackets.html",
+            "notes": "2024 single filer. Does not include the additional 1% Mental Health Services Tax on taxable income above $1,000,000.",
+            "slabs": [
+                { "from": 0, "to": 10412, "rate": 1 },
+                { "from": 10412, "to": 24684, "rate": 2 },
+                { "from": 24684, "to": 38959, "rate": 4 },
+                { "from": 38959, "to": 54081, "rate": 6 },
+                { "from": 54081, "to": 68350, "rate": 8 },
+                { "from": 68350, "to": 349137, "rate": 9.3 },
+                { "from": 349137, "to": 418961, "rate": 10.3 },
+                { "from": 418961, "to": 698271, "rate": 11.3 },
+                { "from": 698271, "to": null, "rate": 12.3 }
+            ]
+        },
+        {
+            "id": "us_state_ny",
+            "name": "New York",
+            "engine_type": "progressive_slabs_basic",
+            "standard_deduction": 8000,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "source": "https://www.tax.ny.gov/pit/file/tax-tables.htm",
+            "notes": "2024 single filer, NY State only (excludes NYC/Yonkers local tax). Simplified to the first 7 brackets; the two highest brackets (above roughly $5M and $25M) are not modeled.",
+            "requires_local_selection": true,
+            "cities_file": "usa_ny_localities.json",
+            "slabs": [
+                { "from": 0, "to": 8500, "rate": 4 },
+                { "from": 8500, "to": 11700, "rate": 4.5 },
+                { "from": 11700, "to": 13900, "rate": 5.25 },
+                { "from": 13900, "to": 80650, "rate": 5.5 },
+                { "from": 80650, "to": 215400, "rate": 6 },
+                { "from": 215400, "to": 1077550, "rate": 6.85 },
+                { "from": 1077550, "to": null, "rate": 9.65 }
+            ]
+        },
+        {
+            "id": "us_state_pa",
+            "name": "Pennsylvania",
+            "engine_type": "flat_rate_tax",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "source": "https://www.revenue.pa.gov/",
+            "notes": "2024 flat 3.07% state tax. Pennsylvania has no standard deduction or personal exemption.",
+            "requires_local_selection": true,
+            "cities_file": "usa_pa_localities.json",
+            "slabs": [
+                { "from": 0, "to": null, "rate": 3.07 }
+            ]
+        },
+        {
+            "id": "us_state_il",
+            "name": "Illinois",
+            "engine_type": "flat_rate_tax",
+            "standard_deduction": 2775,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "source": "https://tax.illinois.gov/individuals/rates.html",
+            "notes": "2024 flat 4.95% tax after the personal exemption allowance ($2,775 single).",
+            "slabs": [
+                { "from": 0, "to": null, "rate": 4.95 }
+            ]
+        },
+        {
+            "id": "us_state_tx",
+            "name": "Texas",
+            "engine_type": "zero_income_tax",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "source": "https://comptroller.texas.gov",
+            "notes": "Texas levies no state personal income tax.",
+            "slabs": []
+        },
+        {
+            "id": "us_state_fl",
+            "name": "Florida",
+            "engine_type": "zero_income_tax",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "source": "https://floridarevenue.com",
+            "notes": "Florida levies no state personal income tax.",
+            "slabs": []
+        },
+        {
+            "id": "us_state_wa",
+            "name": "Washington",
+            "engine_type": "zero_income_tax",
+            "standard_deduction": 0,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "source": "https://dor.wa.gov",
+            "notes": "Washington levies no state tax on wages. A separate 7% capital gains excise tax exists on large investment gains only and is not modeled here.",
+            "slabs": []
+        }
+    ]
+}

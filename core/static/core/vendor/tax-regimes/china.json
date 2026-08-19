@@ -1,0 +1,37 @@
+{
+    "country_id": "china",
+    "country_name": "China",
+    "currency": "CNY",
+    "currency_symbol": "¥",
+    "tax_year": "2024",
+    "engine_type": "progressive_slabs_basic",
+    "last_updated": "2025-01-01",
+    "source": "http://www.chinatax.gov.cn/eng/",
+    "disclaimer": "Simplified estimate for annual comprehensive income of resident individuals. Special additional deductions (children's education, housing, elderly care, etc.), social insurance contributions, and non-resident rates are not included.",
+
+    "requires_filing_status": false,
+    "requires_state_selection": false,
+    "requires_age_group": false,
+    "requires_dependants": false,
+    "requires_residency_status": false,
+
+    "regimes": [
+        {
+            "id": "cn_comprehensive_2024",
+            "label": "Comprehensive Income Tax (2024, Resident)",
+            "standard_deduction": 60000,
+            "surcharge_percent": 0,
+            "cess_percent": 0,
+            "notes": "Annual standard deduction of ¥60,000 applied. Special additional deductions for children, housing, etc. are not included. Social insurance contributions are separate.",
+            "slabs": [
+                { "from": 0, "to": 36000, "rate": 3 },
+                { "from": 36000, "to": 144000, "rate": 10 },
+                { "from": 144000, "to": 300000, "rate": 20 },
+                { "from": 300000, "to": 420000, "rate": 25 },
+                { "from": 420000, "to": 660000, "rate": 30 },
+                { "from": 660000, "to": 960000, "rate": 35 },
+                { "from": 960000, "to": null, "rate": 45 }
+            ]
+        }
+    ]
+}
