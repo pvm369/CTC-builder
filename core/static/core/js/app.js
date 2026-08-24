@@ -376,6 +376,11 @@ function applyPayrollTemplate(template) {
         state.configured = true;
         if (comp.target_field) state.target_field = comp.target_field;
         if (comp.threshold_annual !== undefined) state.threshold_annual = comp.threshold_annual;
+        if (comp.slab_config) state.slab_config = JSON.parse(JSON.stringify(comp.slab_config));
+        if (comp.logic_type === 'tax_slabs' && comp.slab_config) {
+            state.allow_slabs = true;
+            state.slab_config = JSON.parse(JSON.stringify(comp.slab_config));
+        }
 
         added.push(comp.name);
     });
