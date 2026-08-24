@@ -1,5 +1,7 @@
 {
     "countries": [
-        { "id": "india", "name": "India", "file": "india.json" }
+        { "id": "india", "name": "India", "file": "india.json" },
+        { "id": "usa", "name": "United States", "file": "usa.json" },
+        { "id": "canada", "name": "Canada", "file": "canada.json" }
     ]
 }

@@ -1,0 +1,81 @@
+{
+    "country_id": "canada",
+    "country_name": "Canada",
+    "tax_year": "2024",
+    "last_updated": "2026-08-19",
+    "source": "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/payroll/payroll-deductions-contributions/canada-pension-plan-cpp/cpp-contribution-rates-maximums-exemptions.html",
+    "disclaimer": "Simplified CPP/EI estimate, not payroll-compliance advice. Applies to gross wages (all 'earnings' category fields). CPP and CPP2 (the second-tier contribution introduced in 2024) are combined into one 'CPP' line for simplicity, rather than shown as two separate deductions. Quebec is NOT covered — Quebec uses QPP (a different rate, currently 6.30%) instead of CPP, and a reduced EI rate (QPIP covers parental benefits separately), neither of which is modeled here. Verify against current CRA figures before relying on this for real payroll.",
+
+    "components": [
+        {
+            "key": "cpp_employee",
+            "name": "CPP incl. CPP2 (Employee)",
+            "category": "deductions",
+            "logic_type": "tax_slabs",
+            "taxable": "no",
+            "slab_config": {
+                "regime_label": "CRA 2024 (excl. Quebec)",
+                "standard_deduction": 3500,
+                "surcharge_percent": 0,
+                "cess_percent": 0,
+                "slabs": [
+                    { "from": 0, "to": 65000, "rate": 5.95 },
+                    { "from": 65000, "to": 69700, "rate": 4 },
+                    { "from": 69700, "to": null, "rate": 0 }
+                ]
+            }
+        },
+        {
+            "key": "cpp_employer",
+            "name": "CPP incl. CPP2 (Employer)",
+            "category": "employer_contributions",
+            "logic_type": "tax_slabs",
+            "taxable": "no",
+            "slab_config": {
+                "regime_label": "CRA 2024 (excl. Quebec) — matched 1:1",
+                "standard_deduction": 3500,
+                "surcharge_percent": 0,
+                "cess_percent": 0,
+                "slabs": [
+                    { "from": 0, "to": 65000, "rate": 5.95 },
+                    { "from": 65000, "to": 69700, "rate": 4 },
+                    { "from": 69700, "to": null, "rate": 0 }
+                ]
+            }
+        },
+        {
+            "key": "ei_employee",
+            "name": "EI (Employee)",
+            "category": "deductions",
+            "logic_type": "tax_slabs",
+            "taxable": "no",
+            "slab_config": {
+                "regime_label": "CRA 2024 (excl. Quebec)",
+                "standard_deduction": 0,
+                "surcharge_percent": 0,
+                "cess_percent": 0,
+                "slabs": [
+                    { "from": 0, "to": 63200, "rate": 1.66 },
+                    { "from": 63200, "to": null, "rate": 0 }
+                ]
+            }
+        },
+        {
+            "key": "ei_employer",
+            "name": "EI (Employer)",
+            "category": "employer_contributions",
+            "logic_type": "tax_slabs",
+            "taxable": "no",
+            "slab_config": {
+                "regime_label": "CRA 2024 — 1.4x employee rate",
+                "standard_deduction": 0,
+                "surcharge_percent": 0,
+                "cess_percent": 0,
+                "slabs": [
+                    { "from": 0, "to": 63200, "rate": 2.324 },
+                    { "from": 63200, "to": null, "rate": 0 }
+                ]
+            }
+        }
+    ]
+}

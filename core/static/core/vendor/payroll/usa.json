@@ -1,0 +1,78 @@
+{
+    "country_id": "usa",
+    "country_name": "United States",
+    "tax_year": "2024",
+    "last_updated": "2026-08-19",
+    "source": "https://www.ssa.gov/ , https://www.irs.gov/taxtopics/tc560",
+    "disclaimer": "Simplified FICA estimate, not payroll-compliance advice. Applies to gross wages (all 'earnings' category fields), not just Basic Salary. The 0.9% Additional Medicare Tax threshold shown here ($200,000) is the single-filer figure; married filing jointly is actually $250,000 and married filing separately is $125,000, which this calculator does not distinguish since it isn't wired to filing status here. State-level disability/family-leave payroll taxes (e.g. CA SDI, NY PFL) are not included. Verify against current IRS/SSA figures before relying on this for real payroll.",
+
+    "components": [
+        {
+            "key": "ss_employee",
+            "name": "Social Security (Employee)",
+            "category": "deductions",
+            "logic_type": "tax_slabs",
+            "taxable": "no",
+            "slab_config": {
+                "regime_label": "SSA 2024",
+                "standard_deduction": 0,
+                "surcharge_percent": 0,
+                "cess_percent": 0,
+                "slabs": [
+                    { "from": 0, "to": 168600, "rate": 6.2 },
+                    { "from": 168600, "to": null, "rate": 0 }
+                ]
+            }
+        },
+        {
+            "key": "ss_employer",
+            "name": "Social Security (Employer)",
+            "category": "employer_contributions",
+            "logic_type": "tax_slabs",
+            "taxable": "no",
+            "slab_config": {
+                "regime_label": "SSA 2024",
+                "standard_deduction": 0,
+                "surcharge_percent": 0,
+                "cess_percent": 0,
+                "slabs": [
+                    { "from": 0, "to": 168600, "rate": 6.2 },
+                    { "from": 168600, "to": null, "rate": 0 }
+                ]
+            }
+        },
+        {
+            "key": "medicare_employee",
+            "name": "Medicare (Employee)",
+            "category": "deductions",
+            "logic_type": "tax_slabs",
+            "taxable": "no",
+            "slab_config": {
+                "regime_label": "IRS 2024 (single filer threshold)",
+                "standard_deduction": 0,
+                "surcharge_percent": 0,
+                "cess_percent": 0,
+                "slabs": [
+                    { "from": 0, "to": 200000, "rate": 1.45 },
+                    { "from": 200000, "to": null, "rate": 2.35 }
+                ]
+            }
+        },
+        {
+            "key": "medicare_employer",
+            "name": "Medicare (Employer)",
+            "category": "employer_contributions",
+            "logic_type": "tax_slabs",
+            "taxable": "no",
+            "slab_config": {
+                "regime_label": "IRS 2024 (no employer-side surtax match)",
+                "standard_deduction": 0,
+                "surcharge_percent": 0,
+                "cess_percent": 0,
+                "slabs": [
+                    { "from": 0, "to": null, "rate": 1.45 }
+                ]
+            }
+        }
+    ]
+}
