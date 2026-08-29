@@ -134,6 +134,36 @@ def calculate_ctc_breakdown(data):
     if not components:
         return {'success': False, 'error': 'No components provided.'}
 
+    # Custom categories behave like one of the built-in ones (earnings-like,
+    # deduction-like, or a CTC-only addon like employer contributions),
+    # according to flags the user set when creating the category. Previously
+    # these components were computed but silently excluded from every total
+    # because only the fixed built-in category strings were ever checked.
+    custom_categories = data.get('customCategories', []) or []
+    custom_cat_map = {c.get('id'): c for c in custom_categories if c.get('id')}
+
+    def is_earnings_like(cat_id):
+        if cat_id == 'earnings':
+            return True
+        cc = custom_cat_map.get(cat_id)
+        return bool(cc and cc.get('addGross'))
+
+    def is_deduction_like(cat_id):
+        if cat_id == 'deductions':
+            return True
+        cc = custom_cat_map.get(cat_id)
+        return bool(cc and cc.get('reduceNet'))
+
+    def is_ctc_addon(cat_id):
+        # A category already counted via gross_annual must not ALSO be added
+        # again here, or it would be double-counted into calc_ctc.
+        if is_earnings_like(cat_id):
+            return False
+        if cat_id in ('employer_contributions', 'variable_pay', 'perks_benefits'):
+            return True
+        cc = custom_cat_map.get(cat_id)
+        return bool(cc and cc.get('addCtc'))
+
     warnings = []
     calculated = {}
 
@@ -180,7 +210,7 @@ def calculate_ctc_breakdown(data):
             }
 
     # 4. Gross (Initial for % of Gross)
-    gross_annual = sum(c.get('annual', 0) for c in calculated.values() if c.get('category') == 'earnings')
+    gross_annual = sum(c.get('annual', 0) for c in calculated.values() if is_earnings_like(c.get('category')))
 
     # 5. % of Gross
     for field_id, comp in components.items():
@@ -196,7 +226,7 @@ def calculate_ctc_breakdown(data):
             }
 
     # Recalculate Gross after % of Gross
-    gross_annual = sum(c.get('annual', 0) for c in calculated.values() if c.get('category') == 'earnings')
+    gross_annual = sum(c.get('annual', 0) for c in calculated.values() if is_earnings_like(c.get('category')))
 
     # 5b. % of Gross, but ONLY if gross is at/below a threshold (eligibility
     # cliff, e.g. India's ESI: applies to the full amount below ~Rs 21,000/mo,
@@ -223,7 +253,7 @@ def calculate_ctc_breakdown(data):
             slab_config = comp.get('slab_config', {})
             taxable_income = sum(
                 c.get('annual', 0) for c in calculated.values()
-                if c.get('category') == 'earnings' and c.get('taxable', 'yes') == 'yes'
+                if is_earnings_like(c.get('category')) and c.get('taxable', 'yes') == 'yes'
             )
             breakdown = {}
             annual_tax = calculate_slab_tax(taxable_income, slab_config, breakdown=breakdown)
@@ -252,13 +282,13 @@ def calculate_ctc_breakdown(data):
             calculated[field_id] = entry
 
     # Calculate Deductions total (now includes slab-based tax if present)
-    deductions_annual = sum(c.get('annual', 0) for c in calculated.values() if c.get('category') == 'deductions')
+    deductions_annual = sum(c.get('annual', 0) for c in calculated.values() if is_deduction_like(c.get('category')))
     net_annual = gross_annual - deductions_annual
 
     # CTC validation
     calc_ctc = gross_annual + sum(
         c.get('annual', 0) for c in calculated.values()
-        if c.get('category') in ['employer_contributions', 'variable_pay', 'perks_benefits']
+        if is_ctc_addon(c.get('category'))
     )
     if abs(calc_ctc - total_ctc) > 1:
         warnings.append(f"Calculated CTC ({round(calc_ctc, 2)}) differs from Target CTC ({total_ctc}).")

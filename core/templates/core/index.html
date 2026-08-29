@@ -247,7 +247,7 @@
         </div>
 
         <div class="preview-input-group">
-            <label for="ctcInput">Enter Annual CTC</label>
+            <label for="ctcInput">Target Annual CTC</label>
             <input type="number" id="ctcInput" placeholder="e.g. 1000000" min="0">
             <button class="btn btn-primary" id="btnCalculate">Calculate</button>
         </div>
@@ -343,7 +343,7 @@
                     <!-- Days-present advisory (Stage 7 Phase 5): suggests Resident/Non-Resident, never forces it -->
                     <div class="form-group hidden" id="taxResidencyDaysGroup" style="margin-bottom: 10px;">
                         <label for="taxResidencyDaysInput" style="font-size: 0.72rem; font-weight: 600; color: #555; margin-bottom: 4px; display: block;">Days present in country this tax year (optional)</label>
-                        <input type="number" id="taxResidencyDaysInput" min="0" max="366" placeholder="e.g. 200" style="width: 100%; padding: 8px 12px; border: 1.5px solid #ddd; border-radius: 6px; font-size: 0.85rem; outline: none;">
+                        <input type="number" id="taxResidencyDaysInput" min="0" max="366" placeholder="e.g. 200" data-preserve-country="true" style="width: 100%; padding: 8px 12px; border: 1.5px solid #ddd; border-radius: 6px; font-size: 0.85rem; outline: none;">
                         <p id="taxResidencyDaysNote" class="tax-notes hidden" style="margin-top: 6px;"></p>
                     </div>
 
@@ -365,7 +365,7 @@
                          (e.g. a Swiss commune not in the curated list) not covered by a preset -->
                     <div class="form-group hidden" id="taxLocalMultiplierGroup" style="margin-bottom: 10px;">
                         <label for="taxLocalMultiplierInput" style="font-size: 0.72rem; font-weight: 600; color: #555; margin-bottom: 4px; display: block;">Commune Tax Multiplier (%)</label>
-                        <input type="number" id="taxLocalMultiplierInput" step="0.1" min="0" placeholder="e.g. 119 for 119%" style="width: 100%; padding: 8px 12px; border: 1.5px solid #ddd; border-radius: 6px; font-size: 0.85rem; outline: none;">
+                        <input type="number" id="taxLocalMultiplierInput" step="0.1" min="0" placeholder="e.g. 119 for 119%" data-preserve-country="true" style="width: 100%; padding: 8px 12px; border: 1.5px solid #ddd; border-radius: 6px; font-size: 0.85rem; outline: none;">
                         <p class="tax-notes" style="margin-top: 6px;">Enter your commune's official multiplier (Steuerfuss) if it isn't in the list above. Applied to the canton's simple tax, same as the presets.</p>
                     </div>
 

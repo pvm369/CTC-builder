@@ -11,6 +11,12 @@ const appState = {
 let isCalculating = false;
 // ========== TAX REGIME ENGINE (folder-based, lazy) ==========
 let taxIndexData = null;
+// Bug fix: currency now follows the selected country instead of being
+// hardcoded to INR. Defaults to INR so existing users who never touch the
+// country dropdown see identical output to before. Only updates when a real
+// (non-Custom) country is selected; switching to Custom deliberately does
+// NOT reset it, so customizing a country's slabs doesn't lose its currency.
+let selectedCurrency = { code: 'INR', symbol: '\u20B9' };
 let taxIndexLoadPromise = null;
 const taxCountryCache = {};
 const taxStateCache = {}; // Stage 6: state/province layer data, keyed by countryId
@@ -275,11 +281,23 @@ function removeFieldFromCanvas(fieldId) {
 }
 
 // ========== STATE MANAGEMENT ==========
+function defaultTaxableForCategory(category) {
+    // Deductions and employer-side contributions are, by their nature, not
+    // further taxable income for the employee. Only earnings-like categories
+    // should default to taxable. Previously EVERY new field defaulted to
+    // 'yes' regardless of category, which was wrong for deduction fields
+    // built manually rather than via a country/payroll preset.
+    if (category === 'deductions' || category === 'employer_contributions') return 'no';
+    var customCat = appState.customCategories.find(function (c) { return c.id === category; });
+    if (customCat && customCat.reduceNet) return 'no';
+    return 'yes';
+}
+
 function addComponentToState(fieldId, name, category, allowSlabs = false) {
     appState.components[fieldId] = {
         id: fieldId, name: name, category: category,
         logic_type: 'fixed', value: 0, target_field: null,
-        percentage: 0, frequency: 'monthly', taxable: 'yes', configured: false,
+        percentage: 0, frequency: 'monthly', taxable: defaultTaxableForCategory(category), configured: false,
         allow_slabs: allowSlabs
     };
 }
@@ -452,6 +470,7 @@ function initConfigModal() {
         if (slabEditorGroup) {
         slabEditorGroup.addEventListener('input', function (e) {
             if (e.target.tagName === 'SELECT') return;
+            if (e.target.dataset.preserveCountry === 'true') return;
 
         // Sync edited flat rate into the hidden slab row before switching to Custom
         if (e.target.id === 'flatRateValue') {
@@ -482,7 +501,7 @@ function openConfigModal(fieldId) {
     document.getElementById('modalTitle').textContent = 'Configure: ' + component.name;
     document.getElementById('fieldName').value = component.name;
     document.getElementById('fieldFrequency').value = component.frequency || 'monthly';
-    document.getElementById('fieldTaxable').value = component.taxable || 'yes';
+    document.getElementById('fieldTaxable').value = component.taxable || defaultTaxableForCategory(component.category);
 
     // Rebuild formulaType dropdown
     // Always remove the Tax Slabs option first
@@ -1928,6 +1947,14 @@ function refreshTaxMetadata() {
     }
 
     var cdata = taxCountryCache[sel.country].data;
+
+    // Currency follows the selected country. Only runs when a real country
+    // is loaded (this line is unreachable for 'custom', see early return
+    // above), so switching to Custom never resets currency.
+    if (cdata.currency) {
+        selectedCurrency = { code: cdata.currency, symbol: cdata.currency_symbol || cdata.currency };
+    }
+
     var lists = (cdata.regimes || []).concat(cdata.states || []);
     var entry = lists.find(function (e) { return e.id === sel.regime; });
 
@@ -2087,7 +2114,8 @@ function sendToBackend(ctcValue) {
 
     const payload = {
         total_ctc: ctcValue,
-        components: appState.components
+        components: appState.components,
+        customCategories: appState.customCategories
     };
 
     fetch('/api/calculate/', {
@@ -2781,7 +2809,7 @@ function normalizeLoadedComponent(comp) {
         value: Number(comp.value || 0),
         target_field: comp.target_field || null,
         frequency: comp.frequency || 'monthly',
-        taxable: comp.taxable || 'yes',
+        taxable: comp.taxable || defaultTaxableForCategory(comp.category || 'earnings'),
         configured: Boolean(comp.configured),
         allow_slabs: Boolean(comp.allow_slabs),
         slab_config: normalizeSlabConfig(comp.slab_config),
@@ -3829,7 +3857,16 @@ function showNotification(message, type) {
 
 // ========== UTILITIES ==========
 function formatCurrency(amount) {
-    return new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(amount);
+    var locale = selectedCurrency.code === 'INR' ? 'en-IN' : 'en-US';
+    try {
+        return new Intl.NumberFormat(locale, { style: 'currency', currency: selectedCurrency.code, maximumFractionDigits: 0 }).format(amount);
+    } catch (e) {
+        // Unknown/invalid currency code (shouldn't normally happen, but never
+        // let a formatting error break the whole preview) - fall back to a
+        // plain grouped number with whatever symbol we have.
+        var num = new Intl.NumberFormat(locale, { maximumFractionDigits: 0 }).format(amount);
+        return (selectedCurrency.symbol || '') + num;
+    }
 }
 
 function capitalize(str) {
