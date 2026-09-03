@@ -73,6 +73,7 @@ document.addEventListener('DOMContentLoaded', function () {
     initCopyButton();
     initTemplateSystem();
     initPayrollTemplateSystem();
+    initQuickMode();
     initClearButton();
     initMobileSidebar();
     initModalBackButtonHandler();
@@ -398,6 +399,13 @@ function applyPayrollTemplate(template) {
         if (comp.logic_type === 'tax_slabs' && comp.slab_config) {
             state.allow_slabs = true;
             state.slab_config = JSON.parse(JSON.stringify(comp.slab_config));
+            // The country dropdown will correctly show "Custom" for this field
+            // (payroll templates are a separate registry from tax-regime
+            // countries, deliberately not the same dropdown) - these two
+            // fields let the config modal explain that instead of it just
+            // looking like a stray, unexplained mismatch.
+            state.slab_config.payroll_origin = template.country_name || null;
+            state.slab_config.payroll_disclaimer = template.disclaimer || null;
         }
 
         added.push(comp.name);
@@ -412,6 +420,137 @@ function applyPayrollTemplate(template) {
     } else if (skipped.length > 0) {
         showNotification('All payroll fields for this country are already on the canvas.', 'warning');
     }
+}
+
+// ========== QUICK MODE ==========
+// One-click "select country, enter CTC, Generate" that auto-builds a starting
+// canvas: a default earnings breakdown, income tax on a sensible default
+// regime, and payroll contributions (reusing the Stage 8 loader as-is).
+// This does NOT replace manual building - Generate lands the user in the
+// same full canvas, pre-filled, that they can keep editing normally.
+
+var QUICK_MODE_DEFAULT_REGIME = {
+    india: 'in_new_2025_26',
+    usa: 'us_single_2024',
+    canada: 'ca_federal_2024'
+};
+
+function initQuickMode() {
+    var btn = document.getElementById('btnQuickModeGenerate');
+    if (btn) btn.addEventListener('click', runQuickMode);
+}
+
+function addQuickModeField(fieldId, name, category) {
+    if (isFieldOnCanvas(fieldId)) return appState.components[fieldId];
+    var dropZone = document.querySelector('.drop-zone[data-category="' + category + '"]');
+    if (!dropZone) return null;
+    var canvasField = createCanvasField(fieldId, name, category);
+    removePlaceholder(dropZone);
+    dropZone.appendChild(canvasField);
+    addComponentToState(fieldId, name, category);
+    disableSidebarCard(fieldId);
+    return appState.components[fieldId];
+}
+
+function applyQuickModeTaxRegime(fieldId, countryId, regimeId) {
+    return loadCountryFile(countryId).then(function (data) {
+        var regime = (data.regimes || []).find(function (r) { return r.id === regimeId; });
+        if (!regime || !appState.components[fieldId]) return;
+
+        var comp = appState.components[fieldId];
+        comp.logic_type = 'tax_slabs';
+        comp.allow_slabs = true;
+        comp.configured = true;
+        comp.taxable = 'no';
+        comp.post_rules = regime.post_rules ? JSON.parse(JSON.stringify(regime.post_rules)) : null;
+        comp.slab_config = {
+            country: countryId,
+            regime: regimeId,
+            regime_label: computeLabel(countryId, regimeId),
+            standard_deduction: regime.standard_deduction || 0,
+            surcharge_percent: regime.surcharge_percent || 0,
+            cess_percent: regime.cess_percent || 0,
+            slabs: regime.slabs || [],
+            post_rules: regime.post_rules ? JSON.parse(JSON.stringify(regime.post_rules)) : null,
+            state_id: null, state_name: null, state: null,
+            local_id: null, local_name: null, local: null,
+            payroll_origin: null, payroll_disclaimer: null
+        };
+    }).catch(function () {
+        showNotification('Could not load the default tax regime for Quick Setup; income tax field left unconfigured.', 'warning');
+    });
+}
+
+function runQuickMode() {
+    var countryId = document.getElementById('quickModeCountry').value;
+    var ctcRaw = parseFloat(document.getElementById('quickModeCtc').value);
+    var freq = document.getElementById('quickModeFrequency').value;
+
+    if (!countryId) { showNotification('Select a country for Quick Setup.', 'error'); return; }
+    if (!ctcRaw || ctcRaw <= 0) { showNotification('Enter a valid CTC amount for Quick Setup.', 'error'); return; }
+
+    var annualCtc = freq === 'monthly' ? ctcRaw * 12 : ctcRaw;
+
+    var hasExistingFields = Object.keys(appState.components).length > 0;
+    if (hasExistingFields) {
+        var keepExisting = window.confirm(
+            'The canvas already has fields on it.\n\nClick OK to KEEP them and add Quick Setup fields alongside.\nClick Cancel to CLEAR the canvas first and start fresh.'
+        );
+        if (!keepExisting) {
+            clearCanvasSilently();
+        }
+    }
+
+    document.getElementById('ctcInput').value = annualCtc;
+
+    preloadTaxIndex().then(function () {
+        var incomeTaxField = addQuickModeField('tds', 'TDS / Income Tax', 'deductions');
+        var regimeId = QUICK_MODE_DEFAULT_REGIME[countryId];
+
+        var earningsSetup;
+        if (countryId === 'india') {
+            addQuickModeField('basic_salary', 'Basic Salary', 'earnings');
+            addQuickModeField('hra', 'HRA', 'earnings');
+            addQuickModeField('special_allowance', 'Special Allowance', 'earnings');
+
+            appState.components.basic_salary.logic_type = 'percent_ctc';
+            appState.components.basic_salary.value = 40;
+            appState.components.basic_salary.configured = true;
+
+            appState.components.hra.logic_type = 'percent_basic';
+            appState.components.hra.value = 40;
+            appState.components.hra.target_field = 'basic_salary';
+            appState.components.hra.configured = true;
+
+            appState.components.special_allowance.logic_type = 'percent_ctc';
+            appState.components.special_allowance.value = 20;
+            appState.components.special_allowance.configured = true;
+
+            earningsSetup = Promise.resolve();
+        } else {
+            // USA/Canada: no Basic/HRA convention, single salary field.
+            // Deliberately NOT named 'basic_salary' - USA/Canada payroll
+            // contributions are income-based (tax_slabs), not
+            // percent-of-basic, so there's no dependency on that id here.
+            addQuickModeField('gross_salary', 'Gross Salary', 'earnings');
+            appState.components.gross_salary.logic_type = 'percent_ctc';
+            appState.components.gross_salary.value = 100;
+            appState.components.gross_salary.configured = true;
+            earningsSetup = Promise.resolve();
+        }
+
+        earningsSetup
+            .then(function () { return applyQuickModeTaxRegime('tds', countryId, regimeId); })
+            .then(function () {
+                loadPayrollTemplate(countryId);
+                updateConfiguredTotal();
+                invalidateCalculatedPreview();
+                showNotification(
+                    'Quick Setup complete. A starting structure has been built below \u2014 review or edit any field, then click Calculate.',
+                    'success'
+                );
+            });
+    });
 }
 
 // ========== CONFIG MODAL ==========
@@ -656,7 +795,12 @@ function saveConfig() {
                         : null,
                     post_rules: localLayer.post_rules || null
                 }
-                : null
+                : null,
+            // Preserve payroll-template origin markers across a save unless
+            // handleTaxCountryChange already cleared them (user actively
+            // picked a country themselves, so the note no longer applies).
+            payroll_origin: (component.slab_config && component.slab_config.payroll_origin) || null,
+            payroll_disclaimer: (component.slab_config && component.slab_config.payroll_disclaimer) || null
         };
         component.value = 0;
     } else {
@@ -1518,6 +1662,19 @@ function handleTaxCountryChange() {
     updateZeroTaxUI(countryId);
     updateFlatRateUI(countryId);
 
+    // User is actively picking a country themselves now, so this field is no
+    // longer "exactly as the payroll template generated it" - the note has
+    // served its purpose.
+    var payrollNoteEl = document.getElementById('taxPayrollOriginNote');
+    if (payrollNoteEl) {
+        payrollNoteEl.innerHTML = '';
+        payrollNoteEl.classList.add('hidden');
+    }
+    if (currentConfigFieldId && appState.components[currentConfigFieldId] && appState.components[currentConfigFieldId].slab_config) {
+        appState.components[currentConfigFieldId].slab_config.payroll_origin = null;
+        appState.components[currentConfigFieldId].slab_config.payroll_disclaimer = null;
+    }
+
         if (countryId === 'custom') {
         if (currentConfigFieldId && appState.components[currentConfigFieldId]) {
             appState.components[currentConfigFieldId].state_tax_layer = null;
@@ -1926,6 +2083,23 @@ function populateSlabEditor(slabConfig) {
 
     restoreTaxDropdowns(countryId, regimeId, stateId, localId);
     fillSlabFields(slabConfig || { standard_deduction: 0, surcharge_percent: 0, cess_percent: 0, slabs: [] });
+
+    var payrollNoteEl = document.getElementById('taxPayrollOriginNote');
+    if (payrollNoteEl) {
+        if (slabConfig && slabConfig.payroll_origin) {
+            var noteText = 'Generated from the ' + escapeHtml(slabConfig.payroll_origin) +
+                ' Payroll Template — not linked to the Country / Tax System dropdown above, since payroll ' +
+                'contributions and income tax use separate presets. That\'s expected, not an error.';
+            if (slabConfig.payroll_disclaimer) {
+                noteText += '<br><strong>Payroll disclaimer:</strong> ' + escapeHtml(slabConfig.payroll_disclaimer);
+            }
+            payrollNoteEl.innerHTML = noteText;
+            payrollNoteEl.classList.remove('hidden');
+        } else {
+            payrollNoteEl.innerHTML = '';
+            payrollNoteEl.classList.add('hidden');
+        }
+    }
 
     // Sync post_rules from the saved slab config
     if (currentConfigFieldId && appState.components[currentConfigFieldId]) {
@@ -2796,7 +2970,15 @@ function normalizeSlabConfig(slabConfig) {
         // Stage 6b: city/local layer (only present when a state with a local layer was picked)
         local_id: slabConfig.local_id || null,
         local_name: slabConfig.local_name || null,
-        local: normalizeSlabLayer(slabConfig.local)
+        local: normalizeSlabLayer(slabConfig.local),
+        // Quick Mode / Stage 8: marks a field as generated by a payroll
+        // template (e.g. USA SSA/Medicare). Deliberately NOT a real
+        // tax-regimes country - payroll and income-tax presets are separate
+        // registries - so the country dropdown correctly shows Custom for
+        // these. This is what lets the config modal explain that instead of
+        // just looking broken.
+        payroll_origin: slabConfig.payroll_origin || null,
+        payroll_disclaimer: slabConfig.payroll_disclaimer || null
     };
 }
 

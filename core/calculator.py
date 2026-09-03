@@ -182,11 +182,12 @@ def calculate_ctc_breakdown(data):
                 'taxable': comp.get('taxable', 'yes')
             }
 
-    # 2. % of Basic
-    basic_annual = calculated.get('basic_salary', {}).get('annual', 0)
+    # 2. % of CTC (must run before % of Basic - Basic Salary itself can be a
+    # percent_ctc field, e.g. Quick Mode's default 40%-of-CTC structure. If
+    # % of Basic ran first, it would read an empty/zero Basic Salary.)
     for field_id, comp in components.items():
-        if comp.get('logic_type') == 'percent_basic':
-            annual = (basic_annual * float(comp.get('value', 0))) / 100
+        if comp.get('logic_type') == 'percent_ctc':
+            annual = (total_ctc * float(comp.get('value', 0))) / 100
             calculated[field_id] = {
                 'id': field_id,
                 'name': comp.get('name'),
@@ -196,10 +197,11 @@ def calculate_ctc_breakdown(data):
                 'taxable': comp.get('taxable', 'yes')
             }
 
-    # 3. % of CTC
+    # 3. % of Basic
+    basic_annual = calculated.get('basic_salary', {}).get('annual', 0)
     for field_id, comp in components.items():
-        if comp.get('logic_type') == 'percent_ctc':
-            annual = (total_ctc * float(comp.get('value', 0))) / 100
+        if comp.get('logic_type') == 'percent_basic':
+            annual = (basic_annual * float(comp.get('value', 0))) / 100
             calculated[field_id] = {
                 'id': field_id,
                 'name': comp.get('name'),

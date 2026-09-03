@@ -123,6 +123,24 @@
                 <h2 class="canvas-title">CTC Structure</h2>
             </div>
 
+            <!-- Quick Mode: pick a country, enter CTC, auto-build the canvas -->
+            <div class="quick-mode-bar" id="quickModeBar" style="display:flex; flex-wrap:wrap; gap:8px; align-items:center; padding:12px; margin-bottom:14px; background:#f3f5fb; border:1px solid #dde1ee; border-radius:8px;">
+                <strong style="font-size:0.82rem; color:#333;">Quick Setup:</strong>
+                <select id="quickModeCountry" style="padding:8px 10px; border:1.5px solid #ccc; border-radius:6px; font-size:0.85rem;">
+                    <option value="">Select Country...</option>
+                    <option value="india">India</option>
+                    <option value="usa">United States</option>
+                    <option value="canada">Canada</option>
+                </select>
+                <input type="number" id="quickModeCtc" placeholder="CTC amount" min="0" style="padding:8px 10px; border:1.5px solid #ccc; border-radius:6px; font-size:0.85rem; width:140px;">
+                <select id="quickModeFrequency" style="padding:8px 10px; border:1.5px solid #ccc; border-radius:6px; font-size:0.85rem;">
+                    <option value="annual">Annual</option>
+                    <option value="monthly">Monthly</option>
+                </select>
+                <button class="btn btn-primary" id="btnQuickModeGenerate" type="button">Generate</button>
+                <span style="font-size:0.75rem; color:#777;">Builds a starting structure automatically — you can still edit everything below.</span>
+            </div>
+
             <div class="canvas-category" data-category="earnings">
                 <div class="canvas-category-header">
                     <h3>Earnings</h3>
@@ -247,7 +265,7 @@
         </div>
 
         <div class="preview-input-group">
-            <label for="ctcInput">Target Annual CTC</label>
+            <label for="ctcInput">Enter Annual CTC</label>
             <input type="number" id="ctcInput" placeholder="e.g. 1000000" min="0">
             <button class="btn btn-primary" id="btnCalculate">Calculate</button>
         </div>
@@ -332,6 +350,7 @@
                         <select id="taxCountry" style="width: 100%; padding: 8px 12px; border: 1.5px solid #ddd; border-radius: 6px; font-size: 0.85rem; outline: none;">
                             <option value="custom">Custom (Define your own)</option>
                         </select>
+                        <p id="taxPayrollOriginNote" class="tax-notes hidden" style="margin-top: 6px;"></p>
                     </div>
 
                     <!-- Regime or Filing Status/Age Group (shown only when needed) -->
