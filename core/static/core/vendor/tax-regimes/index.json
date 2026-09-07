@@ -1,237 +1,11 @@
 {
-    "version": "2.0",
-    "last_updated": "2025-01-01",
     "countries": [
-        {
-            "id": "india",
-            "name": "India",
-            "engine_type": "progressive_slabs_basic",
-            "internal_states": false,
-            "file": "india.json"
-        },
-        {
-            "id": "usa",
-            "name": "United States",
-            "engine_type": "progressive_slabs_basic",
-            "internal_states": true,
-            "file": "usa.json"
-        },
-        {
-            "id": "switzerland",
-            "name": "Switzerland",
-            "engine_type": "progressive_slabs_basic",
-            "internal_states": true,
-            "file": "switzerland.json"
-        },
-        {
-            "id": "uk",
-            "name": "United Kingdom",
-            "engine_type": "progressive_slabs_basic",
-            "internal_states": false,
-            "file": "uk.json"
-        },
         {
             "id": "australia",
             "name": "Australia",
             "engine_type": "progressive_slabs_basic",
             "internal_states": false,
             "file": "australia.json"
-        },
-        {
-            "id": "new_zealand",
-            "name": "New Zealand",
-            "engine_type": "progressive_slabs_basic",
-            "internal_states": false,
-            "file": "new_zealand.json"
-        },
-        {
-            "id": "singapore",
-            "name": "Singapore",
-            "engine_type": "progressive_slabs_basic",
-            "internal_states": false,
-            "file": "singapore.json"
-        },
-        {
-            "id": "hong_kong",
-            "name": "Hong Kong",
-            "engine_type": "progressive_slabs_basic",
-            "internal_states": false,
-            "file": "hong_kong.json"
-        },
-        {
-            "id": "japan",
-            "name": "Japan",
-            "engine_type": "progressive_slabs_basic",
-            "internal_states": false,
-            "file": "japan.json"
-        },
-        {
-            "id": "south_korea",
-            "name": "South Korea",
-            "engine_type": "progressive_slabs_basic",
-            "internal_states": false,
-            "file": "south_korea.json"
-        },
-        {
-            "id": "china",
-            "name": "China",
-            "engine_type": "progressive_slabs_basic",
-            "internal_states": false,
-            "file": "china.json"
-        },
-        {
-            "id": "malaysia",
-            "name": "Malaysia",
-            "engine_type": "progressive_slabs_basic",
-            "internal_states": false,
-            "file": "malaysia.json"
-        },
-        {
-            "id": "thailand",
-            "name": "Thailand",
-            "engine_type": "progressive_slabs_basic",
-            "internal_states": false,
-            "file": "thailand.json"
-        },
-        {
-            "id": "vietnam",
-            "name": "Vietnam",
-            "engine_type": "progressive_slabs_basic",
-            "internal_states": false,
-            "file": "vietnam.json"
-        },
-        {
-            "id": "indonesia",
-            "name": "Indonesia",
-            "engine_type": "progressive_slabs_basic",
-            "internal_states": false,
-            "file": "indonesia.json"
-        },
-        {
-            "id": "philippines",
-            "name": "Philippines",
-            "engine_type": "progressive_slabs_basic",
-            "internal_states": false,
-            "file": "philippines.json"
-        },
-        {
-            "id": "turkey",
-            "name": "Türkiye",
-            "engine_type": "progressive_slabs_basic",
-            "internal_states": false,
-            "file": "turkey.json"
-        },
-        {
-            "id": "south_africa",
-            "name": "South Africa",
-            "engine_type": "progressive_slabs_basic",
-            "internal_states": false,
-            "file": "south_africa.json"
-        },
-        {
-            "id": "nigeria",
-            "name": "Nigeria",
-            "engine_type": "progressive_slabs_basic",
-            "internal_states": false,
-            "file": "nigeria.json"
-        },
-        {
-            "id": "kenya",
-            "name": "Kenya",
-            "engine_type": "progressive_slabs_basic",
-            "internal_states": false,
-            "file": "kenya.json"
-        },
-        {
-            "id": "egypt",
-            "name": "Egypt",
-            "engine_type": "progressive_slabs_basic",
-            "internal_states": false,
-            "file": "egypt.json"
-        },
-        {
-            "id": "morocco",
-            "name": "Morocco",
-            "engine_type": "progressive_slabs_basic",
-            "internal_states": false,
-            "file": "morocco.json"
-        },
-        {
-            "id": "brazil",
-            "name": "Brazil",
-            "engine_type": "progressive_slabs_basic",
-            "internal_states": false,
-            "file": "brazil.json"
-        },
-        {
-            "id": "mexico",
-            "name": "Mexico",
-            "engine_type": "progressive_slabs_basic",
-            "internal_states": false,
-            "file": "mexico.json"
-        },
-        {
-            "id": "chile",
-            "name": "Chile",
-            "engine_type": "progressive_slabs_basic",
-            "internal_states": false,
-            "file": "chile.json"
-        },
-        {
-            "id": "colombia",
-            "name": "Colombia",
-            "engine_type": "progressive_slabs_basic",
-            "internal_states": false,
-            "file": "colombia.json"
-        },
-        {
-            "id": "uae",
-            "name": "United Arab Emirates",
-            "engine_type": "zero_income_tax",
-            "internal_states": false,
-            "file": "uae.json"
-        },
-        {
-            "id": "saudi_arabia",
-            "name": "Saudi Arabia",
-            "engine_type": "zero_income_tax",
-            "internal_states": false,
-            "file": "saudi_arabia.json"
-        },
-        {
-            "id": "qatar",
-            "name": "Qatar",
-            "engine_type": "zero_income_tax",
-            "internal_states": false,
-            "file": "qatar.json"
-        },
-        {
-            "id": "kuwait",
-            "name": "Kuwait",
-            "engine_type": "zero_income_tax",
-            "internal_states": false,
-            "file": "kuwait.json"
-        },
-        {
-            "id": "bahrain",
-            "name": "Bahrain",
-            "engine_type": "zero_income_tax",
-            "internal_states": false,
-            "file": "bahrain.json"
-        },
-        {
-            "id": "oman",
-            "name": "Oman",
-            "engine_type": "zero_income_tax",
-            "internal_states": false,
-            "file": "oman.json"
-        },
-        {
-            "id": "brunei",
-            "name": "Brunei",
-            "engine_type": "zero_income_tax",
-            "internal_states": false,
-            "file": "brunei.json"
         },
         {
             "id": "bahamas",
@@ -241,6 +15,13 @@
             "file": "bahamas.json"
         },
         {
+            "id": "bahrain",
+            "name": "Bahrain",
+            "engine_type": "zero_income_tax",
+            "internal_states": false,
+            "file": "bahrain.json"
+        },
+        {
             "id": "bermuda",
             "name": "Bermuda",
             "engine_type": "zero_income_tax",
@@ -248,11 +29,18 @@
             "file": "bermuda.json"
         },
         {
-            "id": "cayman_islands",
-            "name": "Cayman Islands",
+            "id": "brazil",
+            "name": "Brazil",
+            "engine_type": "progressive_slabs_basic",
+            "internal_states": false,
+            "file": "brazil.json"
+        },
+        {
+            "id": "brunei",
+            "name": "Brunei",
             "engine_type": "zero_income_tax",
             "internal_states": false,
-            "file": "cayman_islands.json"
+            "file": "brunei.json"
         },
         {
             "id": "bulgaria",
@@ -262,55 +50,6 @@
             "file": "bulgaria.json"
         },
         {
-            "id": "romania",
-            "name": "Romania",
-            "engine_type": "flat_rate_tax",
-            "internal_states": false,
-            "file": "romania.json"
-        },
-        {
-            "id": "hungary",
-            "name": "Hungary",
-            "engine_type": "flat_rate_tax",
-            "internal_states": false,
-            "file": "hungary.json"
-        },
-        {
-            "id": "serbia",
-            "name": "Serbia",
-            "engine_type": "flat_rate_tax",
-            "internal_states": false,
-            "file": "serbia.json"
-        },
-        {
-            "id": "georgia",
-            "name": "Georgia",
-            "engine_type": "flat_rate_tax",
-            "internal_states": false,
-            "file": "georgia.json"
-        },
-        {
-            "id": "kazakhstan",
-            "name": "Kazakhstan",
-            "engine_type": "flat_rate_tax",
-            "internal_states": false,
-            "file": "kazakhstan.json"
-        },
-        {
-            "id": "ukraine",
-            "name": "Ukraine",
-            "engine_type": "flat_rate_tax",
-            "internal_states": false,
-            "file": "ukraine.json"
-        },
-        {
-            "id": "estonia",
-            "name": "Estonia",
-            "engine_type": "flat_rate_tax",
-            "internal_states": false,
-            "file": "estonia.json"
-        },
-        {
             "id": "canada",
             "name": "Canada",
             "engine_type": "progressive_slabs_basic",
@@ -318,11 +57,32 @@
             "file": "canada.json"
         },
         {
-            "id": "panama",
-            "name": "Panama",
+            "id": "cayman_islands",
+            "name": "Cayman Islands",
+            "engine_type": "zero_income_tax",
+            "internal_states": false,
+            "file": "cayman_islands.json"
+        },
+        {
+            "id": "chile",
+            "name": "Chile",
             "engine_type": "progressive_slabs_basic",
             "internal_states": false,
-            "file": "panama.json"
+            "file": "chile.json"
+        },
+        {
+            "id": "china",
+            "name": "China",
+            "engine_type": "progressive_slabs_basic",
+            "internal_states": false,
+            "file": "china.json"
+        },
+        {
+            "id": "colombia",
+            "name": "Colombia",
+            "engine_type": "progressive_slabs_basic",
+            "internal_states": false,
+            "file": "colombia.json"
         },
         {
             "id": "costa_rica",
@@ -332,11 +92,130 @@
             "file": "costa_rica.json"
         },
         {
-            "id": "uruguay",
-            "name": "Uruguay",
+            "id": "egypt",
+            "name": "Egypt",
             "engine_type": "progressive_slabs_basic",
             "internal_states": false,
-            "file": "uruguay.json"
+            "file": "egypt.json"
+        },
+        {
+            "id": "estonia",
+            "name": "Estonia",
+            "engine_type": "flat_rate_tax",
+            "internal_states": false,
+            "file": "estonia.json"
+        },
+        {
+            "id": "georgia",
+            "name": "Georgia",
+            "engine_type": "flat_rate_tax",
+            "internal_states": false,
+            "file": "georgia.json"
+        },
+        {
+            "id": "hong_kong",
+            "name": "Hong Kong",
+            "engine_type": "progressive_slabs_basic",
+            "internal_states": false,
+            "file": "hong_kong.json"
+        },
+        {
+            "id": "hungary",
+            "name": "Hungary",
+            "engine_type": "flat_rate_tax",
+            "internal_states": false,
+            "file": "hungary.json"
+        },
+        {
+            "id": "india",
+            "name": "India",
+            "engine_type": "progressive_slabs_basic",
+            "internal_states": false,
+            "file": "india.json"
+        },
+        {
+            "id": "indonesia",
+            "name": "Indonesia",
+            "engine_type": "progressive_slabs_basic",
+            "internal_states": false,
+            "file": "indonesia.json"
+        },
+        {
+            "id": "japan",
+            "name": "Japan",
+            "engine_type": "progressive_slabs_basic",
+            "internal_states": false,
+            "file": "japan.json"
+        },
+        {
+            "id": "kazakhstan",
+            "name": "Kazakhstan",
+            "engine_type": "flat_rate_tax",
+            "internal_states": false,
+            "file": "kazakhstan.json"
+        },
+        {
+            "id": "kenya",
+            "name": "Kenya",
+            "engine_type": "progressive_slabs_basic",
+            "internal_states": false,
+            "file": "kenya.json"
+        },
+        {
+            "id": "kuwait",
+            "name": "Kuwait",
+            "engine_type": "zero_income_tax",
+            "internal_states": false,
+            "file": "kuwait.json"
+        },
+        {
+            "id": "malaysia",
+            "name": "Malaysia",
+            "engine_type": "progressive_slabs_basic",
+            "internal_states": false,
+            "file": "malaysia.json"
+        },
+        {
+            "id": "mexico",
+            "name": "Mexico",
+            "engine_type": "progressive_slabs_basic",
+            "internal_states": false,
+            "file": "mexico.json"
+        },
+        {
+            "id": "morocco",
+            "name": "Morocco",
+            "engine_type": "progressive_slabs_basic",
+            "internal_states": false,
+            "file": "morocco.json"
+        },
+        {
+            "id": "new_zealand",
+            "name": "New Zealand",
+            "engine_type": "progressive_slabs_basic",
+            "internal_states": false,
+            "file": "new_zealand.json"
+        },
+        {
+            "id": "nigeria",
+            "name": "Nigeria",
+            "engine_type": "progressive_slabs_basic",
+            "internal_states": false,
+            "file": "nigeria.json"
+        },
+        {
+            "id": "oman",
+            "name": "Oman",
+            "engine_type": "zero_income_tax",
+            "internal_states": false,
+            "file": "oman.json"
+        },
+        {
+            "id": "panama",
+            "name": "Panama",
+            "engine_type": "progressive_slabs_basic",
+            "internal_states": false,
+            "file": "panama.json"
         },
         {
             "id": "paraguay",
@@ -344,6 +223,125 @@
             "engine_type": "progressive_slabs_basic",
             "internal_states": false,
             "file": "paraguay.json"
+        },
+        {
+            "id": "philippines",
+            "name": "Philippines",
+            "engine_type": "progressive_slabs_basic",
+            "internal_states": false,
+            "file": "philippines.json"
+        },
+        {
+            "id": "qatar",
+            "name": "Qatar",
+            "engine_type": "zero_income_tax",
+            "internal_states": false,
+            "file": "qatar.json"
+        },
+        {
+            "id": "romania",
+            "name": "Romania",
+            "engine_type": "flat_rate_tax",
+            "internal_states": false,
+            "file": "romania.json"
+        },
+        {
+            "id": "saudi_arabia",
+            "name": "Saudi Arabia",
+            "engine_type": "zero_income_tax",
+            "internal_states": false,
+            "file": "saudi_arabia.json"
+        },
+        {
+            "id": "serbia",
+            "name": "Serbia",
+            "engine_type": "flat_rate_tax",
+            "internal_states": false,
+            "file": "serbia.json"
+        },
+        {
+            "id": "singapore",
+            "name": "Singapore",
+            "engine_type": "progressive_slabs_basic",
+            "internal_states": false,
+            "file": "singapore.json"
+        },
+        {
+            "id": "south_africa",
+            "name": "South Africa",
+            "engine_type": "progressive_slabs_basic",
+            "internal_states": false,
+            "file": "south_africa.json"
+        },
+        {
+            "id": "south_korea",
+            "name": "South Korea",
+            "engine_type": "progressive_slabs_basic",
+            "internal_states": false,
+            "file": "south_korea.json"
+        },
+        {
+            "id": "switzerland",
+            "name": "Switzerland",
+            "engine_type": "progressive_slabs_basic",
+            "internal_states": true,
+            "file": "switzerland.json"
+        },
+        {
+            "id": "thailand",
+            "name": "Thailand",
+            "engine_type": "progressive_slabs_basic",
+            "internal_states": false,
+            "file": "thailand.json"
+        },
+        {
+            "id": "turkey",
+            "name": "Türkiye",
+            "engine_type": "progressive_slabs_basic",
+            "internal_states": false,
+            "file": "turkey.json"
+        },
+        {
+            "id": "uae",
+            "name": "United Arab Emirates",
+            "engine_type": "zero_income_tax",
+            "internal_states": false,
+            "file": "uae.json"
+        },
+        {
+            "id": "uk",
+            "name": "United Kingdom",
+            "engine_type": "progressive_slabs_basic",
+            "internal_states": false,
+            "file": "uk.json"
+        },
+        {
+            "id": "ukraine",
+            "name": "Ukraine",
+            "engine_type": "flat_rate_tax",
+            "internal_states": false,
+            "file": "ukraine.json"
+        },
+        {
+            "id": "uruguay",
+            "name": "Uruguay",
+            "engine_type": "progressive_slabs_basic",
+            "internal_states": false,
+            "file": "uruguay.json"
+        },
+        {
+            "id": "usa",
+            "name": "United States",
+            "engine_type": "progressive_slabs_basic",
+            "internal_states": true,
+            "file": "usa.json"
+        },
+        {
+            "id": "vietnam",
+            "name": "Vietnam",
+            "engine_type": "progressive_slabs_basic",
+            "internal_states": false,
+            "file": "vietnam.json"
         }
     ]
 }

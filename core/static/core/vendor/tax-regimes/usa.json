@@ -6,9 +6,8 @@
     "tax_year": "2024",
     "engine_type": "progressive_slabs_basic",
     "last_updated": "2025-01-01",
-    "source": "https://www.irs.gov/newsroom/irs-provides-tax-inflation-adjustments-for-tax-year-2024",
-    "sub_option_label": "Select Filing Status",
-    "disclaimer": "Federal income tax only. State income tax, Social Security, Medicare, local taxes, and credits/deductions beyond the standard deduction are not included. Head of Household status requires a qualifying person and paying more than half the cost of keeping up a home — select it only if you meet IRS requirements.",
+    "source": "https://www.irs.gov/filing/federal-income-tax-rates-and-brackets",
+    "disclaimer": "Simplified FEDERAL tax only. State income tax varies by state; select a state below to add it. Standard deduction only (no itemized deductions modeled). FICA (Social Security/Medicare) is separate - see Payroll Contributions.",
 
     "requires_filing_status": true,
     "requires_state_selection": true,
@@ -24,7 +23,7 @@
             "standard_deduction": 14600,
             "surcharge_percent": 0,
             "cess_percent": 0,
-            "notes": "Federal brackets for a Single filer, 2024. Standard deduction $14,600.",
+            "notes": "2024 federal brackets for a Single filer. Standard deduction $14,600.",
             "slabs": [
                 { "from": 0, "to": 11600, "rate": 10 },
                 { "from": 11600, "to": 47150, "rate": 12 },
@@ -41,7 +40,7 @@
             "standard_deduction": 29200,
             "surcharge_percent": 0,
             "cess_percent": 0,
-            "notes": "Federal brackets for Married Filing Jointly, 2024. Standard deduction $29,200.",
+            "notes": "2024 federal brackets for Married Filing Jointly. Standard deduction $29,200.",
             "slabs": [
                 { "from": 0, "to": 23200, "rate": 10 },
                 { "from": 23200, "to": 94300, "rate": 12 },
@@ -58,7 +57,7 @@
             "standard_deduction": 14600,
             "surcharge_percent": 0,
             "cess_percent": 0,
-            "notes": "Federal brackets for Married Filing Separately, 2024. Standard deduction $14,600. Some credits/deductions are restricted under this status.",
+            "notes": "2024 federal brackets for Married Filing Separately. Standard deduction $14,600.",
             "slabs": [
                 { "from": 0, "to": 11600, "rate": 10 },
                 { "from": 11600, "to": 47150, "rate": 12 },
@@ -75,7 +74,7 @@
             "standard_deduction": 21900,
             "surcharge_percent": 0,
             "cess_percent": 0,
-            "notes": "Federal brackets for Head of Household, 2024. Standard deduction $21,900. Requires a qualifying person and paying more than half the cost of keeping up a home.",
+            "notes": "2024 federal brackets for Head of Household. Standard deduction $21,900.",
             "slabs": [
                 { "from": 0, "to": 16550, "rate": 10 },
                 { "from": 16550, "to": 63100, "rate": 12 },

@@ -19,11 +19,11 @@
     "regimes": [
         {
             "id": "ca_federal_2024",
-            "label": "Federal Income Tax (2024)",
+            "label": "Federal (Single)",
             "standard_deduction": 0,
             "surcharge_percent": 0,
             "cess_percent": 0,
-            "notes": "Basic Personal Amount of $15,705 applied automatically as a 15% non-refundable credit ($2,355.75). Federal tax only. The BPA phase-down for incomes above $173,205 is not included; results may understate tax by up to ~$232/year for very high incomes.",
+            "notes": "2024 federal brackets. Basic Personal Amount ($15,705) applied as a 15% non-refundable credit, not a deduction.",
             "slabs": [
                 { "from": 0, "to": 55867, "rate": 15 },
                 { "from": 55867, "to": 111733, "rate": 20.5 },
@@ -33,7 +33,7 @@
             ],
             "post_rules": {
                 "credits": [
-                    { "label": "Basic Personal Amount", "amount": 15705, "rate": 15 }
+                    { "label": "Federal Basic Personal Amount", "amount": 15705, "rate": 15 }
                 ]
             }
         }

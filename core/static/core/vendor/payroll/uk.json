@@ -1,0 +1,44 @@
+{
+    "country_id": "uk",
+    "country_name": "United Kingdom",
+    "tax_year": "2025-26",
+    "last_updated": "2026-08-19",
+    "source": "https://www.gov.uk/national-insurance-rates-letters , https://taxscape.deloitte.com/uk-budget/autumn-budget-2024/measures-autumn-budget-2024/increase-to-employer-nic-rate-and-lowering-of-the-secondary-threshold.aspx",
+    "disclaimer": "Simplified Class 1 National Insurance estimate, not payroll-compliance advice. Uses 2025-26 rates (effective 6 April 2025: employer rate increased from 13.8% to 15%, employer Secondary Threshold lowered from GBP 9,100 to GBP 5,000/year; employee rates and thresholds unchanged from 2024-25). Employee and employer NI use genuinely different, unrelated thresholds and rates - this is NOT a matched pair like most other countries' payroll contributions. Category letter A (standard) assumed; reduced/zero rates for under-21s, apprentices under 25, and veterans are not modeled. Employment Allowance (employer NI relief for small businesses) is not modeled. Self-employed Class 2/Class 4 NI is not covered.",
+
+    "components": [
+        {
+            "key": "uk_ni_employee",
+            "name": "National Insurance (Employee)",
+            "category": "deductions",
+            "logic_type": "tax_slabs",
+            "taxable": "no",
+            "slab_config": {
+                "country": "uk_payroll", "regime": "ni_employee_2025_26",
+                "regime_label": "NI Class 1 (Employee) 2025-26",
+                "standard_deduction": 0, "surcharge_percent": 0, "cess_percent": 0,
+                "slabs": [
+                    { "from": 0, "to": 12570, "rate": 0 },
+                    { "from": 12570, "to": 50270, "rate": 8 },
+                    { "from": 50270, "to": null, "rate": 2 }
+                ]
+            }
+        },
+        {
+            "key": "uk_ni_employer",
+            "name": "National Insurance (Employer)",
+            "category": "employer_contributions",
+            "logic_type": "tax_slabs",
+            "taxable": "no",
+            "slab_config": {
+                "country": "uk_payroll", "regime": "ni_employer_2025_26",
+                "regime_label": "NI Class 1 (Employer) 2025-26",
+                "standard_deduction": 0, "surcharge_percent": 0, "cess_percent": 0,
+                "slabs": [
+                    { "from": 0, "to": 5000, "rate": 0 },
+                    { "from": 5000, "to": null, "rate": 15 }
+                ]
+            }
+        }
+    ]
+}
